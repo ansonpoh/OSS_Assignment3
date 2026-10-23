@@ -1,0 +1,43 @@
+﻿2026-10-23T09:18:06.8828780Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T09:18:06.8829218Z with:
+2026-10-23T09:18:06.8830112Z   script: const { setupGlobals } = require(process.env.GH_AW_ACTIONS_DIR + '/setup_globals.cjs');
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(process.env.GH_AW_ACTIONS_DIR + '/create_prompt.cjs');
+await main(core);
+
+2026-10-23T09:18:06.8834270Z   github-token: ***
+2026-10-23T09:18:06.8834512Z   debug: false
+2026-10-23T09:18:06.8834739Z   user-agent: actions/github-script
+2026-10-23T09:18:06.8835024Z   result-encoding: json
+2026-10-23T09:18:06.8835247Z   retries: 0
+2026-10-23T09:18:06.8835481Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T09:18:06.8835781Z env:
+2026-10-23T09:18:06.8837251Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T09:18:06.8837583Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T09:18:06.8838375Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39930776447,github.run_id=39930776447,gh-aw.engine.id=codex
+2026-10-23T09:18:06.8839252Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T09:18:06.8839539Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T09:18:06.8840118Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T09:18:06.8840407Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-23T09:18:06.8840670Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T09:18:06.8840967Z   GITHUB_AW_OTEL_TRACE_ID: ec15eebe21256d22a661580d5cb17969
+2026-10-23T09:18:06.8841322Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 175b615fade8b7d6
+2026-10-23T09:18:06.8841630Z   GITHUB_AW_OTEL_JOB_START_MS: 1792747063623
+2026-10-23T09:18:06.8841967Z   GH_AW_ACTIONS_DIR: /home/runner/work/_temp/gh-aw/actions
+2026-10-23T09:18:06.8842463Z   GH_AW_PROMPT: /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt
+2026-10-23T09:18:06.8842931Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-23T09:18:06.8845045Z   GH_AW_PROMPT_CONFIG: {"items":[{"content_env":"GH_AW_PROMPT_CONTENT_0000"},{"file":"xpia.md"},{"file":"temp_folder_prompt.md"},{"file":"markdown.md"},{"file":"safe_outputs_mcp_transport_prompt.md"},{"file":"safe_outputs_prompt.md"},{"content_env":"GH_AW_PROMPT_CONTENT_0001"},{"content_env":"GH_AW_PROMPT_CONTENT_0002"},{"file":"mcp_cli_tools_with_safeoutputs_prompt.md"},{"content_env":"GH_AW_PROMPT_CONTENT_0003"},{"content_env":"GH_AW_PROMPT_CONTENT_0004"}],"system_item_count":10}
+2026-10-23T09:18:06.8846713Z   GH_AW_GITHUB_REPOSITORY: ansonpoh/OSS_Assignment3
+2026-10-23T09:18:06.8847031Z   GH_AW_PROMPT_CONTENT_0000: <system>
+
+2026-10-23T09:18:06.8847603Z   GH_AW_PROMPT_CONTENT_0001: <safe-output-tools>
+Tools: add_comment, add_labels, report_missing_tool, report_missing_data, noop(max:2)
+
+2026-10-23T09:18:06.8848227Z   GH_AW_PROMPT_CONTENT_0002: </safe-output-tools>
+
+2026-10-23T09:18:06.8848541Z   GH_AW_PROMPT_CONTENT_0003: </system>
+
+2026-10-23T09:18:06.8848925Z   GH_AW_PROMPT_CONTENT_0004: {{#runtime-import .github/workflows/rich-triage.md}}
+
+2026-10-23T09:18:06.8849325Z ##[endgroup]
+2026-10-23T09:18:07.0127758Z Created prompt at /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt (9027 bytes)

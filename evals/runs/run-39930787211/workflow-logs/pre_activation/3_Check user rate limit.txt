@@ -1,0 +1,38 @@
+﻿2026-10-23T09:17:38.5189596Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T09:17:38.5190580Z with:
+2026-10-23T09:17:38.5195540Z   github-token: ***
+2026-10-23T09:17:38.5197732Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_rate_limit.cjs'));
+await main();
+
+2026-10-23T09:17:38.5200046Z   debug: false
+2026-10-23T09:17:38.5200756Z   user-agent: actions/github-script
+2026-10-23T09:17:38.5201538Z   result-encoding: json
+2026-10-23T09:17:38.5202247Z   retries: 0
+2026-10-23T09:17:38.5202769Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T09:17:38.5203611Z env:
+2026-10-23T09:17:38.5204118Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T09:17:38.5204734Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T09:17:38.5206217Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39930787211,github.run_id=39930787211,gh-aw.engine.id=codex
+2026-10-23T09:17:38.5208320Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T09:17:38.5208929Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T09:17:38.5209572Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T09:17:38.5210116Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T09:17:38.5210750Z   GITHUB_AW_OTEL_TRACE_ID: 4e47305aaeffdedc1dcbea44fccb35d7
+2026-10-23T09:17:38.5211509Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ff7c48dc0c8fb70b
+2026-10-23T09:17:38.5212192Z   GITHUB_AW_OTEL_JOB_START_MS: 1792747058457
+2026-10-23T09:17:38.5212794Z   GH_AW_RATE_LIMIT_MAX: 3
+2026-10-23T09:17:38.5213643Z   GH_AW_RATE_LIMIT_WINDOW: 60
+2026-10-23T09:17:38.5214444Z   GH_AW_RATE_LIMIT_EVENTS: issues
+2026-10-23T09:17:38.5215097Z   GH_AW_RATE_LIMIT_IGNORED_ROLES: admin,maintain,write
+2026-10-23T09:17:38.5215762Z ##[endgroup]
+2026-10-23T09:17:39.1363247Z    Using workflow file: rich-triage.lock.yml (from GITHUB_WORKFLOW_REF)
+2026-10-23T09:17:39.1368452Z 🔍 Checking rate limit for user 'ansonpoh' on workflow 'rich-triage.lock.yml'
+2026-10-23T09:17:39.1386767Z    Configuration: max=3 runs per 60 minutes
+2026-10-23T09:17:39.1388131Z    Current event: issues
+2026-10-23T09:17:39.1389639Z    Ignored roles: admin, maintain, write
+2026-10-23T09:17:39.4311753Z    User 'ansonpoh' has permission level: admin
+2026-10-23T09:17:39.4324523Z ✅ User 'ansonpoh' has ignored role 'admin'; skipping rate limit check
