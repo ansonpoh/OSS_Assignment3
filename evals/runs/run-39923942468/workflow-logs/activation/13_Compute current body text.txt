@@ -1,0 +1,32 @@
+﻿2026-10-23T08:21:11.9110890Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T08:21:11.9111317Z with:
+2026-10-23T08:21:11.9112862Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'compute_text.cjs'));
+await main();
+
+2026-10-23T08:21:11.9116730Z   github-token: ***
+2026-10-23T08:21:11.9116956Z   debug: false
+2026-10-23T08:21:11.9117181Z   user-agent: actions/github-script
+2026-10-23T08:21:11.9117453Z   result-encoding: json
+2026-10-23T08:21:11.9117674Z   retries: 0
+2026-10-23T08:21:11.9117906Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T08:21:11.9118219Z env:
+2026-10-23T08:21:11.9118421Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T08:21:11.9118692Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T08:21:11.9119452Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39923942468,github.run_id=39923942468,gh-aw.engine.id=codex
+2026-10-23T08:21:11.9120254Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T08:21:11.9125340Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T08:21:11.9125711Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T08:21:11.9125989Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-23T08:21:11.9126249Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T08:21:11.9126544Z   GITHUB_AW_OTEL_TRACE_ID: f7135489da3b1d0b444b08bba0344b09
+2026-10-23T08:21:11.9126920Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ef09d43648035c32
+2026-10-23T08:21:11.9127239Z   GITHUB_AW_OTEL_JOB_START_MS: 1792743648280
+2026-10-23T08:21:11.9127515Z ##[endgroup]
+2026-10-23T08:21:12.2955996Z Repository permission level: admin
+2026-10-23T08:21:12.3184014Z text: Expand typing for Title field in Table object\n\n## Description\n\nWhen building tables in a CLI program I am working on, I have varying sized tables that are smaller than the console width. I was using the Rule object as a separator between them, but I also had a Text object centered in the middle of the Rule object as sort of a title. The issue came in that the Rule was spanning the entire width of the console instead of just the Table's width. I then passed the Rule in for the title field which then restricted the Rule to the Table's width. This worked cleaning except for the typing. The title field is currently set to `Union[str, Text], optional` and I think it would benefit from a less strict typing.\n\n## Suggested Change\n\nUpdate the Title arg in the Table Class with a more open typing that accepts more than just str and Text objects.\n\n## Benefits\n\nThere are currently a couple of other ways I can think of handling this. One would be putting both the Rule and the Table in a Table.grid object. Another way is determining the width of the Table and then building a Text object the same size. Both seem cumbersome and overall would be more cleanly solved by just passing a Rule in for the title of a Table.
+2026-10-23T08:21:12.3192389Z title: Expand typing for Title field in Table object
+2026-10-23T08:21:12.3197480Z body: ## Description\n\nWhen building tables in a CLI program I am working on, I have varying sized tables that are smaller than the console width. I was using the Rule object as a separator between them, but I also had a Text object centered in the middle of the Rule object as sort of a title. The issue came in that the Rule was spanning the entire width of the console instead of just the Table's width. I then passed the Rule in for the title field which then restricted the Rule to the Table's width. This worked cleaning except for the typing. The title field is currently set to `Union[str, Text], optional` and I think it would benefit from a less strict typing.\n\n## Suggested Change\n\nUpdate the Title arg in the Table Class with a more open typing that accepts more than just str and Text objects.\n\n## Benefits\n\nThere are currently a couple of other ways I can think of handling this. One would be putting both the Rule and the Table in a Table.grid object. Another way is determining the width of the Table and then building a Text object the same size. Both seem cumbersome and overall would be more cleanly solved by just passing a Rule in for the title of a Table.

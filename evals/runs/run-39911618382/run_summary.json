@@ -1,7 +1,7 @@
 {
   "cli_version": "v0.93.0",
   "run_id": 39911618382,
-  "processed_at": "2026-10-23T08:40:26.218515177Z",
+  "processed_at": "2026-10-23T08:44:01.951915732Z",
   "run": {
     "databaseId": 39911618382,
     "number": 13,
@@ -23,7 +23,7 @@
     "Duration": 460000000000,
     "ActionMinutes": 8,
     "TokenUsage": 296538,
-    "Turns": 0,
+    "Turns": 1,
     "TurnsAvailable": true,
     "ErrorCount": 0,
     "WarningCount": 0,
@@ -33,15 +33,95 @@
     "safe_items_count": 2,
     "AvgTimeBetweenTurns": 0,
     "LogsPath": "evals/runs/run-39911618382",
-    "DownloadDuration": 1111984171,
-    "DownloadSizeBytes": 1453
+    "DownloadDuration": 4414702935,
+    "DownloadSizeBytes": 1830135
   },
   "metrics": {
     "TokenUsage": 296538,
     "EstimatedCost": 0,
-    "Turns": 0,
-    "ToolCalls": null,
-    "ToolSequences": null,
+    "Turns": 1,
+    "ToolCalls": [
+      {
+        "Name": "bash_/bin/bash -lc \"cat /...",
+        "CallCount": 1,
+        "MaxInputSize": 268,
+        "MaxOutputSize": 19415,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc \"cat \u003e...",
+        "CallCount": 1,
+        "MaxInputSize": 530,
+        "MaxOutputSize": 35,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc \"pytho...",
+        "CallCount": 1,
+        "MaxInputSize": 222,
+        "MaxOutputSize": 3861,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc \"safeo...",
+        "CallCount": 2,
+        "MaxInputSize": 460,
+        "MaxOutputSize": 811,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'cat ....",
+        "CallCount": 1,
+        "MaxInputSize": 55,
+        "MaxOutputSize": 7512,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'cat C...",
+        "CallCount": 1,
+        "MaxInputSize": 55,
+        "MaxOutputSize": 8330,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'comma...",
+        "CallCount": 1,
+        "MaxInputSize": 105,
+        "MaxOutputSize": 1801,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'pytho...",
+        "CallCount": 4,
+        "MaxInputSize": 140,
+        "MaxOutputSize": 1094,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      }
+    ],
+    "ToolSequences": [
+      [
+        "bash_/bin/bash -lc 'cat ....",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc \"cat /...",
+        "bash_/bin/bash -lc \"pytho...",
+        "bash_/bin/bash -lc 'cat C...",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc \"cat \u003e...",
+        "bash_/bin/bash -lc 'comma...",
+        "bash_/bin/bash -lc \"safeo...",
+        "bash_/bin/bash -lc \"safeo..."
+      ]
+    ],
     "AvgTimeBetweenTurns": 0,
     "MaxTimeBetweenTurns": 0,
     "MedianTimeBetweenTurns": 0,
@@ -53,48 +133,47 @@
     "reason": "The run focused on classification, routing, or issue state updates."
   },
   "behavior_fingerprint": {
-    "execution_style": "directed",
-    "tool_breadth": "narrow",
+    "execution_style": "exploratory",
+    "tool_breadth": "broad",
     "actuation_style": "selective_write",
-    "resource_profile": "moderate",
+    "resource_profile": "heavy",
     "dispatch_mode": "standalone",
-    "agentic_fraction": 0
+    "agentic_fraction": 1
   },
   "agentic_assessments": [
+    {
+      "kind": "resource_heavy_for_domain",
+      "severity": "high",
+      "summary": "This Triage run consumed a heavy execution profile for its task shape.",
+      "evidence": "turns=1 tool_types=8 duration=7m40s write_actions=4",
+      "recommendation": "Compare this run to similar successful runs and trim unnecessary turns, tools, or write actions."
+    },
+    {
+      "kind": "poor_agentic_control",
+      "severity": "medium",
+      "summary": "The run showed signs of broad or weakly controlled agentic behavior.",
+      "evidence": "friction=0 execution=exploratory actuation=selective_write",
+      "recommendation": "Tighten instructions, reduce unnecessary tools, or delay write actions until the workflow has stronger evidence."
+    },
     {
       "kind": "model_downgrade_available",
       "severity": "low",
       "summary": "This Triage run may not need a frontier model. A smaller model (e.g. gpt-4.1-mini, claude-haiku-4-5) could handle the task at lower cost.",
-      "evidence": "domain=triage resource_profile=moderate actuation=selective_write",
+      "evidence": "domain=triage resource_profile=heavy actuation=selective_write",
       "recommendation": "Try engine.model: gpt-4.1-mini or claude-haiku-4-5 in the workflow frontmatter."
     }
   ],
   "access_analysis": null,
   "firewall_analysis": {
     "allowed_domains": [
-      "api.openai.com:443",
-      "chatgpt.com:443",
-      "github.com",
-      "github.com:443"
+      "api.openai.com:443"
     ],
-    "total_requests": 38,
-    "allowed_requests": 38,
+    "total_requests": 28,
+    "allowed_requests": 28,
     "blocked_requests": 0,
     "requests_by_domain": {
       "api.openai.com:443": {
-        "allowed": 33,
-        "blocked": 0
-      },
-      "chatgpt.com:443": {
-        "allowed": 1,
-        "blocked": 0
-      },
-      "github.com": {
-        "allowed": 2,
-        "blocked": 0
-      },
-      "github.com:443": {
-        "allowed": 2,
+        "allowed": 28,
         "blocked": 0
       }
     }
@@ -129,22 +208,20 @@
     ],
     "tool_calls": [
       {
-        "tool_call_id": "call-1",
         "timestamp": "2026-10-23T06:30:18.902Z",
         "server_name": "safeoutputs",
         "tool_name": "add_labels",
-        "input_size": 49,
+        "input_size": 0,
         "output_size": 0,
-        "status": "incomplete"
+        "status": "unknown"
       },
       {
-        "tool_call_id": "call-2",
         "timestamp": "2026-10-23T06:30:21.338Z",
         "server_name": "safeoutputs",
         "tool_name": "add_comment",
-        "input_size": 410,
+        "input_size": 0,
         "output_size": 0,
-        "status": "incomplete"
+        "status": "unknown"
       }
     ],
     "servers": [
@@ -155,7 +232,8 @@
         "total_input_size": 459,
         "total_output_size": 0,
         "avg_input_size": 230,
-        "max_input_size": 410
+        "max_input_size": 410,
+        "avg_duration": "0ns"
       }
     ]
   },
@@ -306,116 +384,18 @@
     ]
   },
   "github_rate_limit_usage": {
-    "total_requests_made": 17,
-    "core_consumed": 24,
+    "total_requests_made": 15,
+    "core_consumed": 64,
     "core_consumed_source": "response_headers_delta",
-    "core_remaining": 4845,
+    "core_remaining": 4936,
     "core_limit": 5000,
     "resources": [
       {
         "resource": "core",
-        "requests_made": 17,
-        "quota_consumed": 24,
-        "final_remaining": 4845,
+        "requests_made": 15,
+        "quota_consumed": 64,
+        "final_remaining": 4936,
         "limit": 5000
-      },
-      {
-        "resource": "graphql",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 5000,
-        "limit": 5000
-      },
-      {
-        "resource": "dependency_sbom",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 100,
-        "limit": 100
-      },
-      {
-        "resource": "audit_log_streaming",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 15,
-        "limit": 15
-      },
-      {
-        "resource": "copilot_usage_records",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 1750,
-        "limit": 1750
-      },
-      {
-        "resource": "enterprise_token_inventory",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 1750,
-        "limit": 1750
-      },
-      {
-        "resource": "dependency_snapshots",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 100,
-        "limit": 100
-      },
-      {
-        "resource": "code_scanning_autofix",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 10,
-        "limit": 10
-      },
-      {
-        "resource": "code_search",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 10,
-        "limit": 10
-      },
-      {
-        "resource": "search",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 30,
-        "limit": 30
-      },
-      {
-        "resource": "source_import",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 100,
-        "limit": 100
-      },
-      {
-        "resource": "audit_log",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 1750,
-        "limit": 1750
-      },
-      {
-        "resource": "integration_manifest",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 5000,
-        "limit": 5000
-      },
-      {
-        "resource": "actions_runner_registration",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 10000,
-        "limit": 10000
-      },
-      {
-        "resource": "scim",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 15000,
-        "limit": 15000
       }
     ]
   },
@@ -1805,8 +1785,84 @@
     }
   ],
   "artifacts_list": [
-    ".downloaded-artifacts/info",
+    ".downloaded-artifacts/all",
+    "agent/model-resolution.json",
+    "agent-errors.jsonl",
+    "agent-session.jsonl",
+    "agent-stdio.log",
+    "agent_execution.json",
+    "agent_execution_exit_code.txt",
+    "agent_output.json",
+    "agent_usage.json",
+    "agentic-workflow-usage-scan-v2.jsonl",
+    "aw-prompts/prompt-import-tree.json",
+    "aw-prompts/prompt-template.txt",
+    "aw-prompts/prompt.txt",
+    "aw-prompts/system.txt",
+    "aw-prompts/user.txt",
     "aw_info.json",
+    "awf-config.json",
+    "base/.github/CODEOWNERS",
+    "base/.github/ISSUE_TEMPLATE/bug_report.md",
+    "base/.github/ISSUE_TEMPLATE/feature_request.md",
+    "base/.github/pull_request_template.md",
+    "base/.github/workflows/collect-cases.yml",
+    "base/.github/workflows/export-runs.yml",
+    "base/.github/workflows/golden-rerun.yml",
+    "base/.github/workflows/measure-need.yml",
+    "base/.github/workflows/newissue.yml",
+    "base/.github/workflows/pythonpackage.yml",
+    "base/.github/workflows/rich-triage.lock.yml",
+    "base/.github/workflows/rich-triage.md",
+    "base/AGENTS.md",
+    "detection/detection_result.json",
+    "detection/detection_usage.json",
+    "detection/execution.json",
+    "detection/sandbox/firewall/audit/awf-resolved-config.json",
+    "detection/sandbox/firewall/audit/docker-compose.redacted.yml",
+    "detection/sandbox/firewall/audit/image-manifest.json",
+    "detection/sandbox/firewall/audit/policy-manifest.json",
+    "detection/sandbox/firewall/audit/sensitive-paths.json",
+    "detection/sandbox/firewall/audit/squid.conf",
+    "detection/sandbox/firewall/logs/access.log",
+    "detection/sandbox/firewall/logs/api-proxy-logs/agent-runtime/started-at-ms",
+    "detection/sandbox/firewall/logs/api-proxy-logs/models.json",
+    "detection/sandbox/firewall/logs/api-proxy-logs/otel.jsonl",
+    "detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl",
+    "detection/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl",
+    "detection/sandbox/firewall/logs/audit.jsonl",
+    "detection/sandbox/firewall/logs/cache.log",
+    "github_rate_limits.jsonl",
+    "mcp-logs/configuration.jsonl",
+    "mcp-logs/gateway.md",
+    "mcp-logs/mcp-gateway.log",
+    "mcp-logs/observed-url-domains.json",
+    "mcp-logs/rpc-messages.jsonl",
+    "mcp-logs/safeoutputs.log",
+    "mcp-logs/tools.json",
+    "models.json",
+    "otel.jsonl",
+    "pre-agent-audit.txt",
+    "safe-output-items.jsonl",
+    "safeoutputs.jsonl",
+    "sandbox/firewall/audit/awf-resolved-config.json",
+    "sandbox/firewall/audit/docker-compose.redacted.yml",
+    "sandbox/firewall/audit/image-manifest.json",
+    "sandbox/firewall/audit/policy-manifest.json",
+    "sandbox/firewall/audit/sensitive-paths.json",
+    "sandbox/firewall/audit/squid.conf",
+    "sandbox/firewall/awf-reflect.json",
+    "sandbox/firewall/logs/access.log",
+    "sandbox/firewall/logs/api-proxy-logs/agent-runtime/started-at-ms",
+    "sandbox/firewall/logs/api-proxy-logs/models.json",
+    "sandbox/firewall/logs/api-proxy-logs/otel.jsonl",
+    "sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl",
+    "sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl",
+    "sandbox/firewall/logs/audit.jsonl",
+    "sandbox/firewall/logs/cache.log",
+    "skill-trace.jsonl",
+    "skill_inventory.json",
+    "temporary-id-map.json",
     "usage/activity/summary.json",
     "usage/agent/execution.json",
     "usage/agent/token_usage.jsonl",
