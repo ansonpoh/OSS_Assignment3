@@ -1,0 +1,46 @@
+{
+  "final_state": "open",
+  "state_reason": null,
+  "closed_at": null,
+  "final_labels": [
+    "Needs triage"
+  ],
+  "events": [
+    {
+      "event": "labeled",
+      "actor": "frenzymadness",
+      "label": "Needs triage",
+      "at": "2026-08-18T11:31:10Z"
+    }
+  ],
+  "comments": [
+    {
+      "author": "mdaniels5757",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-08-22T19:31:33Z",
+      "body": "Patch updating pygments and the tests: https://gist.github.com/mdaniels5757/d2d48e8a5478b7b875b454b1237d3874 (I'd make a PR if I could.)"
+    },
+    {
+      "author": "makiaveli1",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-09-20T00:43:52Z",
+      "body": "Independent verification of the patch linked above, on current `main` (`9d8f9a3`), with a fresh clone and a small venv:\n\n- Pygments `2.21.0`: `pytest tests -q` \u2192 **8 failed, 948 passed, 25 skipped**\n  - `test_card.py::test_card_render`\n  - `test_markdown.py::test_inline_code_in_table_cells`\n  - `test_syntax.py::{test_python_render, test_python_render_simple, test_python_render_simple_passing_lexer_instance, test_python_render_indent_guides, test_option_no_wrap, test_syntax_highlight_ranges}`\n- Pygments `2.19.2` on the same checkout: **956 passed, 25 skipped** \u2014 so this is isolated to the Pygments upgrade, not a Rich change.\n- Pygments `2.21.0` + the gist patch applied (`git apply` cleanly): **956 passed, 25 skipped**.\n\nWhat actually changes: the Python lexer now tokenises `iter`, `next`, `bool` and `StopIteration` as builtins, so the Monokai style paints them `38;2;166;226;46` instead of the plain foreground. I stripped the escape sequences from the old and new expectations and compared the visible text: apart from those colour codes, the rendered text is unchanged, so the refreshed expectations are not hiding a rendering regression.\n\nTwo notes for whoever lands this:\n\n1. The gist's `poetry.lock` was regenerated with Poetry 2.4.1; besides the Pygments entry it rewrites the generator header and some `python-versions` fields. Re-resolving with the Poetry version this repo uses would keep the lock diff to Pygments only.\n2. The alternative is to leave the constraint alone and make the affected tests tolerant of the lexer's builtin set. That hides the change rather than documenting it, so the constraint bump plus refreshed expectations looks better to me.\n\nRich's AI policy asks for a maintainer-approved solution before an AI-generated PR, so I have not opened one. If the constraint bump is the route you want, say so here and I will send a PR \u2014 `pyproject.toml`, refreshed expectations, `poetry.lock`, `CHANGELOG.md`, PR template filled, AI assistance disclosed. Patch credit belongs to @mdaniels5757."
+    },
+    {
+      "author": "mdaniels5757",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-09-20T03:24:38Z",
+      "body": "> Independent verification...\n\nThanks.\n\n> The gist's poetry.lock was regenerated with Poetry 2.4.1; besides the Pygments entry it rewrites the generator header and some python-versions fields. Re-resolving with the Poetry version this repo uses would keep the lock diff to Pygments only.\n\nThis is false, the python-version field changes are because of pygments (https://github.com/pygments/pygments/releases/tag/2.20.0), not the poetry version.\n\n> Rich's AI policy asks for a maintainer-approved solution before an AI-generated PR, so I have not opened one. If the constraint bump is the route you want, say so here and _**I will send a PR**_ \u2014 pyproject.toml, refreshed expectations, poetry.lock, CHANGELOG.md, PR template filled, AI assistance disclosed.\n\n(emphasis added)\n\nI assume you will not, for the same reason I haven't: PR creation is restricted. :)\n\nPresumably @willmcgugan will look at this when he returns to this repo. I will be happy to turn my patch into a PR (adding changelog and contributor entries) should he so desire."
+    },
+    {
+      "author": "makiaveli1",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-09-20T07:27:09Z",
+      "body": "Correction accepted, and I checked rather than assuming: Pygments 2.20.0's own release note says \"Drop Python 3.8\", which is what flips the `pygments` entry to `python-versions = \">=3.9\"`, and the `[metadata]` line is the lock catching up with rich's own `python = \">=3.9.0\"`. Both come from dependency/project metadata, not from the Poetry version \u2014 so scratch that point. The only genuine Poetry trace is the generator header (`2.1.3` \u2192 `2.4.1`), which is cosmetic and certainly not worth a re-resolve.\n\nThe verification in my first comment stands: 8 failures with 2.21.0, clean with 2.19.2, and the patch green with 2.21.0. If @willmcgugan wants the constraint bump, I will send the PR; if he would rather it came from you, that is fine by me and I will not duplicate it."
+    }
+  ]
+}

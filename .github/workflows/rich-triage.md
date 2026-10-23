@@ -72,6 +72,8 @@ safe-outputs:
   report-failure-as-issue: false
   report-incomplete:
     create-issue: false
+  threat-detection:
+    max-ai-credits: 10   # detection used under 0.5 a run (run 2); gh-aw's default is 400
   # owner/repo#123 references to other repositories are escaped, so the
   # sandbox never posts "mentioned this" entries on upstream Textualize/rich.
   allowed-github-references: [repo]
@@ -118,9 +120,10 @@ steps:
       print(f"issue #{issue['number']} as of {created}; {len(idx)} earlier issues indexed")
       PY
       # Expected answers must never be visible to the agent: delete them and
-      # replace the checkout's git history (which still holds them) with an
-      # empty repository that keeps the origin remote gh-aw's later steps use.
-      rm -rf evals scripts/metrics .git
+      # the write-ups that discuss them (DESIGN.md, README.md), and replace the
+      # checkout's git history (which still holds them) with an empty
+      # repository that keeps the origin remote gh-aw's later steps use.
+      rm -rf evals scripts/metrics DESIGN.md README.md .git
       git init -q
       git remote add origin "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
       # Codex discovers skills in .agents/skills; the canonical copy stays in

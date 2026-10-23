@@ -1,0 +1,11 @@
+{
+  "repo": "Textualize/rich",
+  "number": 4168,
+  "title": "perf: reduce repeated line-length calculations in segment shaping",
+  "body": "`Segment.adjust_line_length()` is called in a hot path during table and syntax rendering, and it currently recomputes line width from the segments each time.\nI prototyped a compatibility-preserving change that lets internal callers pass a precomputed `line_length`, so the hot path can avoid repeating `sum(segment.cell_length for segment in line)`.\nASV results on  local `TableSuite` benchmark:\n- heavy wrapping: `22.3 ms -> 21.8 ms`\\n- no wrapping: `12.1 ms -> 11.7 ms`",
+  "author": "KRRT7",
+  "author_association": "COLLABORATOR",
+  "created_at": "2026-06-16T08:04:57Z",
+  "labels": [],
+  "source_url": "https://github.com/Textualize/rich/issues/4168"
+}

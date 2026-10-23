@@ -1,4 +1,6 @@
 # Reproducible measurement of triage need on the upstream project (read-only).
+# The data/metrics branch is created on first dispatch. The committed copy in
+# evals/metrics/ came from running the same script locally (same arguments).
 name: measure-need
 on:
   workflow_dispatch:
@@ -41,7 +43,7 @@ jobs:
           git checkout -B data/metrics
           git add -f evals/metrics
           git commit -m "metrics: $REPO $SINCE..$UNTIL (run $GITHUB_RUN_ID)"
-          git push -f origin data/metrics
+          git push -f origin data/metrics  # a scratch snapshot; the reviewed copy is committed on main
         env:
           REPO: ${{ inputs.repo }}
           SINCE: ${{ inputs.since }}

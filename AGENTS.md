@@ -31,6 +31,7 @@ Triage tooling (standard library only, Python 3.10+):
 python3 .claude/skills/rich-triage/scripts/check_report.py ISSUE_JSON
 python3 .claude/skills/rich-triage/scripts/faq_match.py ISSUE_JSON
 python3 .claude/skills/rich-triage/scripts/find_duplicates.py ISSUE_JSON INDEX_JSON
+python3 .claude/skills/rich-triage/scripts/check_api.py ISSUE_JSON
 python3 .claude/skills/rich-triage/scripts/validate_labels.py LABEL...
 python3 .claude/skills/rich-triage/scripts/check_comment.py COMMENT_FILE
 python3 evals/score.py OWNER/REPO    # score a replay (see evals/golden/README.md)

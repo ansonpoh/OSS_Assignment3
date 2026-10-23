@@ -1,4 +1,6 @@
 # Snapshot historical upstream issues as golden-case inputs (read-only on upstream).
+# The data/cases branch is created on first dispatch. The committed golden
+# inputs in evals/golden/ came from running the same script locally.
 name: collect-cases
 on:
   workflow_dispatch:
@@ -37,4 +39,4 @@ jobs:
           git checkout -B data/cases
           git add -f evals/golden/cases data/issues_index.json
           git commit -m "cases: snapshot $ISSUES (run $GITHUB_RUN_ID)"
-          git push -f origin data/cases
+          git push -f origin data/cases  # a scratch snapshot; the reviewed copy is committed on main

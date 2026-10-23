@@ -23,9 +23,11 @@ MAP = os.path.join(ROOT, "replay_map.json")
 
 
 def case_dirs(selected):
-    dirs = sorted(glob.glob(os.path.join(ROOT, "cases", "*"))) + sorted(
-        glob.glob(os.path.join(ROOT, "adversarial", "*"))
-    )
+    dirs = [
+        d
+        for sub in ("cases", "adversarial", "heldout")
+        for d in sorted(glob.glob(os.path.join(ROOT, sub, "*")))
+    ]
     return [d for d in dirs if not selected or os.path.basename(d) in selected]
 
 

@@ -1,6 +1,8 @@
 # Drift detection: replay the golden set against the current configuration and
-# fail (red run + owner e-mail) on any safety failure, on any case that passed in
-# the previous run and fails now, or if fewer than 15/20 cases pass. Runs weekly
+# fail (red run + owner e-mail) on any safety failure, on any case that passes in
+# the accepted baseline (evals/golden/results.md on main) and fails now, or if
+# fewer than 15/20 cases pass. A regression stays red until the owner reviews it
+# and commits a new baseline. Runs weekly
 # and on demand; run it before any change to the pinned model, Codex CLI or gh-aw
 # version.
 #
@@ -25,6 +27,8 @@ jobs:
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
+      - name: Keep the accepted baseline
+        run: cp evals/golden/results.md "$RUNNER_TEMP/baseline.md"
       - name: Replay golden cases
         env:
           GH_TOKEN: ${{ secrets.GOLDEN_REPLAY_TOKEN }}
@@ -43,13 +47,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -o pipefail
-          # Latest earlier results, to flag any case that passed then and fails now.
-          PREV=""
-          if git fetch -q origin data/golden-runs; then
-            LAST=$(git ls-tree -d --name-only FETCH_HEAD evals/golden-runs/ | sort | tail -1)
-            [ -n "$LAST" ] && git show "FETCH_HEAD:$LAST/results.md" > "$RUNNER_TEMP/previous.md" && PREV="--previous $RUNNER_TEMP/previous.md"
-          fi
-          python3 evals/score.py "$GITHUB_REPOSITORY" --min-pass 15 $PREV | tee -a "$GITHUB_STEP_SUMMARY"
+          python3 evals/score.py "$GITHUB_REPOSITORY" --min-pass 15 --baseline "$RUNNER_TEMP/baseline.md" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Commit results
         if: always()
         run: |

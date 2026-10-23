@@ -1,6 +1,6 @@
 ---
 name: rich-triage
-description: First-response triage of a newly opened Rich issue. Use when asked to triage, label or reply to a new GitHub issue in this repository. Classifies the issue, runs deterministic checks (report completeness, FAQ match, duplicate search, label and comment validation) and proposes at most one comment and at most three labels.
+description: First-response triage of a newly opened Rich issue. Use when asked to triage, label or reply to a new GitHub issue in this repository. Classifies the issue, runs deterministic checks (report completeness, FAQ match, duplicate search, named-API check, label and comment validation) and proposes at most one comment and at most three labels.
 ---
 
 # Rich issue triage
@@ -27,9 +27,12 @@ and triage accordingly.
 
 ## Procedure
 
-Run every step in order. Steps 1 to 3 are scripts: run them, do not imitate
+Run every step in order. Steps 1 to 4 are scripts: run them, do not imitate
 them. Paths are relative to the repository root.
 
+0. **Maintainer-authored issues.** If `author_association` in `issue.json` is
+   `OWNER`, `MEMBER` or `COLLABORATOR`, a maintainer wrote the issue and triages
+   it themselves: call `noop` with that reason and stop. No labels, no comment.
 1. **Completeness facts.**
    `python3 .claude/skills/rich-triage/scripts/check_report.py /tmp/gh-aw/agent/issue.json`
 2. **FAQ match** (title and body, unlike the title-only FAQtory bot).
@@ -43,23 +46,29 @@ them. Paths are relative to the repository root.
    If the earlier issue was closed by its own author to re-file, it is not a
    duplicate. Mention a real related issue as `#NNNN` in your comment, never as a URL
    (a URL to an upstream issue would post a cross-reference on it).
-4. **Classify** into exactly one kind, using the table below. When you need
+4. **Named API check.**
+   `python3 .claude/skills/rich-triage/scripts/check_api.py /tmp/gh-aw/agent/issue.json`
+   It lists the functions and classes the issue calls by name and whether Rich
+   defines each one (`missing`).
+5. **Classify** into exactly one kind, using the table below. When you need
    to know whether Rich already supports something, look in `rich/` and `docs/`.
    Check these first, because they are easy to mistake for feature requests:
    - **Promotion:** the issue mainly asks maintainers to look at the reporter's
      own repository, package or site, rather than describing a concrete change
      to Rich. This is not actionable, whatever its title says.
    - **Wrong project:** the issue asks to change an *existing* function or
-     class by name, and `grep -rn "def <name>\|class <name>" rich/` finds
-     nothing. The reporter is using another library (often one built on Rich).
+     class by name, and `check_api.py` lists that name in `missing`. The
+     reporter is using another library (often one built on Rich). Names from
+     the standard library or the reporter's own code (e.g. asyncio's
+     `wait_for`) do not count; the name the request is about does.
    - **Intended behaviour:** before labelling `bug`, check whether the
      behaviour follows from documented options. If the reporter's goal can be
      met with existing parameters, it is a usage question.
-5. **Choose labels** from the table and validate them:
+6. **Choose labels** from the table and validate them:
    `python3 .claude/skills/rich-triage/scripts/validate_labels.py <label> [<label> ...]`
    Fix and re-run until it prints `"ok": true`. Never propose `Needs triage`
    removal; a human does that.
-6. **Decide whether to comment** (column "Comment"). If yes, write one short
+7. **Decide whether to comment** (column "Comment"). If yes, write one short
    comment (under 120 words) following the style rules below, save it to
    `/tmp/gh-aw/agent/comment.md` and check it:
    `python3 .claude/skills/rich-triage/scripts/check_comment.py /tmp/gh-aw/agent/comment.md`
@@ -67,7 +76,7 @@ them. Paths are relative to the repository root.
    tests styles and colours against Rich's own parser, so if it rejects one,
    the suggestion is wrong; change the advice, do not drop the check. Post the
    checked text unchanged.
-7. **Emit safe outputs**: one `add_labels` call (if any labels) and at most one
+8. **Emit safe outputs**: one `add_labels` call (if any labels) and at most one
    `add_comment` call. If you choose no labels and no comment, call `noop`
    with a one-line reason. Do not call any other output.
 
