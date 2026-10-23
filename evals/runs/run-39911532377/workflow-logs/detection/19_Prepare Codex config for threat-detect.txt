@@ -1,0 +1,36 @@
+﻿2026-10-23T06:30:12.8781165Z ##[group]Run mkdir -p "${RUNNER_TEMP}/gh-aw/mcp-config" "/tmp/gh-aw/mcp-config" "/tmp/gh-aw/mcp-config/logs/"
+2026-10-23T06:30:12.8782090Z [36;1mmkdir -p "${RUNNER_TEMP}/gh-aw/mcp-config" "/tmp/gh-aw/mcp-config" "/tmp/gh-aw/mcp-config/logs/"[0m
+2026-10-23T06:30:12.8782867Z [36;1mprintf '%s\n' "{\"mcpServers\":{}}" > "${RUNNER_TEMP}/gh-aw/mcp-config/mcp-servers.json"[0m
+2026-10-23T06:30:12.8783532Z [36;1m# Point Codex at the AWF OpenAI proxy and disable websocket startup.[0m
+2026-10-23T06:30:12.8803732Z [36;1mcat > "${RUNNER_TEMP}/gh-aw/mcp-config/config.toml" << GH_AW_CODEX_DETECTION_CONFIG_af28c8b5454431f5_EOF[0m
+2026-10-23T06:30:12.8804360Z [36;1mmodel_provider = "openai-proxy"[0m
+2026-10-23T06:30:12.8804601Z [36;1m[0m
+2026-10-23T06:30:12.8804782Z [36;1m[history][0m
+2026-10-23T06:30:12.8804977Z [36;1mpersistence = "none"[0m
+2026-10-23T06:30:12.8805184Z [36;1m[0m
+2026-10-23T06:30:12.8805376Z [36;1m[model_providers.openai-proxy][0m
+2026-10-23T06:30:12.8805621Z [36;1mname = "OpenAI AWF proxy"[0m
+2026-10-23T06:30:12.8805937Z [36;1mbase_url = "http://172.30.0.30:10000"[0m
+2026-10-23T06:30:12.8806390Z [36;1mapi_base = "http://172.30.0.30:10000"[0m
+2026-10-23T06:30:12.8806713Z [36;1mwss_base = "ws://172.30.0.30:10000"[0m
+2026-10-23T06:30:12.8806967Z [36;1menv_key = "CODEX_API_KEY"[0m
+2026-10-23T06:30:12.8807196Z [36;1mwire_api = "responses"[0m
+2026-10-23T06:30:12.8807416Z [36;1mrequires_openai_auth = false[0m
+2026-10-23T06:30:12.8807654Z [36;1msupports_websockets = false[0m
+2026-10-23T06:30:12.8807933Z [36;1mGH_AW_CODEX_DETECTION_CONFIG_af28c8b5454431f5_EOF[0m
+2026-10-23T06:30:12.8808342Z [36;1mcp "${RUNNER_TEMP}/gh-aw/mcp-config/config.toml" "/tmp/gh-aw/mcp-config/config.toml"[0m
+2026-10-23T06:30:12.8808832Z [36;1mchmod 600 "${RUNNER_TEMP}/gh-aw/mcp-config/config.toml" "/tmp/gh-aw/mcp-config/config.toml"[0m
+2026-10-23T06:30:12.8865406Z shell: /usr/bin/bash -e {0}
+2026-10-23T06:30:12.8865635Z env:
+2026-10-23T06:30:12.8865832Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:30:12.8866089Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:30:12.8866874Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39911532377,github.run_id=39911532377,gh-aw.engine.id=codex
+2026-10-23T06:30:12.8867493Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:30:12.8867736Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:30:12.8867992Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:30:12.8868206Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:30:12.8868453Z   GITHUB_AW_OTEL_TRACE_ID: 5f784516f03cdb4789d8a6ce8898d4e5
+2026-10-23T06:30:12.8868753Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ec55906c5e0c9e64
+2026-10-23T06:30:12.8869010Z   GITHUB_AW_OTEL_JOB_START_MS: 1792736970364
+2026-10-23T06:30:12.8869276Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-23T06:30:12.8869529Z ##[endgroup]

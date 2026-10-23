@@ -1,0 +1,45 @@
+﻿2026-10-23T06:21:06.3310797Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T06:21:06.3311652Z with:
+2026-10-23T06:21:06.3315375Z   github-token: ***
+2026-10-23T06:21:06.3319751Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_daily_aic_workflow_guardrail.cjs'));
+await main();
+
+2026-10-23T06:21:06.3322352Z   debug: false
+2026-10-23T06:21:06.3322805Z   user-agent: actions/github-script
+2026-10-23T06:21:06.3323372Z   result-encoding: json
+2026-10-23T06:21:06.3323820Z   retries: 0
+2026-10-23T06:21:06.3324289Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T06:21:06.3324883Z env:
+2026-10-23T06:21:06.3325288Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:21:06.3325811Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:21:06.3327177Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39910044209,github.run_id=39910044209,gh-aw.engine.id=codex
+2026-10-23T06:21:06.3328702Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:21:06.3329452Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:21:06.3330079Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:21:06.3330595Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-23T06:21:06.3331116Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:21:06.3331689Z   GITHUB_AW_OTEL_TRACE_ID: 90ea44281ab86c97da2d6ac46bbd6738
+2026-10-23T06:21:06.3332404Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 86c7a4a0c5ff2444
+2026-10-23T06:21:06.3333662Z   GITHUB_AW_OTEL_JOB_START_MS: 1792736465299
+2026-10-23T06:21:06.3334272Z   GH_AW_WORKFLOW_NAME: Rich issue triage
+2026-10-23T06:21:06.3334845Z   GH_AW_WORKFLOW_ID: rich-triage
+2026-10-23T06:21:06.3335591Z   GH_AW_RUN_URL: https://github.com/ansonpoh/OSS_Assignment3/actions/runs/39910044209
+2026-10-23T06:21:06.3336440Z   GH_AW_WORKFLOW_DISPATCH_AW_CONTEXT: 
+2026-10-23T06:21:06.3337010Z   GH_AW_HAS_SLASH_COMMAND: false
+2026-10-23T06:21:06.3337528Z   GH_AW_HAS_LABEL_COMMAND: false
+2026-10-23T06:21:06.3341619Z   GH_AW_GITHUB_TOKEN: ***
+2026-10-23T06:21:06.3342133Z   GH_AW_MAX_AI_CREDITS: 50
+2026-10-23T06:21:06.3342602Z ##[endgroup]
+2026-10-23T06:21:06.5201402Z [daily-workflow-aic] Resolved daily AIC guardrail limits: {"dailyAICThreshold":600,"perRunMaxAICredits":50,"perRunFallbackAvailable":true}
+2026-10-23T06:21:06.8654675Z [daily-workflow-aic] Started authoritative AIC scan: {"repository":"ansonpoh/OSS_Assignment3","currentRunId":39910044209,"workflowId":393703717,"fallbackAIC":50}
+2026-10-23T06:21:06.8659683Z [daily-workflow-aic] Loaded scan observations: {"workflowId":393703717,"cachedEntries":0}
+2026-10-23T06:21:07.1544518Z [daily-workflow-aic] Listed workflow run candidates: {"page":1,"lookupMode":"workflow_id","sourceRunCount":0,"returnedRunCount":0}
+2026-10-23T06:21:07.1554023Z [daily-workflow-aic] Persisted scan observations: {"cachePath":"/tmp/gh-aw/agentic-workflow-usage-scan-v2.jsonl","entries":0}
+2026-10-23T06:21:07.1555572Z [daily-workflow-aic] Completed authoritative AIC scan: {"candidateRuns":0,"countedRuns":0,"cacheHits":0}
+2026-10-23T06:21:07.1567597Z [daily-workflow-aic] Completed AIC inspection window: {"candidateRunsCount":0,"inspectedRunsCount":0,"countedRunIds":[],"currentAIC":0,"threshold":600,"exceeded":false}
+2026-10-23T06:21:07.1569517Z [daily-workflow-aic] Daily AIC business API requests: {"requests":2,"cacheHits":0}
+2026-10-23T06:21:07.1628790Z Daily workflow AIC guardrail not exceeded (0/600).

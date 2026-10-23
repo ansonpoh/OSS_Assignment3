@@ -1,0 +1,959 @@
+﻿2026-10-23T06:35:43.7992064Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T06:35:43.7992975Z with:
+2026-10-23T06:35:43.7994806Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'generate_usage_artifacts.cjs'));
+await main();
+
+2026-10-23T06:35:43.7999847Z   github-token: ***
+2026-10-23T06:35:43.8000318Z   debug: false
+2026-10-23T06:35:43.8000800Z   user-agent: actions/github-script
+2026-10-23T06:35:43.8001678Z   result-encoding: json
+2026-10-23T06:35:43.8002150Z   retries: 0
+2026-10-23T06:35:43.8002651Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T06:35:43.8003231Z env:
+2026-10-23T06:35:43.8003671Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:35:43.8004225Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:35:43.8005520Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39911590068,github.run_id=39911590068,gh-aw.engine.id=codex
+2026-10-23T06:35:43.8006816Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:35:43.8007334Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:35:43.8007880Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:35:43.8008885Z   GH_AW_JOB_DISPLAY_NAMES: {"activation":"activation","agent":"agent","conclusion":"conclusion","detection":"detection","pre_activation":"pre_activation","safe_outputs":"safe_outputs"}
+2026-10-23T06:35:43.8014179Z   GH_AW_JOB_RESULTS: {"activation":{"result":"success"},"agent":{"result":"success"},"detection":{"result":"success"},"safe_outputs":{"result":"success"}}
+2026-10-23T06:35:43.8015576Z   GH_AW_JOB_TIMING_ELIGIBLE: {"activation":true,"agent":true,"conclusion":true,"detection":true,"pre_activation":true,"safe_outputs":true}
+2026-10-23T06:35:43.8016448Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:35:43.8017481Z   GITHUB_AW_OTEL_TRACE_ID: fe9f959687388d1d7ed0972589392eb2
+2026-10-23T06:35:43.8018160Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: dd02cd675dbd4e52
+2026-10-23T06:35:43.8019016Z   GITHUB_AW_OTEL_JOB_START_MS: 1792737337906
+2026-10-23T06:35:43.8019529Z   GH_AW_ADMISSION_RESULT: 
+2026-10-23T06:35:43.8020001Z   GH_AW_ADMISSION_MAX_AI_CREDITS: 
+2026-10-23T06:35:43.8020541Z   GH_AW_ADMISSION_MAX_AI_CREDITS_THREAT_DETECTION: 
+2026-10-23T06:35:43.8021322Z   GH_AW_ADMISSION_MAX_AI_CREDITS_EVALS: 
+2026-10-23T06:35:43.8021875Z   GH_AW_GRADER_MANIFEST_0: {"version":2,"graders":[]}
+2026-10-23T06:35:43.8022415Z   GH_AW_GRADER_MANIFEST_CHUNKS: 1
+2026-10-23T06:35:43.8022888Z   GH_AW_JOB_DURATIONS: 
+2026-10-23T06:35:43.8023377Z   GH_AW_DAILY_AI_CREDITS_GUARDRAIL_STATUS: under_budget
+2026-10-23T06:35:43.8023925Z   GH_AW_DAILY_AI_CREDITS_EXCEEDED: false
+2026-10-23T06:35:43.8024450Z   GH_AW_DAILY_AI_CREDITS_TOTAL: 0.8445729999999999
+2026-10-23T06:35:43.8024985Z   GH_AW_DAILY_AI_CREDITS_ESTIMATED: 0
+2026-10-23T06:35:43.8025489Z   GH_AW_DAILY_AI_CREDITS_THRESHOLD: 600
+2026-10-23T06:35:43.8025970Z ##[endgroup]
+2026-10-23T06:35:43.9742666Z safe-output-items manifest: 1 item(s) logged (types: add_labels)
+2026-10-23T06:35:43.9989044Z /tmp/gh-aw/usage/activity/summary.json
+2026-10-23T06:35:44.7595365Z === Unified session ===
+2026-10-23T06:35:44.7596376Z File format version: 1
+2026-10-23T06:35:44.7597842Z Records: 263 (collector=2, github_api=49, otel=1, mcp=5, firewall=150, safe_output=2, skill=1, prompt=2, agent=39, model_resolution=1, execution=3, detection=1, guardrail=1, workflow=4, grader=2)
+2026-10-23T06:35:44.7598872Z 
+2026-10-23T06:35:44.7599250Z Agent source: agent/agent-session.jsonl
+2026-10-23T06:35:44.7600164Z Model: gpt-6-luna-2026-09-22
+2026-10-23T06:35:44.7600707Z Initialization:
+2026-10-23T06:35:44.7650702Z   Engine: codex
+2026-10-23T06:35:44.7651572Z   Session ID: 01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.7651946Z 
+2026-10-23T06:35:44.7652127Z Statistics:
+2026-10-23T06:35:44.7652516Z   Turns: 1
+2026-10-23T06:35:44.7722613Z   Tools: 15/16 succeeded
+2026-10-23T06:35:44.7723315Z   Failed Tools: 1
+2026-10-23T06:35:44.7723790Z   Tokens: 354,677 total (351,757 in / 2,920 out)
+2026-10-23T06:35:44.7724376Z   Cache Read Tokens: 315,185
+2026-10-23T06:35:44.7724863Z   Cache Creation Tokens: 36,533
+2026-10-23T06:35:44.7725161Z 
+2026-10-23T06:35:44.7725510Z Chronological trace (user prompts omitted; untimed observations follow):
+2026-10-23T06:35:44.7725961Z 
+2026-10-23T06:35:44.7726274Z [1] collector/conclusion session.format version=1 [file metadata]
+2026-10-23T06:35:44.7726884Z   path=usage/aw_session.jsonl
+2026-10-23T06:35:44.7727180Z 
+2026-10-23T06:35:44.7727823Z [2] github_api/workflow github_api.rate_limit source=response_headers operation=actions.getWorkflowRun resource=core remaining=4841 limit=5000 +0s
+2026-10-23T06:35:44.7728763Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7729053Z 
+2026-10-23T06:35:44.7729702Z [3] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listWorkflowRuns resource=core remaining=4840 limit=5000 +0.278s
+2026-10-23T06:35:44.7730694Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7731272Z 
+2026-10-23T06:35:44.7732007Z [4] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listWorkflowRunArtifacts resource=core remaining=4837 limit=5000 +0.081s
+2026-10-23T06:35:44.7733033Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7733330Z 
+2026-10-23T06:35:44.7734017Z [5] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listWorkflowRunArtifacts resource=core remaining=4835 limit=5000 +0.095s
+2026-10-23T06:35:44.7735009Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7735303Z 
+2026-10-23T06:35:44.7735994Z [6] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listWorkflowRunArtifacts resource=core remaining=4833 limit=5000 +0.119s
+2026-10-23T06:35:44.7737083Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7737379Z 
+2026-10-23T06:35:44.7738050Z [7] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listWorkflowRunArtifacts resource=core remaining=4832 limit=5000 +0.105s
+2026-10-23T06:35:44.7739398Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7739683Z 
+2026-10-23T06:35:44.7740357Z [8] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listWorkflowRunArtifacts resource=core remaining=4830 limit=5000 +0.155s
+2026-10-23T06:35:44.7741602Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7741895Z 
+2026-10-23T06:35:44.7742560Z [9] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listWorkflowRunArtifacts resource=core remaining=4828 limit=5000 +0.133s
+2026-10-23T06:35:44.7743553Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7743840Z 
+2026-10-23T06:35:44.7744529Z [10] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listWorkflowRunArtifacts resource=core remaining=4827 limit=5000 +0.112s
+2026-10-23T06:35:44.7745523Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7745813Z 
+2026-10-23T06:35:44.7746438Z [11] github_api/workflow github_api.rate_limit source=response_headers operation=actions.getWorkflowRun resource=core remaining=4824 limit=5000 +0.696s
+2026-10-23T06:35:44.7747388Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7747669Z 
+2026-10-23T06:35:44.7748282Z [12] github_api/workflow github_api.rate_limit source=response_headers operation=actions.getWorkflowRun resource=core remaining=4824 limit=5000 +0s
+2026-10-23T06:35:44.7749859Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7750173Z 
+2026-10-23T06:35:44.7750826Z [13] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listWorkflowRuns resource=core remaining=4822 limit=5000 +0.258s
+2026-10-23T06:35:44.7752026Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7752327Z 
+2026-10-23T06:35:44.7752959Z [14] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listWorkflowRuns resource=core remaining=4822 limit=5000 +0s
+2026-10-23T06:35:44.7754188Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7754486Z 
+2026-10-23T06:35:44.7755112Z [15] github_api/workflow github_api.rate_limit source=response_headers operation=repos.getContent resource=core remaining=4932 limit=5000 +3.357s
+2026-10-23T06:35:44.7756037Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7756320Z 
+2026-10-23T06:35:44.7756921Z [16] github_api/workflow github_api.rate_limit source=response_headers operation=repos.getContent resource=core remaining=4930 limit=5000 +0.167s
+2026-10-23T06:35:44.7757827Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7758106Z 
+2026-10-23T06:35:44.7758803Z [17] github_api/workflow github_api.rate_limit source=response_headers operation=repos.getCollaboratorPermissionLevel resource=core remaining=4929 limit=5000 +0.441s
+2026-10-23T06:35:44.7759803Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.7760082Z 
+2026-10-23T06:35:44.7760748Z [18] otel/agent otel.span name=gh-aw.agent.setup traceId=fe9f959687388d1d7ed0972589392eb2 spanId=08ed9c5790daa148 parentSpanId=d8e9c50e9f4b0ce8 code=1 +15.556s
+2026-10-23T06:35:44.7761901Z   path=otel.jsonl
+2026-10-23T06:35:44.7762156Z 
+2026-10-23T06:35:44.7762545Z [19] mcp/agent mcp.configuration servers=[serverName=safeoutputs transport=stdio] +29.613s
+2026-10-23T06:35:44.7763254Z   path=mcp-logs/configuration.jsonl
+2026-10-23T06:35:44.7763555Z 
+2026-10-23T06:35:44.7763943Z [20] mcp/agent mcp.rpc.request serverName=safeoutputs direction=OUT method=tools/list +1.02s
+2026-10-23T06:35:44.7764655Z   path=mcp-logs/rpc-messages.jsonl
+2026-10-23T06:35:44.7764971Z 
+2026-10-23T06:35:44.7765411Z [21] mcp/agent mcp.rpc.response serverName=safeoutputs direction=IN rpcId=1 [response observed] +0.013s
+2026-10-23T06:35:44.7766152Z   path=mcp-logs/rpc-messages.jsonl
+2026-10-23T06:35:44.7766458Z 
+2026-10-23T06:35:44.7766904Z [22] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +16.783s
+2026-10-23T06:35:44.7767626Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7767948Z 
+2026-10-23T06:35:44.7768336Z [23] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +2.033s
+2026-10-23T06:35:44.7769227Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7769548Z 
+2026-10-23T06:35:44.7769933Z [24] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +2.039s
+2026-10-23T06:35:44.7770630Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7771123Z 
+2026-10-23T06:35:44.7771517Z [25] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +2.035s
+2026-10-23T06:35:44.7772257Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7772573Z 
+2026-10-23T06:35:44.7806586Z [26] firewall/agent firewall.event event=TRACK_START status=200 +1.917s
+2026-10-23T06:35:44.7807593Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7808039Z 
+2026-10-23T06:35:44.7808536Z [27] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.029s
+2026-10-23T06:35:44.7809387Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7809723Z 
+2026-10-23T06:35:44.7809987Z [28] firewall/agent firewall.event event=TRACK_END +0.012s
+2026-10-23T06:35:44.7810682Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7811448Z 
+2026-10-23T06:35:44.7811851Z [29] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.084s
+2026-10-23T06:35:44.7812605Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7812924Z 
+2026-10-23T06:35:44.7813411Z [30] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.557s
+2026-10-23T06:35:44.7814214Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7814524Z 
+2026-10-23T06:35:44.7814837Z [31] firewall/agent firewall.event event=TRACK_START status=200 +0.359s
+2026-10-23T06:35:44.7815574Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7816276Z 
+2026-10-23T06:35:44.7816667Z [32] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +1.118s
+2026-10-23T06:35:44.7817394Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7817715Z 
+2026-10-23T06:35:44.7818195Z [33] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.394s
+2026-10-23T06:35:44.7818995Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7819315Z 
+2026-10-23T06:35:44.7819579Z [34] firewall/agent firewall.event event=TRACK_END +0.001s
+2026-10-23T06:35:44.7820256Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7821488Z 
+2026-10-23T06:35:44.7822411Z [35] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.1434 totalAic=0.1434 durationMs=2172 inputTokens=13540 outputTokens=160 cacheReadInputTokens=0 cacheCreationInputTokens=0 +0.003s
+2026-10-23T06:35:44.7823692Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.7824093Z 
+2026-10-23T06:35:44.7824575Z [36] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.359s
+2026-10-23T06:35:44.7825383Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7825701Z 
+2026-10-23T06:35:44.7826012Z [37] firewall/agent firewall.event event=TRACK_START status=200 +0.414s
+2026-10-23T06:35:44.7826750Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7827173Z 
+2026-10-23T06:35:44.7827554Z [38] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.864s
+2026-10-23T06:35:44.7828245Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7828557Z 
+2026-10-23T06:35:44.7828897Z [39] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0.85s
+2026-10-23T06:35:44.7829595Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.7829951Z 
+2026-10-23T06:35:44.7830271Z [40] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0s
+2026-10-23T06:35:44.7832085Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.7832743Z 
+2026-10-23T06:35:44.7833034Z [41] firewall/agent firewall.event event=TRACK_END +0.269s
+2026-10-23T06:35:44.7833723Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7834154Z 
+2026-10-23T06:35:44.7834733Z [42] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0s
+2026-10-23T06:35:44.7835530Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7835851Z 
+2026-10-23T06:35:44.7836747Z [43] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.039957 totalAic=0.183357 durationMs=2681 inputTokens=15559 outputTokens=124 cacheReadInputTokens=13537 cacheCreationInputTokens=0 +0.001s
+2026-10-23T06:35:44.7838040Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.7838428Z 
+2026-10-23T06:35:44.7838920Z [44] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.348s
+2026-10-23T06:35:44.7839734Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7840048Z 
+2026-10-23T06:35:44.7840354Z [45] firewall/agent firewall.event event=TRACK_START status=200 +0.335s
+2026-10-23T06:35:44.7841273Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7841706Z 
+2026-10-23T06:35:44.7842088Z [46] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.228s
+2026-10-23T06:35:44.7842787Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7843098Z 
+2026-10-23T06:35:44.7843359Z [47] firewall/agent firewall.event event=TRACK_END +1.512s
+2026-10-23T06:35:44.7844027Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7844448Z 
+2026-10-23T06:35:44.7844914Z [48] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0s
+2026-10-23T06:35:44.7845864Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7846196Z 
+2026-10-23T06:35:44.7847075Z [49] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.023176 totalAic=0.206533 durationMs=2325 inputTokens=15868 outputTokens=90 cacheReadInputTokens=15556 cacheCreationInputTokens=0 +0.001s
+2026-10-23T06:35:44.7848360Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.7848746Z 
+2026-10-23T06:35:44.7849225Z [50] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.422s
+2026-10-23T06:35:44.7850011Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7850326Z 
+2026-10-23T06:35:44.7850701Z [51] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.1s
+2026-10-23T06:35:44.7926980Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7927445Z 
+2026-10-23T06:35:44.7927775Z [52] firewall/agent firewall.event event=TRACK_START status=200 +0.368s
+2026-10-23T06:35:44.7928585Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7929047Z 
+2026-10-23T06:35:44.7929543Z [53] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +1.352s
+2026-10-23T06:35:44.7930350Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7930672Z 
+2026-10-23T06:35:44.7931188Z [54] firewall/agent firewall.event event=TRACK_END +0.001s
+2026-10-23T06:35:44.7931898Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7932334Z 
+2026-10-23T06:35:44.7933233Z [55] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.023925 totalAic=0.230458 durationMs=2142 inputTokens=16186 outputTokens=97 cacheReadInputTokens=15865 cacheCreationInputTokens=0 +0.001s
+2026-10-23T06:35:44.7934532Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.7934922Z 
+2026-10-23T06:35:44.7935314Z [56] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.311s
+2026-10-23T06:35:44.7936377Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7936692Z 
+2026-10-23T06:35:44.7937035Z [57] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0.021s
+2026-10-23T06:35:44.7937772Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.7938133Z 
+2026-10-23T06:35:44.7938471Z [58] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0s
+2026-10-23T06:35:44.7939158Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.7939511Z 
+2026-10-23T06:35:44.7939837Z [59] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0s
+2026-10-23T06:35:44.7940528Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.7941147Z 
+2026-10-23T06:35:44.7941653Z [60] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.168s
+2026-10-23T06:35:44.7942469Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7942782Z 
+2026-10-23T06:35:44.7943090Z [61] firewall/agent firewall.event event=TRACK_START status=200 +0.386s
+2026-10-23T06:35:44.7943822Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7944244Z 
+2026-10-23T06:35:44.7944634Z [62] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +1.458s
+2026-10-23T06:35:44.7945328Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7945641Z 
+2026-10-23T06:35:44.7945904Z [63] firewall/agent firewall.event event=TRACK_END +1.632s
+2026-10-23T06:35:44.7946574Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7946995Z 
+2026-10-23T06:35:44.7947599Z [64] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0s
+2026-10-23T06:35:44.7948405Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7948719Z 
+2026-10-23T06:35:44.7949810Z [65] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.036073 totalAic=0.266531 durationMs=3782 inputTokens=16627 outputTokens=309 cacheReadInputTokens=16183 cacheCreationInputTokens=0 +0.001s
+2026-10-23T06:35:44.7951330Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.7951727Z 
+2026-10-23T06:35:44.7952215Z [66] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.395s
+2026-10-23T06:35:44.7953816Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7954162Z 
+2026-10-23T06:35:44.7954565Z [67] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.005s
+2026-10-23T06:35:44.7958500Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7958835Z 
+2026-10-23T06:35:44.7959149Z [68] firewall/agent firewall.event event=TRACK_START status=200 +0.371s
+2026-10-23T06:35:44.7959900Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7960351Z 
+2026-10-23T06:35:44.7960743Z [69] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +1.663s
+2026-10-23T06:35:44.7982438Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7982848Z 
+2026-10-23T06:35:44.7983248Z [70] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +2.033s
+2026-10-23T06:35:44.7983972Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7984291Z 
+2026-10-23T06:35:44.7984643Z [71] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0.534s
+2026-10-23T06:35:44.7985352Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.7985705Z 
+2026-10-23T06:35:44.7986097Z [72] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +1.501s
+2026-10-23T06:35:44.7986804Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7987118Z 
+2026-10-23T06:35:44.7987382Z [73] firewall/agent firewall.event event=TRACK_END +1.605s
+2026-10-23T06:35:44.7988078Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.7990654Z 
+2026-10-23T06:35:44.7991788Z [74] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0s
+2026-10-23T06:35:44.7992638Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7992963Z 
+2026-10-23T06:35:44.7994534Z [75] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.175504 totalAic=0.442035 durationMs=7963 inputTokens=29657 outputTokens=571 cacheReadInputTokens=16624 cacheCreationInputTokens=0 +0.001s
+2026-10-23T06:35:44.7995875Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.7996267Z 
+2026-10-23T06:35:44.7996761Z [76] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.382s
+2026-10-23T06:35:44.7997558Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7997874Z 
+2026-10-23T06:35:44.7998251Z [77] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.049s
+2026-10-23T06:35:44.7998968Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.7999299Z 
+2026-10-23T06:35:44.7999613Z [78] firewall/agent firewall.event event=TRACK_START status=200 +0.341s
+2026-10-23T06:35:44.8000357Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8000778Z 
+2026-10-23T06:35:44.8001349Z [79] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +1.699s
+2026-10-23T06:35:44.8002057Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8002376Z 
+2026-10-23T06:35:44.8002639Z [80] firewall/agent firewall.event event=TRACK_END +1.514s
+2026-10-23T06:35:44.8003302Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8003722Z 
+2026-10-23T06:35:44.8004186Z [81] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0s
+2026-10-23T06:35:44.8004972Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8005471Z 
+2026-10-23T06:35:44.8006378Z [82] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.064844 totalAic=0.506879 durationMs=3875 inputTokens=31583 outputTokens=318 cacheReadInputTokens=29654 cacheCreationInputTokens=0 +0.001s
+2026-10-23T06:35:44.8007705Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.8008099Z 
+2026-10-23T06:35:44.8008591Z [83] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.447s
+2026-10-23T06:35:44.8009497Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8009815Z 
+2026-10-23T06:35:44.8010192Z [84] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.076s
+2026-10-23T06:35:44.8011044Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8011401Z 
+2026-10-23T06:35:44.8011721Z [85] firewall/agent firewall.event event=TRACK_START status=200 +0.347s
+2026-10-23T06:35:44.8012465Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8012894Z 
+2026-10-23T06:35:44.8013248Z [86] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0.145s
+2026-10-23T06:35:44.8013943Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8014299Z 
+2026-10-23T06:35:44.8014631Z [87] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0s
+2026-10-23T06:35:44.8015331Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8015686Z 
+2026-10-23T06:35:44.8016065Z [88] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +1.544s
+2026-10-23T06:35:44.8016771Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8017089Z 
+2026-10-23T06:35:44.8017343Z [89] firewall/agent firewall.event event=TRACK_END +0.84s
+2026-10-23T06:35:44.8018022Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8018466Z 
+2026-10-23T06:35:44.8018953Z [90] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0s
+2026-10-23T06:35:44.8019928Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8020240Z 
+2026-10-23T06:35:44.8059365Z [91] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.07109 totalAic=0.577969 durationMs=3290 inputTokens=34261 outputTokens=254 cacheReadInputTokens=31580 cacheCreationInputTokens=0 +0.001s
+2026-10-23T06:35:44.8061154Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.8061584Z 
+2026-10-23T06:35:44.8062095Z [92] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.44s
+2026-10-23T06:35:44.8062903Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8063226Z 
+2026-10-23T06:35:44.8063535Z [93] firewall/agent firewall.event event=TRACK_START status=200 +0.421s
+2026-10-23T06:35:44.8064284Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8064736Z 
+2026-10-23T06:35:44.8065117Z [94] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.338s
+2026-10-23T06:35:44.8065825Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8066140Z 
+2026-10-23T06:35:44.8066625Z [95] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +1.037s
+2026-10-23T06:35:44.8067421Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8067734Z 
+2026-10-23T06:35:44.8067993Z [96] firewall/agent firewall.event event=TRACK_END +0.001s
+2026-10-23T06:35:44.8068720Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8069154Z 
+2026-10-23T06:35:44.8070042Z [97] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.048328 totalAic=0.626297 durationMs=2130 inputTokens=35045 outputTokens=124 cacheReadInputTokens=34258 cacheCreationInputTokens=0 +0s
+2026-10-23T06:35:44.8071510Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.8072205Z 
+2026-10-23T06:35:44.8072703Z [98] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.482s
+2026-10-23T06:35:44.8073525Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8073837Z 
+2026-10-23T06:35:44.8074149Z [99] firewall/agent firewall.event event=TRACK_START status=200 +0.36s
+2026-10-23T06:35:44.8074876Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8075306Z 
+2026-10-23T06:35:44.8075697Z [100] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.156s
+2026-10-23T06:35:44.8076410Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8076722Z 
+2026-10-23T06:35:44.8077061Z [101] firewall/agent firewall.event event=otel_span status={   "code": 1 } +1.766s
+2026-10-23T06:35:44.8077768Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8078122Z 
+2026-10-23T06:35:44.8078457Z [102] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0s
+2026-10-23T06:35:44.8079151Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8079505Z 
+2026-10-23T06:35:44.8079890Z [103] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.275s
+2026-10-23T06:35:44.8080593Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8081085Z 
+2026-10-23T06:35:44.8081587Z [104] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +1.568s
+2026-10-23T06:35:44.8082383Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8082693Z 
+2026-10-23T06:35:44.8082961Z [105] firewall/agent firewall.event event=TRACK_END +0.001s
+2026-10-23T06:35:44.8083633Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8084060Z 
+2026-10-23T06:35:44.8084943Z [106] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.054792 totalAic=0.681089 durationMs=4511 inputTokens=35192 outputTokens=365 cacheReadInputTokens=35042 cacheCreationInputTokens=0 +0s
+2026-10-23T06:35:44.8086218Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.8086740Z 
+2026-10-23T06:35:44.8087224Z [107] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.39s
+2026-10-23T06:35:44.8088015Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8088321Z 
+2026-10-23T06:35:44.8088703Z [108] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.083s
+2026-10-23T06:35:44.8089390Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8089700Z 
+2026-10-23T06:35:44.8090009Z [109] firewall/agent firewall.event event=TRACK_START status=200 +0.378s
+2026-10-23T06:35:44.8090734Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8248963Z 
+2026-10-23T06:35:44.8249600Z [110] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +1.66s
+2026-10-23T06:35:44.8250466Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8250797Z 
+2026-10-23T06:35:44.8251414Z [111] firewall/agent firewall.event event=TRACK_END +1.062s
+2026-10-23T06:35:44.8252137Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8252572Z 
+2026-10-23T06:35:44.8253466Z [112] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.052879 totalAic=0.733968 durationMs=3485 inputTokens=35608 outputTokens=270 cacheReadInputTokens=35189 cacheCreationInputTokens=0 +0s
+2026-10-23T06:35:44.8254736Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.8255126Z 
+2026-10-23T06:35:44.8255597Z [113] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0s
+2026-10-23T06:35:44.8258008Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8258403Z 
+2026-10-23T06:35:44.8258921Z [114] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.4s
+2026-10-23T06:35:44.8260204Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8260550Z 
+2026-10-23T06:35:44.8261092Z [115] firewall/agent firewall.event event=TRACK_START status=200 +0.437s
+2026-10-23T06:35:44.8261872Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8262301Z 
+2026-10-23T06:35:44.8262691Z [116] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.137s
+2026-10-23T06:35:44.8263398Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8263703Z 
+2026-10-23T06:35:44.8264051Z [117] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0.454s
+2026-10-23T06:35:44.8264756Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8265116Z 
+2026-10-23T06:35:44.8265451Z [118] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0s
+2026-10-23T06:35:44.8266128Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8266492Z 
+2026-10-23T06:35:44.8266752Z [119] firewall/agent firewall.event event=TRACK_END +1.294s
+2026-10-23T06:35:44.8267438Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8267865Z 
+2026-10-23T06:35:44.8268331Z [120] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0s
+2026-10-23T06:35:44.8269119Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8269433Z 
+2026-10-23T06:35:44.8270340Z [121] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.050205 totalAic=0.784173 durationMs=2593 inputTokens=36095 outputTokens=194 cacheReadInputTokens=35605 cacheCreationInputTokens=0 +0.001s
+2026-10-23T06:35:44.8271899Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.8272293Z 
+2026-10-23T06:35:44.8272673Z [122] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.296s
+2026-10-23T06:35:44.8273376Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8273699Z 
+2026-10-23T06:35:44.8274178Z [123] mcp/agent mcp.rpc.request serverName=safeoutputs direction=OUT method=tools/call toolName=add_labels +0.075s
+2026-10-23T06:35:44.8275148Z   path=mcp-logs/rpc-messages.jsonl
+2026-10-23T06:35:44.8275450Z 
+2026-10-23T06:35:44.8275894Z [124] mcp/agent mcp.rpc.response serverName=safeoutputs direction=IN rpcId=1 [response observed] +0.008s
+2026-10-23T06:35:44.8276646Z   path=mcp-logs/rpc-messages.jsonl
+2026-10-23T06:35:44.8276951Z 
+2026-10-23T06:35:44.8277442Z [125] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.257s
+2026-10-23T06:35:44.8278232Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8278542Z 
+2026-10-23T06:35:44.8278851Z [126] firewall/agent firewall.event event=TRACK_START status=200 +0.562s
+2026-10-23T06:35:44.8279585Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8280005Z 
+2026-10-23T06:35:44.8280493Z [127] firewall/agent firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.742s
+2026-10-23T06:35:44.8323387Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8323826Z 
+2026-10-23T06:35:44.8324108Z [128] firewall/agent firewall.event event=TRACK_END +0.001s
+2026-10-23T06:35:44.8324817Z   path=sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8325244Z 
+2026-10-23T06:35:44.8326143Z [129] firewall/agent firewall.token_usage provider=openai model=gpt-6-luna aic=0.042732 totalAic=0.826905 durationMs=1517 inputTokens=36536 outputTokens=44 cacheReadInputTokens=36092 cacheCreationInputTokens=0 +0.001s
+2026-10-23T06:35:44.8327433Z   path=sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.8327822Z 
+2026-10-23T06:35:44.8328215Z [130] firewall/agent firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.389s
+2026-10-23T06:35:44.8329093Z   path=sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8329774Z 
+2026-10-23T06:35:44.8330133Z [131] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0.21s
+2026-10-23T06:35:44.8330847Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8331458Z 
+2026-10-23T06:35:44.8331797Z [132] firewall/agent firewall.event event=otel_span status={   "code": 1 } +0s
+2026-10-23T06:35:44.8332490Z   path=sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8332840Z 
+2026-10-23T06:35:44.8333252Z [133] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +63.827s
+2026-10-23T06:35:44.8334062Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8334440Z 
+2026-10-23T06:35:44.8334834Z [134] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +2.029s
+2026-10-23T06:35:44.8335628Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8335996Z 
+2026-10-23T06:35:44.8336428Z [135] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +2.03s
+2026-10-23T06:35:44.8337209Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8337583Z 
+2026-10-23T06:35:44.8337983Z [136] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +2.028s
+2026-10-23T06:35:44.8338763Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8339131Z 
+2026-10-23T06:35:44.8339459Z [137] firewall/detection firewall.event event=TRACK_START status=200 +1.342s
+2026-10-23T06:35:44.8340262Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8340759Z 
+2026-10-23T06:35:44.8341438Z [138] firewall/detection firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.003s
+2026-10-23T06:35:44.8342347Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8342716Z 
+2026-10-23T06:35:44.8342998Z [139] firewall/detection firewall.event event=TRACK_END +0.005s
+2026-10-23T06:35:44.8343763Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8344463Z 
+2026-10-23T06:35:44.8344955Z [140] firewall/detection firewall.http_access host=github.com:443 method=CONNECT status=200 decision=NONE_NONE +0.272s
+2026-10-23T06:35:44.8345824Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8346192Z 
+2026-10-23T06:35:44.8346682Z [141] firewall/detection firewall.http_access host=chatgpt.com:443 method=CONNECT status=200 decision=TCP_DENIED +0.004s
+2026-10-23T06:35:44.8347544Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8347907Z 
+2026-10-23T06:35:44.8348414Z [142] firewall/detection firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.356s
+2026-10-23T06:35:44.8349288Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8349651Z 
+2026-10-23T06:35:44.8350052Z [143] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.047s
+2026-10-23T06:35:44.8350844Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8351402Z 
+2026-10-23T06:35:44.8351732Z [144] firewall/detection firewall.event event=TRACK_START status=200 +0.397s
+2026-10-23T06:35:44.8352543Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8353038Z 
+2026-10-23T06:35:44.8353509Z [145] firewall/detection firewall.http_access host=github.com method=CONNECT status=200 decision=TCP_TUNNEL +0.114s
+2026-10-23T06:35:44.8354365Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8354730Z 
+2026-10-23T06:35:44.8355209Z [146] firewall/detection firewall.http_access host=github.com:443 method=CONNECT status=200 decision=NONE_NONE +0.233s
+2026-10-23T06:35:44.8356063Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8356429Z 
+2026-10-23T06:35:44.8356830Z [147] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +1.285s
+2026-10-23T06:35:44.8358682Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8359098Z 
+2026-10-23T06:35:44.8359588Z [148] firewall/detection firewall.http_access host=github.com method=CONNECT status=200 decision=TCP_TUNNEL +0.482s
+2026-10-23T06:35:44.8360458Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8360837Z 
+2026-10-23T06:35:44.8413287Z [149] firewall/detection firewall.event event=TRACK_END +0.899s
+2026-10-23T06:35:44.8414336Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8414863Z 
+2026-10-23T06:35:44.8415373Z [150] firewall/detection firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0s
+2026-10-23T06:35:44.8416263Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8416630Z 
+2026-10-23T06:35:44.8417529Z [151] firewall/detection firewall.token_usage provider=openai model=gpt-6-luna aic=0.20828 totalAic=0.20828 durationMs=3839 inputTokens=19268 outputTokens=312 cacheReadInputTokens=0 cacheCreationInputTokens=0 +0.002s
+2026-10-23T06:35:44.8418955Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.8419427Z 
+2026-10-23T06:35:44.8419941Z [152] firewall/detection firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.475s
+2026-10-23T06:35:44.8420835Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8433436Z 
+2026-10-23T06:35:44.8433962Z [153] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.169s
+2026-10-23T06:35:44.8434825Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8435222Z 
+2026-10-23T06:35:44.8435587Z [154] firewall/detection firewall.event event=otel_span status={   "code": 1 } +0.266s
+2026-10-23T06:35:44.8436393Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8436858Z 
+2026-10-23T06:35:44.8437207Z [155] firewall/detection firewall.event event=otel_span status={   "code": 1 } +0s
+2026-10-23T06:35:44.8438255Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8438686Z 
+2026-10-23T06:35:44.8439012Z [156] firewall/detection firewall.event event=TRACK_START status=200 +0.198s
+2026-10-23T06:35:44.8439857Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8440351Z 
+2026-10-23T06:35:44.8440761Z [157] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +1.564s
+2026-10-23T06:35:44.8441781Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8442157Z 
+2026-10-23T06:35:44.8442560Z [158] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +2.03s
+2026-10-23T06:35:44.8443331Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8443706Z 
+2026-10-23T06:35:44.8443981Z [159] firewall/detection firewall.event event=TRACK_END +0.162s
+2026-10-23T06:35:44.8444730Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8445233Z 
+2026-10-23T06:35:44.8445714Z [160] firewall/detection firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0s
+2026-10-23T06:35:44.8446578Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8446957Z 
+2026-10-23T06:35:44.8447898Z [161] firewall/detection firewall.token_usage provider=openai model=gpt-6-luna aic=0.043325 totalAic=0.251605 durationMs=4765 inputTokens=19891 outputTokens=356 cacheReadInputTokens=19265 cacheCreationInputTokens=0 +0.001s
+2026-10-23T06:35:44.8449384Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.8449857Z 
+2026-10-23T06:35:44.8450360Z [162] firewall/detection firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.816s
+2026-10-23T06:35:44.8451625Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8452012Z 
+2026-10-23T06:35:44.8452339Z [163] firewall/detection firewall.event event=TRACK_START status=200 +0.605s
+2026-10-23T06:35:44.8453147Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8453633Z 
+2026-10-23T06:35:44.8457522Z [164] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.445s
+2026-10-23T06:35:44.8458467Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8458843Z 
+2026-10-23T06:35:44.8459880Z [165] firewall/detection firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.691s
+2026-10-23T06:35:44.8460785Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8461383Z 
+2026-10-23T06:35:44.8461673Z [166] firewall/detection firewall.event event=TRACK_END +0.002s
+2026-10-23T06:35:44.8462456Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl
+2026-10-23T06:35:44.8462960Z 
+2026-10-23T06:35:44.8463862Z [167] firewall/detection firewall.token_usage provider=openai model=gpt-6-luna aic=0.028268 totalAic=0.279873 durationMs=2538 inputTokens=20271 outputTokens=91 cacheReadInputTokens=19888 cacheCreationInputTokens=0 +0s
+2026-10-23T06:35:44.8465198Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:35:44.8465667Z 
+2026-10-23T06:35:44.8466173Z [168] firewall/detection firewall.http_access host=api.openai.com:443 method=CONNECT status=200 decision=TCP_TUNNEL +0.683s
+2026-10-23T06:35:44.8467053Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8467416Z 
+2026-10-23T06:35:44.8467810Z [169] firewall/detection firewall.http_access host=- method=- status=0 decision=NONE_NONE +0.652s
+2026-10-23T06:35:44.8468573Z   path=threat-detection/sandbox/firewall/logs/audit.jsonl
+2026-10-23T06:35:44.8468937Z 
+2026-10-23T06:35:44.8469296Z [170] firewall/detection firewall.event event=otel_span status={   "code": 1 } +0.338s
+2026-10-23T06:35:44.8470324Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8470764Z 
+2026-10-23T06:35:44.8682174Z [171] firewall/detection firewall.event event=otel_span status={   "code": 1 } +0s
+2026-10-23T06:35:44.8683432Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8683935Z 
+2026-10-23T06:35:44.8684300Z [172] firewall/detection firewall.event event=otel_span status={   "code": 0 } +0s
+2026-10-23T06:35:44.8685082Z   path=threat-detection/sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-10-23T06:35:44.8685517Z 
+2026-10-23T06:35:44.8686139Z [173] safe_output/safe_outputs safe_output.result type=add_labels repo=ansonpoh/OSS_Assignment3 number=11 provider=github [execution recorded] +24.991s
+2026-10-23T06:35:44.8687081Z   path=safe-output-items.jsonl
+2026-10-23T06:35:44.8687368Z 
+2026-10-23T06:35:44.8688017Z [174] github_api/workflow github_api.rate_limit source=response_headers operation=rateLimit.get resource=core remaining=4845 limit=5000 +209.262s
+2026-10-23T06:35:44.8688923Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8689205Z 
+2026-10-23T06:35:44.8689836Z [175] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=core remaining=4845 limit=5000 +0.02s
+2026-10-23T06:35:44.8690747Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8701630Z 
+2026-10-23T06:35:44.8702825Z [176] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=search remaining=30 limit=30 +0s
+2026-10-23T06:35:44.8703797Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8704087Z 
+2026-10-23T06:35:44.8704712Z [177] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=graphql remaining=5000 limit=5000 +0s
+2026-10-23T06:35:44.8705634Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8706214Z 
+2026-10-23T06:35:44.8706896Z [178] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=integration_manifest remaining=5000 limit=5000 +0s
+2026-10-23T06:35:44.8707897Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8708184Z 
+2026-10-23T06:35:44.8708814Z [179] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=source_import remaining=100 limit=100 +0s
+2026-10-23T06:35:44.8709751Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8710024Z 
+2026-10-23T06:35:44.8710677Z [180] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=code_scanning_autofix remaining=10 limit=10 +0s
+2026-10-23T06:35:44.8732666Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8733043Z 
+2026-10-23T06:35:44.8733774Z [181] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=actions_runner_registration remaining=10000 limit=10000 +0s
+2026-10-23T06:35:44.8734839Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8735149Z 
+2026-10-23T06:35:44.8735765Z [182] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=scim remaining=15000 limit=15000 +0s
+2026-10-23T06:35:44.8736692Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8736977Z 
+2026-10-23T06:35:44.8737662Z [183] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=dependency_snapshots remaining=100 limit=100 +0s
+2026-10-23T06:35:44.8738627Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8738904Z 
+2026-10-23T06:35:44.8739550Z [184] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=dependency_sbom remaining=100 limit=100 +0s
+2026-10-23T06:35:44.8740490Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8740767Z 
+2026-10-23T06:35:44.8741643Z [185] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=audit_log remaining=1750 limit=1750 +0s
+2026-10-23T06:35:44.8742889Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8743175Z 
+2026-10-23T06:35:44.8743829Z [186] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=audit_log_streaming remaining=15 limit=15 +0s
+2026-10-23T06:35:44.8744773Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8745053Z 
+2026-10-23T06:35:44.8745655Z [187] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=code_search remaining=10 limit=10 +0s
+2026-10-23T06:35:44.8746565Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8746844Z 
+2026-10-23T06:35:44.8747509Z [188] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=copilot_usage_records remaining=1750 limit=1750 +0s
+2026-10-23T06:35:44.8748471Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8748753Z 
+2026-10-23T06:35:44.8749452Z [189] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_before resource=enterprise_token_inventory remaining=1750 limit=1750 +0s
+2026-10-23T06:35:44.8750470Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8750748Z 
+2026-10-23T06:35:44.8751525Z [190] github_api/workflow github_api.rate_limit source=response_headers operation=rateLimit.get resource=core remaining=4845 limit=5000 +0.259s
+2026-10-23T06:35:44.8752416Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8752688Z 
+2026-10-23T06:35:44.8753287Z [191] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=core remaining=4845 limit=5000 +0s
+2026-10-23T06:35:44.8754172Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8754445Z 
+2026-10-23T06:35:44.8755027Z [192] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=search remaining=30 limit=30 +0s
+2026-10-23T06:35:44.8756053Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8756328Z 
+2026-10-23T06:35:44.8756942Z [193] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=graphql remaining=5000 limit=5000 +0s
+2026-10-23T06:35:44.8757838Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8758108Z 
+2026-10-23T06:35:44.8758765Z [194] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=integration_manifest remaining=5000 limit=5000 +0s
+2026-10-23T06:35:44.8759719Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8759990Z 
+2026-10-23T06:35:44.8760610Z [195] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=source_import remaining=100 limit=100 +0s
+2026-10-23T06:35:44.8761716Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8761989Z 
+2026-10-23T06:35:44.8764356Z [196] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=code_scanning_autofix remaining=10 limit=10 +0s
+2026-10-23T06:35:44.8765551Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8765856Z 
+2026-10-23T06:35:44.8766576Z [197] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=actions_runner_registration remaining=10000 limit=10000 +0s
+2026-10-23T06:35:44.8767587Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8767867Z 
+2026-10-23T06:35:44.8768482Z [198] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=scim remaining=15000 limit=15000 +0s
+2026-10-23T06:35:44.8769407Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8769686Z 
+2026-10-23T06:35:44.8770348Z [199] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=dependency_snapshots remaining=100 limit=100 +0s
+2026-10-23T06:35:44.8827484Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8827871Z 
+2026-10-23T06:35:44.8828549Z [200] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=dependency_sbom remaining=100 limit=100 +0s
+2026-10-23T06:35:44.8830493Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8830815Z 
+2026-10-23T06:35:44.8831751Z [201] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=audit_log remaining=1750 limit=1750 +0s
+2026-10-23T06:35:44.8832703Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8832993Z 
+2026-10-23T06:35:44.8833646Z [202] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=audit_log_streaming remaining=15 limit=15 +0s
+2026-10-23T06:35:44.8834620Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8834902Z 
+2026-10-23T06:35:44.8835501Z [203] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=code_search remaining=10 limit=10 +0s
+2026-10-23T06:35:44.8836428Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8836702Z 
+2026-10-23T06:35:44.8837380Z [204] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=copilot_usage_records remaining=1750 limit=1750 +0s
+2026-10-23T06:35:44.8838348Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8838623Z 
+2026-10-23T06:35:44.8839300Z [205] github_api/workflow github_api.rate_limit source=rate_limit_api operation=report_failed_jobs_after resource=enterprise_token_inventory remaining=1750 limit=1750 +0s
+2026-10-23T06:35:44.8840279Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8840550Z 
+2026-10-23T06:35:44.8841602Z [206] github_api/workflow github_api.rate_limit source=response_headers operation=actions.listJobsForWorkflowRunAttempt resource=core remaining=4688 limit=5000 +0.843s
+2026-10-23T06:35:44.8842620Z   path=github_rate_limits.jsonl
+2026-10-23T06:35:44.8842898Z 
+2026-10-23T06:35:44.8843193Z [207] skill/activation skill.inventory installed skills=0 [untimed]
+2026-10-23T06:35:44.8843962Z   path=skill_inventory.json
+2026-10-23T06:35:44.8844241Z 
+2026-10-23T06:35:44.8844789Z [210] agent/agent session.init sourceEngine=codex model=gpt-6-luna-2026-09-22 sessionId=01a16773-6bb7-7562-8201-761f517c48f1 [untimed]
+2026-10-23T06:35:44.8845765Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8846209Z 
+2026-10-23T06:35:44.8846408Z [211] agent/agent turn.started  [untimed]
+2026-10-23T06:35:44.8847013Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8847431Z 
+2026-10-23T06:35:44.8847639Z [212] agent/agent assistant.message [untimed]
+2026-10-23T06:35:44.8848264Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8849755Z ◆ I’ll follow the repository’s rich-triage procedure, treat the issue text as untrusted, and run its required checks before deciding labels or a comment.
+2026-10-23T06:35:44.8850548Z 
+2026-10-23T06:35:44.8850557Z 
+2026-10-23T06:35:44.8851323Z [213] agent/agent tool.execution_start toolName=bash toolCallId=item_1 [started] [untimed]
+2026-10-23T06:35:44.8852168Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8852894Z ? $ /bin/bash -lc 'cat .claude/skills/rich-triage/SKILL.md' [pending]
+2026-10-23T06:35:44.8853296Z 
+2026-10-23T06:35:44.8853305Z 
+2026-10-23T06:35:44.8853697Z [214] agent/agent tool.execution_complete toolName=bash toolCallId=item_1 [succeeded] [untimed]
+2026-10-23T06:35:44.8854511Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8855252Z ✓ $ /bin/bash -lc 'cat .claude/skills/rich-triage/SKILL.md'
+2026-10-23T06:35:44.8855920Z    ├ ---
+2026-10-23T06:35:44.8856374Z    └ name: rich-triage (+ 90 more)
+2026-10-23T06:35:44.8856672Z 
+2026-10-23T06:35:44.8856681Z 
+2026-10-23T06:35:44.8857050Z [215] agent/agent tool.execution_start toolName=bash toolCallId=item_2 [started] [untimed]
+2026-10-23T06:35:44.8857856Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8858941Z ? $ /bin/bash -lc 'python3 .claude/skills/rich-triage/scripts/check_report.py /tmp/gh-aw/agent/issue.json' [pending]
+2026-10-23T06:35:44.8859547Z 
+2026-10-23T06:35:44.8859557Z 
+2026-10-23T06:35:44.8859943Z [216] agent/agent tool.execution_complete toolName=bash toolCallId=item_2 [succeeded] [untimed]
+2026-10-23T06:35:44.8860765Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8861996Z ✓ $ /bin/bash -lc 'python3 .claude/skills/rich-triage/scripts/check_report.py /tmp/gh-aw/agent/issue.json'
+2026-10-23T06:35:44.8862734Z    ├ {
+2026-10-23T06:35:44.8863151Z    └   "template": "bug", (+ 16 more)
+2026-10-23T06:35:44.8863449Z 
+2026-10-23T06:35:44.8863459Z 
+2026-10-23T06:35:44.8863828Z [217] agent/agent tool.execution_start toolName=bash toolCallId=item_3 [started] [untimed]
+2026-10-23T06:35:44.8864627Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8865514Z ? $ /bin/bash -lc 'python3 .claude/skills/rich-triage/scripts/faq_match.py /tmp/gh-aw/agent/issue.json' [pending]
+2026-10-23T06:35:44.8866108Z 
+2026-10-23T06:35:44.8866116Z 
+2026-10-23T06:35:44.8866516Z [218] agent/agent tool.execution_complete toolName=bash toolCallId=item_3 [succeeded] [untimed]
+2026-10-23T06:35:44.8867329Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8871220Z ✓ $ /bin/bash -lc 'python3 .claude/skills/rich-triage/scripts/faq_match.py /tmp/gh-aw/agent/issue.json'
+2026-10-23T06:35:44.8872115Z    ├ {
+2026-10-23T06:35:44.8872549Z    └   "threshold": 0.25, (+ 21 more)
+2026-10-23T06:35:44.8872858Z 
+2026-10-23T06:35:44.8872868Z 
+2026-10-23T06:35:44.8873240Z [219] agent/agent tool.execution_start toolName=bash toolCallId=item_4 [started] [untimed]
+2026-10-23T06:35:44.8874032Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8875098Z ? $ /bin/bash -lc 'python3 .claude/skills/rich-triage/scripts/find_duplicates.py /tmp/gh-aw/agent/issue.json /tmp/gh-aw/agent/issues_index.json' [pending]
+2026-10-23T06:35:44.8876634Z 
+2026-10-23T06:35:44.8876645Z 
+2026-10-23T06:35:44.8877157Z [220] agent/agent tool.execution_complete toolName=bash toolCallId=item_4 [succeeded] [untimed]
+2026-10-23T06:35:44.8877991Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8879131Z ✓ $ /bin/bash -lc 'python3 .claude/skills/rich-triage/scripts/find_duplicates.py /tmp/gh-aw/agent/issue.json /tmp/gh-aw/agent/issues_index.json'
+2026-10-23T06:35:44.8880034Z    ├ {
+2026-10-23T06:35:44.8880460Z    └   "searched_issues": 1492, (+ 44 more)
+2026-10-23T06:35:44.8880776Z 
+2026-10-23T06:35:44.8880785Z 
+2026-10-23T06:35:44.8881189Z [221] agent/agent assistant.message [untimed]
+2026-10-23T06:35:44.8881832Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8883499Z ◆ The required checks report a complete runnable bug report. The FAQ matcher found no strong match; duplicate search flagged one open table issue as a candidate, so I’m checking its actual report against this issue before deciding whether it’s a duplicate.
+2026-10-23T06:35:44.8884700Z 
+2026-10-23T06:35:44.8884709Z 
+2026-10-23T06:35:44.8885083Z [222] agent/agent tool.execution_start toolName=bash toolCallId=item_6 [started] [untimed]
+2026-10-23T06:35:44.8885871Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8886564Z ? $ /bin/bash -lc 'cat /tmp/gh-aw/agent/issue.json' [pending]
+2026-10-23T06:35:44.8886933Z 
+2026-10-23T06:35:44.8886942Z 
+2026-10-23T06:35:44.8887331Z [223] agent/agent tool.execution_complete toolName=bash toolCallId=item_6 [succeeded] [untimed]
+2026-10-23T06:35:44.8888136Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8888828Z ✓ $ /bin/bash -lc 'cat /tmp/gh-aw/agent/issue.json'
+2026-10-23T06:35:44.8889336Z    ├ {
+2026-10-23T06:35:44.8889734Z    └   "number": 11, (+ 8 more)
+2026-10-23T06:35:44.8890018Z 
+2026-10-23T06:35:44.8890026Z 
+2026-10-23T06:35:44.8890395Z [224] agent/agent tool.execution_start toolName=bash toolCallId=item_7 [started] [untimed]
+2026-10-23T06:35:44.8891615Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8893008Z ? $ /bin/bash -lc "python3 -c 'import json; d=json.load(open(\"/tmp/gh-aw/agent/issues_index.json\")); print(type(d).__name__); print(json.dumps(d.get(\"issues\", d) if isinstance(d, dict) else d, ensure_ascii=False, indent=2)[:30000])' " [pending]
+2026-10-23T06:35:44.8894071Z 
+2026-10-23T06:35:44.8894086Z 
+2026-10-23T06:35:44.8894480Z [225] agent/agent tool.execution_complete toolName=bash toolCallId=item_7 [succeeded] [untimed]
+2026-10-23T06:35:44.8895301Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8896780Z ✓ $ /bin/bash -lc "python3 -c 'import json; d=json.load(open(\"/tmp/gh-aw/agent/issues_index.json\")); print(type(d).__name__); print(json.dumps(d.get(\"issues\", d) if isinstance(d, dict) else d, ensure_ascii=False, indent=2)[:30000])' "
+2026-10-23T06:35:44.8897994Z    ├ list
+2026-10-23T06:35:44.8898366Z    └ [ (+ 303 more)
+2026-10-23T06:35:44.8898594Z 
+2026-10-23T06:35:44.8898602Z 
+2026-10-23T06:35:44.8898979Z [226] agent/agent tool.execution_start toolName=bash toolCallId=item_8 [started] [untimed]
+2026-10-23T06:35:44.8899783Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8900695Z ? $ /bin/bash -lc 'rg -n "def add_column|class Column|_calculate_column_widths|column_widths|ratio" rich/table.py' [pending]
+2026-10-23T06:35:44.8901483Z 
+2026-10-23T06:35:44.8901493Z 
+2026-10-23T06:35:44.8901888Z [227] agent/agent tool.execution_complete toolName=bash toolCallId=item_8 [succeeded] [untimed]
+2026-10-23T06:35:44.8902709Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8903658Z ✓ $ /bin/bash -lc 'rg -n "def add_column|class Column|_calculate_column_widths|column_widths|ratio" rich/table.py'
+2026-10-23T06:35:44.8904691Z    ├ 17:from ._ratio import ratio_distribute, ratio_reduce
+2026-10-23T06:35:44.8905279Z    └ 39:class Column: (+ 17 more)
+2026-10-23T06:35:44.8905572Z 
+2026-10-23T06:35:44.8905580Z 
+2026-10-23T06:35:44.8905950Z [228] agent/agent tool.execution_start toolName=bash toolCallId=item_9 [started] [untimed]
+2026-10-23T06:35:44.8907226Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8908087Z ? $ /bin/bash -lc 'rg -n "overflow|no_wrap|min_width|expand" rich/table.py docs/source/tables.rst' [pending]
+2026-10-23T06:35:44.8908631Z 
+2026-10-23T06:35:44.8908639Z 
+2026-10-23T06:35:44.8909036Z [229] agent/agent tool.execution_complete toolName=bash toolCallId=item_9 [succeeded] [untimed]
+2026-10-23T06:35:44.8909842Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8910721Z ✓ $ /bin/bash -lc 'rg -n "overflow|no_wrap|min_width|expand" rich/table.py docs/source/tables.rst'
+2026-10-23T06:35:44.8911843Z    ├ docs/source/tables.rst:15:    table.add_column("Released", justify="right", styl...
+2026-10-23T06:35:44.8912843Z    └ docs/source/tables.rst:56:- ``min_width`` Sets a minimum width for the table. (+ 53 more)
+2026-10-23T06:35:44.8913323Z 
+2026-10-23T06:35:44.8913338Z 
+2026-10-23T06:35:44.8913703Z [230] agent/agent tool.execution_start toolName=bash toolCallId=item_10 [started] [untimed]
+2026-10-23T06:35:44.8914501Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8915822Z ? $ /bin/bash -lc "python3 -c 'import json; d=json.load(open(\"/tmp/gh-aw/agent/issues_index.json\")); xs=d.get(\"issues\",d); print(json.dumps(next((x for x in xs if x.get(\"number\")==2890),{}),ensure_ascii=False,indent=2))' " [pending]
+2026-10-23T06:35:44.8916823Z 
+2026-10-23T06:35:44.8916831Z 
+2026-10-23T06:35:44.8917224Z [231] agent/agent tool.execution_complete toolName=bash toolCallId=item_10 [failed] [untimed]
+2026-10-23T06:35:44.8918035Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8929029Z ✗ $ /bin/bash -lc "python3 -c 'import json; d=json.load(open(\"/tmp/gh-aw/agent/issues_index.json\")); xs=d.get(\"issues\",d); print(json.dumps(next((x for x in xs if x.get(\"number\")==2890),{}),ensure_ascii=False,indent=2))' "
+2026-10-23T06:35:44.8931631Z    ├ Traceback (most recent call last):
+2026-10-23T06:35:44.8932373Z    └   File "<string>", line 1, in <module> (+ 1 more)
+2026-10-23T06:35:44.8932786Z 
+2026-10-23T06:35:44.8932799Z 
+2026-10-23T06:35:44.8933326Z [232] agent/agent tool.execution_start toolName=bash toolCallId=item_11 [started] [untimed]
+2026-10-23T06:35:44.8934293Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8935425Z ? $ /bin/bash -lc "sed -n '120,155p' docs/source/tables.rst && sed -n '520,635p' rich/table.py && sed -n '810,845p' rich/table.py" [pending]
+2026-10-23T06:35:44.8936191Z 
+2026-10-23T06:35:44.8936200Z 
+2026-10-23T06:35:44.8936702Z [233] agent/agent tool.execution_complete toolName=bash toolCallId=item_11 [succeeded] [untimed]
+2026-10-23T06:35:44.8937643Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8938688Z ✓ $ /bin/bash -lc "sed -n '120,155p' docs/source/tables.rst && sed -n '520,635p' rich/table.py && sed -n '810,845p' rich/table.py"
+2026-10-23T06:35:44.8939734Z    ├ This allows you to specify the text of the column only. If you want to set other...
+2026-10-23T06:35:44.8940515Z    └     from rich.table import Column, Table (+ 163 more)
+2026-10-23T06:35:44.8941087Z 
+2026-10-23T06:35:44.8941097Z 
+2026-10-23T06:35:44.8941495Z [234] agent/agent tool.execution_start toolName=bash toolCallId=item_12 [started] [untimed]
+2026-10-23T06:35:44.8942322Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8943602Z ? $ /bin/bash -lc "python3 -c 'import json; xs=json.load(open(\"/tmp/gh-aw/agent/issues_index.json\")); print(json.dumps(next((x for x in xs if x.get(\"number\")==2890),{}),ensure_ascii=False,indent=2))' " [pending]
+2026-10-23T06:35:44.8944802Z 
+2026-10-23T06:35:44.8944823Z 
+2026-10-23T06:35:44.8945237Z [235] agent/agent tool.execution_complete toolName=bash toolCallId=item_12 [succeeded] [untimed]
+2026-10-23T06:35:44.8946098Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8947501Z ✓ $ /bin/bash -lc "python3 -c 'import json; xs=json.load(open(\"/tmp/gh-aw/agent/issues_index.json\")); print(json.dumps(next((x for x in xs if x.get(\"number\")==2890),{}),ensure_ascii=False,indent=2))' "
+2026-10-23T06:35:44.8948584Z    ├ {
+2026-10-23T06:35:44.8949010Z    └   "number": 2890, (+ 6 more)
+2026-10-23T06:35:44.8949311Z 
+2026-10-23T06:35:44.8949320Z 
+2026-10-23T06:35:44.8949700Z [236] agent/agent tool.execution_start toolName=bash toolCallId=item_13 [started] [untimed]
+2026-10-23T06:35:44.8960740Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8962263Z ? $ /bin/bash -lc "python3 -c 'import json; x=next(x for x in json.load(open(\"/tmp/gh-aw/agent/issues_index.json\")) if x.get(\"number\")==2890); print(x[\"body\"])' " [pending]
+2026-10-23T06:35:44.8963129Z 
+2026-10-23T06:35:44.8963139Z 
+2026-10-23T06:35:44.8963556Z [237] agent/agent tool.execution_complete toolName=bash toolCallId=item_13 [succeeded] [untimed]
+2026-10-23T06:35:44.8964389Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8965637Z ✓ $ /bin/bash -lc "python3 -c 'import json; x=next(x for x in json.load(open(\"/tmp/gh-aw/agent/issues_index.json\")) if x.get(\"number\")==2890); print(x[\"body\"])' "
+2026-10-23T06:35:44.8966863Z    ├ - [X] I've checked [docs](https://rich.readthedocs.io/en/latest/introduction.htm...
+2026-10-23T06:35:44.8967805Z    └ - [X] I can't find my issue in the [FAQ](https://github.com/Textualize/rich/blob... (+ 26 more)
+2026-10-23T06:35:44.8968304Z 
+2026-10-23T06:35:44.8968313Z 
+2026-10-23T06:35:44.8968692Z [238] agent/agent tool.execution_start toolName=bash toolCallId=item_14 [started] [untimed]
+2026-10-23T06:35:44.8969499Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8970839Z ? $ /bin/bash -lc "python3 -c 'import json; x=next(x for x in json.load(open(\"/tmp/gh-aw/agent/issues_index.json\")) if x.get(\"number\")==2890); print(x[\"body\"][2500:])' " [pending]
+2026-10-23T06:35:44.8971872Z 
+2026-10-23T06:35:44.8971883Z 
+2026-10-23T06:35:44.8972814Z [239] agent/agent tool.execution_complete toolName=bash toolCallId=item_14 [succeeded] [untimed]
+2026-10-23T06:35:44.8973669Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8974883Z ✓ $ /bin/bash -lc "python3 -c 'import json; x=next(x for x in json.load(open(\"/tmp/gh-aw/agent/issues_index.json\")) if x.get(\"number\")==2890); print(x[\"body\"][2500:])' "
+2026-10-23T06:35:44.8975689Z 
+2026-10-23T06:35:44.8975697Z 
+2026-10-23T06:35:44.8975705Z 
+2026-10-23T06:35:44.8976079Z [240] agent/agent tool.execution_start toolName=bash toolCallId=item_15 [started] [untimed]
+2026-10-23T06:35:44.8976895Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8977757Z ? $ /bin/bash -lc 'python3 .claude/skills/rich-triage/scripts/validate_labels.py bug duplicate' [pending]
+2026-10-23T06:35:44.8978299Z 
+2026-10-23T06:35:44.8978308Z 
+2026-10-23T06:35:44.8978705Z [241] agent/agent tool.execution_complete toolName=bash toolCallId=item_15 [succeeded] [untimed]
+2026-10-23T06:35:44.8979523Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8980393Z ✓ $ /bin/bash -lc 'python3 .claude/skills/rich-triage/scripts/validate_labels.py bug duplicate'
+2026-10-23T06:35:44.8981254Z    ├ {
+2026-10-23T06:35:44.8981670Z    └   "ok": true, (+ 6 more)
+2026-10-23T06:35:44.8981949Z 
+2026-10-23T06:35:44.8981956Z 
+2026-10-23T06:35:44.8982177Z [242] agent/agent assistant.message [untimed]
+2026-10-23T06:35:44.8982799Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8984734Z ◆ Issue #2890 is a close match: it describes `no_wrap` with ellipsis overflow squeezing the other columns, which is the core behavior in this report. The candidate is still open. I’ve validated `bug` and `duplicate` as the two labels; this is a runnable bug, so the procedure calls for no comment.
+2026-10-23T06:35:44.8986130Z 
+2026-10-23T06:35:44.8986140Z 
+2026-10-23T06:35:44.8986649Z [243] agent/agent tool.execution_start toolName=bash toolCallId=item_17 [started] [untimed]
+2026-10-23T06:35:44.8987478Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8997061Z ? $ /bin/bash -lc 'command -v safeoutputs && safeoutputs add_labels --help' [pending]
+2026-10-23T06:35:44.8997613Z 
+2026-10-23T06:35:44.8997623Z 
+2026-10-23T06:35:44.8998032Z [244] agent/agent tool.execution_complete toolName=bash toolCallId=item_17 [succeeded] [untimed]
+2026-10-23T06:35:44.8998872Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.8999758Z ✓ $ /bin/bash -lc 'command -v safeoutputs && safeoutputs add_labels --help'
+2026-10-23T06:35:44.9000534Z    ├ /home/runner/work/_temp/gh-aw/mcp-cli/bin/safeoutputs
+2026-10-23T06:35:44.9001590Z    └ [info] [safeoutputs] Bridge invoked: argumentCount=1 (+ 12 more)
+2026-10-23T06:35:44.9002005Z 
+2026-10-23T06:35:44.9002014Z 
+2026-10-23T06:35:44.9002395Z [245] agent/agent tool.execution_start toolName=bash toolCallId=item_18 [started] [untimed]
+2026-10-23T06:35:44.9003193Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.9004110Z ? $ /bin/bash -lc "safeoutputs add_labels '{\"item_number\":11,\"labels\":[{\"name\":\"bug\"},{\"name\":\"duplicate\"}]}'" [pending]
+2026-10-23T06:35:44.9004712Z 
+2026-10-23T06:35:44.9004719Z 
+2026-10-23T06:35:44.9005115Z [246] agent/agent tool.execution_complete toolName=bash toolCallId=item_18 [succeeded] [untimed]
+2026-10-23T06:35:44.9005939Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.9006915Z ✓ $ /bin/bash -lc "safeoutputs add_labels '{\"item_number\":11,\"labels\":[{\"name\":\"bug\"},{\"name\":\"duplicate\"}]}'"
+2026-10-23T06:35:44.9008987Z    ├ [info] [safeoutputs] Bridge invoked: argumentCount=1
+2026-10-23T06:35:44.9009838Z    └ [info] [safeoutputs] Calling tool 'add_labels' (65 argument bytes) (+ 11 more)
+2026-10-23T06:35:44.9010312Z 
+2026-10-23T06:35:44.9010321Z 
+2026-10-23T06:35:44.9010540Z [247] agent/agent assistant.message [untimed]
+2026-10-23T06:35:44.9011397Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.9012649Z ◆ Applied the `bug` and `duplicate` labels. Open issue #2890 describes the same `no_wrap` and ellipsis column-width behavior. No comment was needed for a runnable bug report.
+2026-10-23T06:35:44.9013473Z 
+2026-10-23T06:35:44.9013483Z 
+2026-10-23T06:35:44.9013882Z [248] agent/agent session.result numTurns=1 status=completed sourceType=turn.completed [untimed]
+2026-10-23T06:35:44.9014715Z   path=agent-session.jsonl sessionId=01a16773-6bb7-7562-8201-761f517c48f1
+2026-10-23T06:35:44.9015141Z 
+2026-10-23T06:35:44.9041298Z [249] firewall/agent model.inventory endpoints=[   {     "provider": "openai",     "configured": true,     "models": [       "babbage-002",       "chat-latest",       "chatgpt-image-latest",       "davinci-002",       "gpt-3.5-turbo",       "gpt-3.5-turbo-0125",       "gpt-3.5-turbo-1106",       "gpt-3.5-turbo-16k",       "gpt-3.5-turbo-instruct",       "gpt-3.5-turbo-instruct-0914",       "gpt-4",       "gpt-4-0613",       "gpt-4-turbo",       "gpt-4-turbo-2024-04-09",       "gpt-4.1",       "gpt-4.1-2025-04-14",       "gpt-4.1-mini",       "gpt-4.1-mini-2025-04-14",       "gpt-4.1-nano",       "gpt-4.1-nano-2025-04-14",       "gpt-4o",       "gpt-4o-2024-05-13",       "gpt-4o-2024-08-06",       "gpt-4o-2024-11-20",       "gpt-4o-mini",       "gpt-4o-mini-2024-07-18",       "gpt-4o-mini-search-preview",       "gpt-4o-mini-search-preview-2025-03-11",       "gpt-4o-mini-transcribe",       "gpt-4o-mini-transcribe-2025-03-20",       "gpt-4o-mini-transcribe-2025-12-15",       "gpt-4o-mini-tts",       "gpt-4o-mini-tts-2025-03-20",       "gpt-4o-mini-tts-2025-12-15",       "gpt-4o-search-preview",       "gpt-4o-search-preview-2025-03-11",       "gpt-4o-transcribe",       "gpt-4o-transcribe-diarize",       "gpt-5",       "gpt-5-2025-08-07",       "gpt-5-chat-latest",       "gpt-5-codex",       "gpt-5-mini",       "gpt-5-mini-2025-08-07",       "gpt-5-nano",       "gpt-5-nano-2025-08-07",       "gpt-5-pro",       "gpt-5-pro-2025-10-06",       "gpt-5-search-api",       "gpt-5-search-api-2025-10-14",       "gpt-5.1",       "gpt-5.1-2025-11-13",       "gpt-5.1-chat-latest",       "gpt-5.1-codex",       "gpt-5.1-codex-max",       "gpt-5.1-codex-mini",       "gpt-5.2",       "gpt-5.2-2025-12-11",       "gpt-5.2-chat-latest",       "gpt-5.2-codex",       "gpt-5.2-pro",       "gpt-5.2-pro-2025-12-11",       "gpt-5.3-chat-latest",       "gpt-5.3-codex",       "gpt-5.4",       "gpt-5.4-2026-03-05",       "gpt-5.4-mini",       "gpt-5.4-mini-2026-03-17",       "gpt-5.4-nano",       "gpt-5.4-nano-2026-03-17",       "gpt-5.4-pro",       "gpt-5.4-pro-2026-03-05",       "gpt-5.5",       "gpt-5.5-2026-04-23",       "gpt-5.5-pro",       "gpt-5.5-pro-2026-04-23",       "gpt-5.6-luna",       "gpt-5.6-sol",       "gpt-5.6-terra",       "gpt-6-astra",       "gpt-6-luna",       "gpt-6-sol",       "gpt-6.1-sol",       "gpt-audio",       "gpt-audio-1.5",       "gpt-audio-2025-08-28",       "gpt-audio-mini",       "gpt-audio-mini-2025-10-06",       "gpt-audio-mini-2025-12-15",       "gpt-image-1",       "gpt-image-1-mini",       "gpt-image-1.5",       "gpt-image-2",       "gpt-image-2-2026-04-21",       "gpt-image-2.5-flare",       "gpt-image-2.5-flare-2026-09-08",       "gpt-image-2.5-sunburst",       "gpt-image-2.5-sunburst-2026-09-08",       "gpt-live-1",       "gpt-live-transcribe",       "gpt-realtime",       "gpt-realtime-1.5",       "gpt-realtime-2",       "gpt-realtime-2.1",       "gpt-realtime-2.1-mini",       "gpt-realtime-2025-08-28",       "gpt-realtime-mini",       "gpt-realtime-mini-2025-12-15",       "gpt-realtime-translate",       "gpt-realtime-whisper",       "gpt-transcribe",       "o1",       "o1-2024-12-17",       "o1-pro",       "o1-pro-2025-03-19",       "o3",       "o3-2025-04-16",       "o3-mini",       "o3-mini-2025-01-31",       "o4-mini",       "o4-mini-2025-04-16",       "omni-moderation-2024-09-26",       "omni-moderation-latest",       "sora-2",       "sora-2-pro",       "text-embedding-3-large",       "text-embedding-3-small",       "text-embedding-ada-002",       "tts-1",       "tts-1-1106",       "tts-1-hd",       "tts-1-hd-1106",       "whisper-1"     ],     "routingModels": [       {         "modelId": "babbage-002",         "supportedEndpoints": []       },       {         "modelId": "chat-latest",         "supportedEndpoints": []       },       {         "modelId": "chatgpt-image-latest",         "supportedEndpoints": []       },       {         "modelId": "davinci-002",         "supportedEndpoints": []       },       {         "modelId": "gpt-3.5-turbo",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-3.5-turbo-0125",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-3.5-turbo-1106",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-3.5-turbo-16k",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-3.5-turbo-instruct",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-3.5-turbo-instruct-0914",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4-0613",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4-turbo",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4-turbo-2024-04-09",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4.1",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4.1-2025-04-14",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4.1-mini",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4.1-mini-2025-04-14",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4.1-nano",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4.1-nano-2025-04-14",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o-2024-05-13",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o-2024-08-06",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o-2024-11-20",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o-mini",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o-mini-2024-07-18",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o-mini-search-preview",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o-mini-search-preview-2025-03-11",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o-mini-transcribe",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o-mini-transcribe-2025-03-20",         "supportedEndpoints": [           "chat_completions",           "responses"         ]       },       {         "modelId": "gpt-4o-mini-transcribe-2025-12-15",         "supportedEndpoints": [           "chat_completions",           "responses"       ... [truncated: long summary line]
+2026-10-23T06:35:44.9068186Z   path=sandbox/firewall/awf-reflect.json
+2026-10-23T06:35:44.9068519Z 
+2026-10-23T06:35:44.9069315Z [250] model_resolution/agent model.resolution engine=codex role=main configured_model=gpt-6-luna-2026-09-22 resolved_model=gpt-6-luna-2026-09-22 provider=openai status=exact cause=null [untimed]
+2026-10-23T06:35:44.9070419Z   path=agent/model-resolution.json
+2026-10-23T06:35:44.9070722Z 
+2026-10-23T06:35:44.9071270Z [251] safe_output/agent safe_output.request type=add_labels [requested, not executed] [untimed]
+2026-10-23T06:35:44.9071953Z   path=safeoutputs.jsonl
+2026-10-23T06:35:44.9072213Z 
+2026-10-23T06:35:44.9072441Z [252] execution/agent execution.result  [untimed]
+2026-10-23T06:35:44.9072960Z   path=agent_execution.json
+2026-10-23T06:35:44.9073214Z 
+2026-10-23T06:35:44.9073454Z [253] execution/detection execution.result  [untimed]
+2026-10-23T06:35:44.9073996Z   path=threat-detection/execution.json
+2026-10-23T06:35:44.9076830Z 
+2026-10-23T06:35:44.9077683Z [254] detection/detection detection.result promptInjection=false secretLeak=false maliciousPatch=false [untimed]
+2026-10-23T06:35:44.9078555Z   path=threat-detection/detection_result.json
+2026-10-23T06:35:44.9078890Z 
+2026-10-23T06:35:44.9079314Z [255] execution/agent agent.execution categories=[] errorCodes=[] errorTypes=[] exitCode=0 [untimed]
+2026-10-23T06:35:44.9080030Z   path=agent-errors.jsonl
+2026-10-23T06:35:44.9080293Z 
+2026-10-23T06:35:44.9081097Z [256] guardrail/activation guardrail.daily_aic status=under_budget exceeded=false total=0.8445729999999999 estimated=0 threshold=600 [untimed]
+2026-10-23T06:35:44.9082003Z   path=usage/aw_session.jsonl
+2026-10-23T06:35:44.9082286Z 
+2026-10-23T06:35:44.9082721Z [257] workflow/conclusion workflow.job_result jobId=activation result=success durationMs=22000 [untimed]
+2026-10-23T06:35:44.9083457Z   path=usage/aw_session.jsonl
+2026-10-23T06:35:44.9083725Z 
+2026-10-23T06:35:44.9084140Z [258] workflow/conclusion workflow.job_result jobId=agent result=success durationMs=113000 [untimed]
+2026-10-23T06:35:44.9084854Z   path=usage/aw_session.jsonl
+2026-10-23T06:35:44.9085146Z 
+2026-10-23T06:35:44.9085565Z [259] workflow/conclusion workflow.job_result jobId=detection result=success durationMs=81000 [untimed]
+2026-10-23T06:35:44.9086273Z   path=usage/aw_session.jsonl
+2026-10-23T06:35:44.9086548Z 
+2026-10-23T06:35:44.9087087Z [260] workflow/conclusion workflow.job_result jobId=safe_outputs result=success durationMs=17000 [untimed]
+2026-10-23T06:35:44.9087824Z   path=usage/aw_session.jsonl
+2026-10-23T06:35:44.9088103Z 
+2026-10-23T06:35:44.9088670Z [261] collector/conclusion session.collection sources=29 warnings=0 untimedEvents=56 absentComponents=[   "experiment",   "eval" ] [untimed]
+2026-10-23T06:35:44.9089529Z   path=usage/aw_session.jsonl
+2026-10-23T06:35:44.9089806Z 
+2026-10-23T06:35:44.9090072Z [262] grader/conclusion grader.manifest graders=10 [untimed]
+2026-10-23T06:35:44.9090635Z   path=usage/graders/grader_manifest.json
+2026-10-23T06:35:44.9091111Z 
+2026-10-23T06:35:44.9094234Z [263] grader/conclusion grader.result results=[id=tool-success-rate value=0.8823529411764706 unit=ratio passed=true status=pass; id=tool-failure-count value=2 unit=count passed=true status=pass; id=retries value=0 unit=count passed=true status=pass; id=loops value=0 unit=count passed=true status=pass; id=trajectory-efficiency value=0.11764705882352941 unit=ratio passed=null status=pass; id=execution-step-count value=13 unit=count passed=null status=pass; id=execution-duration value=42466 unit=ms passed=null status=pass; id=working-set-rebuild-factor value=9.627682285964529 unit=factor passed=null status=pass; id=context-growth value=25.888832116788322 unit=factor passed=null status=pass; id=artifact-production value=1 unit=count passed=null status=pass] [untimed]
+2026-10-23T06:35:44.9097825Z   path=usage/graders/grader_results.json
+2026-10-23T06:35:44.9098435Z /tmp/gh-aw/usage/activity/summary.json
+2026-10-23T06:35:44.9098942Z /tmp/gh-aw/usage/agent/execution.json
+2026-10-23T06:35:44.9099441Z /tmp/gh-aw/usage/agent/token_usage.jsonl
+2026-10-23T06:35:44.9099918Z /tmp/gh-aw/usage/agent_usage.json
+2026-10-23T06:35:44.9100395Z /tmp/gh-aw/usage/aw_session.jsonl
+2026-10-23T06:35:44.9101062Z /tmp/gh-aw/usage/detection/execution.json
+2026-10-23T06:35:44.9101613Z /tmp/gh-aw/usage/detection/token_usage.jsonl
+2026-10-23T06:35:44.9102140Z /tmp/gh-aw/usage/github_rate_limits.jsonl
+2026-10-23T06:35:44.9102659Z /tmp/gh-aw/usage/graders/grader_manifest.json
+2026-10-23T06:35:44.9103186Z /tmp/gh-aw/usage/graders/grader_results.json

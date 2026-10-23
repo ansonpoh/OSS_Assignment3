@@ -1,0 +1,43 @@
+﻿2026-10-23T06:27:35.0643783Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T06:27:35.0644611Z with:
+2026-10-23T06:27:35.0648632Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+
+const substitutePlaceholders = require(path.join(actionsDir, 'substitute_placeholders.cjs'));
+
+// Call the substitution function
+return await substitutePlaceholders({
+  file: process.env.GH_AW_PROMPT,
+  substitutions: {
+    GH_AW_GITHUB_REPOSITORY: process.env.GH_AW_GITHUB_REPOSITORY,
+    GH_AW_MCP_CLI_SERVERS_LIST: process.env.GH_AW_MCP_CLI_SERVERS_LIST,
+    GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED: process.env.GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED
+  }
+});
+
+2026-10-23T06:27:35.0656448Z   github-token: ***
+2026-10-23T06:27:35.0656945Z   debug: false
+2026-10-23T06:27:35.0657407Z   user-agent: actions/github-script
+2026-10-23T06:27:35.0657990Z   result-encoding: json
+2026-10-23T06:27:35.0658448Z   retries: 0
+2026-10-23T06:27:35.0658924Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T06:27:35.0659515Z env:
+2026-10-23T06:27:35.0659929Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:27:35.0660459Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:27:35.0662031Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39911542702,github.run_id=39911542702,gh-aw.engine.id=codex
+2026-10-23T06:27:35.0663403Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:27:35.0663952Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:27:35.0664555Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:27:35.0665071Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-23T06:27:35.0665580Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:27:35.0666912Z   GITHUB_AW_OTEL_TRACE_ID: 4de59b2248629ebe87522758dafa31f6
+2026-10-23T06:27:35.0668640Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 2127f9c02b221c74
+2026-10-23T06:27:35.0669649Z   GITHUB_AW_OTEL_JOB_START_MS: 1792736847907
+2026-10-23T06:27:35.0670639Z   GH_AW_PROMPT: /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt
+2026-10-23T06:27:35.0672281Z   GH_AW_GITHUB_REPOSITORY: ansonpoh/OSS_Assignment3
+2026-10-23T06:27:35.0675742Z   GH_AW_MCP_CLI_SERVERS_LIST: - `safeoutputs` — run `safeoutputs --help` to see available tools
+2026-10-23T06:27:35.0677088Z   GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED: true
+2026-10-23T06:27:35.0677920Z ##[endgroup]
+2026-10-23T06:27:35.1905404Z [substitutePlaceholders] /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt (3 substitution(s))

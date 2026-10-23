@@ -1,0 +1,63 @@
+﻿2026-10-23T06:30:59.6966167Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/print_firewall_logs.sh" --rootless
+2026-10-23T06:30:59.6966712Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/print_firewall_logs.sh" --rootless[0m
+2026-10-23T06:30:59.7006264Z shell: /usr/bin/bash -e {0}
+2026-10-23T06:30:59.7006567Z env:
+2026-10-23T06:30:59.7006794Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:30:59.7007073Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:30:59.7007776Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39911677905,github.run_id=39911677905,gh-aw.engine.id=codex
+2026-10-23T06:30:59.7008455Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:30:59.7008744Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:30:59.7009042Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:30:59.7009293Z   DEFAULT_BRANCH: main
+2026-10-23T06:30:59.7009542Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-23T06:30:59.7009785Z   GH_AW_ASSETS_BRANCH: 
+2026-10-23T06:30:59.7010019Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-23T06:30:59.7010303Z   GH_AW_ENGINE_VERSION: 0.163.0
+2026-10-23T06:30:59.7010595Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-23T06:30:59.7010894Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-23T06:30:59.7011143Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-23T06:30:59.7011396Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-23T06:30:59.7011632Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-23T06:30:59.7011864Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-23T06:30:59.7012102Z   GH_AW_PR_HEAD_REPO: 
+2026-10-23T06:30:59.7012328Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:30:59.7012564Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-23T06:30:59.7012814Z   GH_AW_WORKFLOW_ID_SANITIZED: richtriage
+2026-10-23T06:30:59.7013141Z   GITHUB_AW_OTEL_TRACE_ID: 086d3163bfc8bc0d75d0ac2c821582fd
+2026-10-23T06:30:59.7013646Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5f954b91bc83bca3
+2026-10-23T06:30:59.7014103Z   GITHUB_AW_OTEL_JOB_START_MS: 1792736963633
+2026-10-23T06:30:59.7014517Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:30:59.7015129Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-10-23T06:30:59.7015425Z   GH_AW_AIC: 0.486684
+2026-10-23T06:30:59.7015662Z   GH_AW_AMBIENT_CONTEXT: 13540
+2026-10-23T06:30:59.7015930Z   AWF_LOGS_DIR: /tmp/gh-aw/sandbox/firewall/logs
+2026-10-23T06:30:59.7016206Z ##[endgroup]
+2026-10-23T06:31:00.1414401Z <details>
+2026-10-23T06:31:00.1415017Z <summary>Firewall Activity</summary>
+2026-10-23T06:31:00.1415365Z 
+2026-10-23T06:31:00.1416048Z ▼ 23 requests | 23 allowed | 0 blocked | 1 unique domain
+2026-10-23T06:31:00.1416424Z 
+2026-10-23T06:31:00.1416642Z | Domain | Allowed | Denied |
+2026-10-23T06:31:00.1417100Z |--------|---------|--------|
+2026-10-23T06:31:00.1417411Z | api.openai.com | 23 | 0 |
+2026-10-23T06:31:00.1417603Z 
+2026-10-23T06:31:00.1417721Z <details>
+2026-10-23T06:31:00.1418018Z <summary>Policy Rules</summary>
+2026-10-23T06:31:00.1418236Z 
+2026-10-23T06:31:00.1418419Z | Rule | Action | Hits | Description |
+2026-10-23T06:31:00.1418761Z |------|--------|------|-------------|
+2026-10-23T06:31:00.1419650Z | allow-topology-peer-awmg-mcpg | ✅ allow | 0 | Allow trusted topology peer "awmg-mcpg" on any port (network-isolation mode, before Safe_ports deny) |
+2026-10-23T06:31:00.1420677Z | deny-unsafe-ports | 🚫 deny | 0 | Deny requests to ports not in Safe_ports ACL (only 80, 443, and user-specified ports allowed) |
+2026-10-23T06:31:00.1421493Z | deny-connect-unsafe-ports | 🚫 deny | 0 | Deny CONNECT (HTTPS) to ports not in Safe_ports ACL |
+2026-10-23T06:31:00.1422274Z | allow-api-proxy-ip | ✅ allow | 0 | Allow connections to the AWF api-proxy sidecar IP before raw-IP deny rules |
+2026-10-23T06:31:00.1423483Z | allow-from-api-proxy | ✅ allow | 0 | Allow unrestricted outbound from api-proxy sidecar (trusted AWF component, not subject to agent domain ACL) |
+2026-10-23T06:31:00.1424430Z | deny-raw-ipv4 | 🚫 deny | 0 | Deny requests to raw IPv4 addresses (bypasses domain filtering) |
+2026-10-23T06:31:00.1425137Z | deny-raw-ipv6 | 🚫 deny | 0 | Deny requests to raw IPv6 addresses (bypasses domain filtering) |
+2026-10-23T06:31:00.1426032Z | allow-both-plain | ✅ allow | 0 | Allow HTTP and HTTPS traffic to these domains |
+2026-10-23T06:31:00.1426875Z | deny-default | 🚫 deny | 0 | Deny all traffic not matching any allow rule (default deny) |
+2026-10-23T06:31:00.1428110Z | unknown | 🚫 deny | 23 | Unattributed traffic (port/method-based rules not replayable from logs) |
+2026-10-23T06:31:00.1428448Z 
+2026-10-23T06:31:00.1428542Z </details>
+2026-10-23T06:31:00.1428663Z 
+2026-10-23T06:31:00.1428827Z </details>
+2026-10-23T06:31:00.1428944Z 

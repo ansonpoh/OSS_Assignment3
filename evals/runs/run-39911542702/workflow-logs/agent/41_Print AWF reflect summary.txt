@@ -1,0 +1,128 @@
+﻿2026-10-23T06:29:40.5874015Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T06:29:40.5874713Z with:
+2026-10-23T06:29:40.5876725Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'awf_reflect_summary.cjs'));
+await main();
+
+2026-10-23T06:29:40.5883263Z   github-token: ***
+2026-10-23T06:29:40.5883634Z   debug: false
+2026-10-23T06:29:40.5883996Z   user-agent: actions/github-script
+2026-10-23T06:29:40.5884456Z   result-encoding: json
+2026-10-23T06:29:40.5884830Z   retries: 0
+2026-10-23T06:29:40.5885216Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T06:29:40.5885781Z env:
+2026-10-23T06:29:40.5886115Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:29:40.5886558Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:29:40.5887885Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39911542702,github.run_id=39911542702,gh-aw.engine.id=codex
+2026-10-23T06:29:40.5889448Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:29:40.5889915Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:29:40.5890432Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:29:40.5890842Z   DEFAULT_BRANCH: main
+2026-10-23T06:29:40.5891219Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-23T06:29:40.5891631Z   GH_AW_ASSETS_BRANCH: 
+2026-10-23T06:29:40.5892008Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-23T06:29:40.5892414Z   GH_AW_ENGINE_VERSION: 0.163.0
+2026-10-23T06:29:40.5892901Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-23T06:29:40.5893423Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-23T06:29:40.5893843Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-23T06:29:40.5894269Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-23T06:29:40.5894663Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-23T06:29:40.5895062Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-23T06:29:40.5895455Z   GH_AW_PR_HEAD_REPO: 
+2026-10-23T06:29:40.5895829Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:29:40.5896220Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-23T06:29:40.5896642Z   GH_AW_WORKFLOW_ID_SANITIZED: richtriage
+2026-10-23T06:29:40.5897207Z   GITHUB_AW_OTEL_TRACE_ID: 4de59b2248629ebe87522758dafa31f6
+2026-10-23T06:29:40.5897817Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 724d76db617aec3a
+2026-10-23T06:29:40.5898345Z   GITHUB_AW_OTEL_JOB_START_MS: 1792736869177
+2026-10-23T06:29:40.5899317Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:29:40.5900110Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-10-23T06:29:40.5900615Z   GH_AW_AIC: 0.66332
+2026-10-23T06:29:40.5900984Z   GH_AW_AMBIENT_CONTEXT: 13540
+2026-10-23T06:29:40.5901410Z   GH_AW_PRIMARY_MODEL: gpt-6-luna
+2026-10-23T06:29:40.5901831Z ##[endgroup]
+2026-10-23T06:29:40.7053041Z <details>
+2026-10-23T06:29:40.7054021Z <summary>AWF API proxy: 1 of 5 providers configured</summary>
+2026-10-23T06:29:40.7054746Z 
+2026-10-23T06:29:40.7055187Z Configured endpoints
+2026-10-23T06:29:40.7055473Z 
+2026-10-23T06:29:40.7056006Z | Provider | Port | Configured | Available models |
+2026-10-23T06:29:40.7057247Z |----------|------|:----------:|-----------------|
+2026-10-23T06:29:40.7059209Z | openai | 10000 | ✅ | babbage-002, chat-latest, chatgpt-image-latest, davinci-002, gpt-3.5-turbo … +128 more |
+2026-10-23T06:29:40.7060565Z | anthropic | 10001 | ❌ | — |
+2026-10-23T06:29:40.7061305Z | copilot | 10002 | ❌ | — |
+2026-10-23T06:29:40.7061917Z | gemini | 10003 | ❌ | — |
+2026-10-23T06:29:40.7062636Z | vertex | 10004 | ❌ | — |
+2026-10-23T06:29:40.7063037Z 
+2026-10-23T06:29:40.7063378Z Model aliases
+2026-10-23T06:29:40.7063609Z 
+2026-10-23T06:29:40.7063853Z | Alias | Resolution order |
+2026-10-23T06:29:40.7064472Z |-------|------------------|
+2026-10-23T06:29:40.7065482Z | agent | sonnet-6x, gpt-6, gpt-5.4, gpt-5.5, gpt-5.6 … +3 more |
+2026-10-23T06:29:40.7066641Z | antigravity | copilot/antigravity*, google/antigravity*, gemini/antigravity* |
+2026-10-23T06:29:40.7071068Z | any | copilot/*, anthropic/*, openai/*, google/*, gemini/* |
+2026-10-23T06:29:40.7072465Z | auto | copilot/auto, large |
+2026-10-23T06:29:40.7073132Z | claude | agent |
+2026-10-23T06:29:40.7073596Z | codex | agent |
+2026-10-23T06:29:40.7074389Z | coding | copilot/gpt-5*codex*, openai/gpt-5*codex*, gpt-5-codex, kimi |
+2026-10-23T06:29:40.7075781Z | computer-use | copilot/*computer-use*, google/*computer-use*, gemini/*computer-use*, openai/*computer-use* |
+2026-10-23T06:29:40.7076891Z | copilot | agent |
+2026-10-23T06:29:40.7080088Z | deep-research | copilot/deep-research*, copilot/o3-deep-research*, copilot/o4-mini-deep-research*, google/deep-research*, gemini/deep-research* … +2 more |
+2026-10-23T06:29:40.7081450Z | detection | small |
+2026-10-23T06:29:40.7081922Z | evals | small |
+2026-10-23T06:29:40.7082480Z | fable | copilot/*fable*, anthropic/*fable* |
+2026-10-23T06:29:40.7083072Z | gemini | agent |
+2026-10-23T06:29:40.7084011Z | gemini-3-flash | copilot/gemini-3*flash*, google/gemini-3*flash*, gemini/gemini-3*flash* |
+2026-10-23T06:29:40.7085511Z | gemini-3-pro | copilot/gemini-3*pro*, google/gemini-3*pro*, google/nano-banana*, gemini/gemini-3*pro* |
+2026-10-23T06:29:40.7087066Z | gemini-3.1-flash | copilot/gemini-3.1*flash*, google/gemini-3.1*flash*, gemini/gemini-3.1*flash* |
+2026-10-23T06:29:40.7088449Z | gemini-3.1-pro | copilot/gemini-3.1*pro*, google/gemini-3.1*pro*, gemini/gemini-3.1*pro* |
+2026-10-23T06:29:40.7090205Z | gemini-3.5-flash | copilot/gemini-3.5*flash*, google/gemini-3.5*flash*, gemini/gemini-3.5*flash* |
+2026-10-23T06:29:40.7091702Z | gemini-3.6-flash | copilot/gemini-3.6*flash*, google/gemini-3.6*flash*, gemini/gemini-3.6*flash* |
+2026-10-23T06:29:40.7093099Z | gemini-3.7-flash | copilot/gemini-3.7*flash*, google/gemini-3.7*flash*, gemini/gemini-3.7*flash* |
+2026-10-23T06:29:40.7094448Z | gemini-3.8-flash | copilot/gemini-3.8*flash*, google/gemini-3.8*flash*, gemini/gemini-3.8*flash* |
+2026-10-23T06:29:40.7095834Z | gemini-flash | copilot/gemini-*flash*, google/gemini-*flash*, gemini/gemini-*flash* |
+2026-10-23T06:29:40.7097412Z | gemini-flash-lite | copilot/gemini-*flash*lite*, google/gemini-*flash*lite*, gemini/gemini-*flash*lite* |
+2026-10-23T06:29:40.7098409Z | gemini-omni | copilot/gemini-omni*, google/gemini-omni*, gemini/gemini-omni* |
+2026-10-23T06:29:40.7099436Z | gemini-pro | copilot/gemini-*pro*, google/gemini-*pro*, gemini/gemini-*pro* |
+2026-10-23T06:29:40.7099983Z | gemma | copilot/gemma*, google/gemma*, gemini/gemma* |
+2026-10-23T06:29:40.7100391Z | gpt-5 | copilot/gpt-5*, openai/gpt-5* |
+2026-10-23T06:29:40.7100811Z | gpt-5-codex | copilot/gpt-5*codex*, openai/gpt-5*codex* |
+2026-10-23T06:29:40.7101265Z | gpt-5-mini | copilot/gpt-5*mini*, openai/gpt-5*mini* |
+2026-10-23T06:29:40.7101690Z | gpt-5-nano | copilot/gpt-5*nano*, openai/gpt-5*nano* |
+2026-10-23T06:29:40.7102115Z | gpt-5-pro | copilot/gpt-5*pro*, openai/gpt-5*pro* |
+2026-10-23T06:29:40.7102515Z | gpt-5.1 | copilot/gpt-5.1*, openai/gpt-5.1* |
+2026-10-23T06:29:40.7102908Z | gpt-5.2 | copilot/gpt-5.2*, openai/gpt-5.2* |
+2026-10-23T06:29:40.7103299Z | gpt-5.3 | copilot/gpt-5.3*, openai/gpt-5.3* |
+2026-10-23T06:29:40.7103675Z | gpt-5.4 | copilot/gpt-5.4*, openai/gpt-5.4* |
+2026-10-23T06:29:40.7104252Z | gpt-5.5 | copilot/gpt-5.5*, openai/gpt-5.5* |
+2026-10-23T06:29:40.7104621Z | gpt-5.6 | copilot/gpt-5.6*, openai/gpt-5.6* |
+2026-10-23T06:29:40.7104988Z | gpt-6 | copilot/gpt-6*, openai/gpt-6* |
+2026-10-23T06:29:40.7105329Z | grok | copilot/*grok*, openai/*grok* |
+2026-10-23T06:29:40.7105698Z | haiku | copilot/*haiku*, anthropic/*haiku* |
+2026-10-23T06:29:40.7106651Z | image-generation | copilot/gpt-image*, openai/gpt-image*, openai/chatgpt-image*, copilot/gemini-*image*, google/gemini-*image* … +2 more |
+2026-10-23T06:29:40.7107338Z | kimi | copilot/kimi*, openai/kimi* |
+2026-10-23T06:29:40.7107681Z | kiwi | copilot/kiwi*, openai/kiwi* |
+2026-10-23T06:29:40.7108086Z | large | sonnet, gpt-6, gpt-5-pro, gpt-5, gemini-pro |
+2026-10-23T06:29:40.7108769Z | lyria | google/lyria*, gemini/lyria*, copilot/lyria* |
+2026-10-23T06:29:40.7109503Z | mai-code | copilot/MAI-Code*, copilot/mai-code*, openai/MAI-Code* |
+2026-10-23T06:29:40.7110049Z | mini | haiku, gpt-5-mini, gpt-5-nano, gemini-flash-lite |
+2026-10-23T06:29:40.7110629Z | nano-banana | copilot/nano-banana*, google/nano-banana*, gemini/nano-banana* |
+2026-10-23T06:29:40.7111136Z | opus | copilot/*opus*, anthropic/*opus* |
+2026-10-23T06:29:40.7111492Z | opusplan | opus?effort=high |
+2026-10-23T06:29:40.7111861Z | raptor-mini | copilot/raptor*, openai/raptor* |
+2026-10-23T06:29:40.7112953Z | reasoning | copilot/o1*, copilot/o3*, copilot/o4*, openai/o1*, openai/o3* … +1 more |
+2026-10-23T06:29:40.7113683Z | robotics | copilot/*robotics*, google/*robotics*, gemini/*robotics* |
+2026-10-23T06:29:40.7114078Z | small | mini |
+2026-10-23T06:29:40.7114410Z | small-agent | haiku, gpt-5-mini, gemini-flash |
+2026-10-23T06:29:40.7114832Z | sonnet | copilot/*sonnet*, anthropic/*sonnet* |
+2026-10-23T06:29:40.7115747Z | sonnet-6x | copilot/*sonnet-4.5*, copilot/*sonnet-4.6*, copilot/*sonnet-5*, copilot/*sonnet-4-5-*, anthropic/*sonnet-4-5-* … +3 more |
+2026-10-23T06:29:40.7116495Z | summarization | haiku, gpt-5-mini, gemini-flash-lite, mini |
+2026-10-23T06:29:40.7116911Z | veo | google/veo*, gemini/veo* |
+2026-10-23T06:29:40.7117733Z | vision | copilot/gemini-*image*, google/gemini-*image*, gemini/gemini-*image*, copilot/gemini-*flash*, google/gemini-*flash* … +1 more |
+2026-10-23T06:29:40.7118243Z 
+2026-10-23T06:29:40.7118333Z </details>
+2026-10-23T06:29:40.7118458Z 
+2026-10-23T06:29:40.7118880Z AWF reflect summary written to step summary

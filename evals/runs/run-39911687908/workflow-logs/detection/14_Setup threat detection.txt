@@ -1,0 +1,37 @@
+﻿2026-10-23T06:31:24.4213455Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T06:31:24.4214196Z with:
+2026-10-23T06:31:24.4215411Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'setup_threat_detection.cjs'));
+await main();
+
+2026-10-23T06:31:24.4219098Z   github-token: ***
+2026-10-23T06:31:24.4219345Z   debug: false
+2026-10-23T06:31:24.4219586Z   user-agent: actions/github-script
+2026-10-23T06:31:24.4219883Z   result-encoding: json
+2026-10-23T06:31:24.4220120Z   retries: 0
+2026-10-23T06:31:24.4220368Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T06:31:24.4220677Z env:
+2026-10-23T06:31:24.4220889Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:31:24.4221178Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:31:24.4221967Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39911687908,github.run_id=39911687908,gh-aw.engine.id=codex
+2026-10-23T06:31:24.4222781Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:31:24.4223249Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:31:24.4223568Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:31:24.4224082Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:31:24.4224399Z   GITHUB_AW_OTEL_TRACE_ID: dbac9b697e23d5a21e5aca864df26215
+2026-10-23T06:31:24.4224792Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 70dab822969688f9
+2026-10-23T06:31:24.4225129Z   GITHUB_AW_OTEL_JOB_START_MS: 1792737068480
+2026-10-23T06:31:24.4225433Z   WORKFLOW_NAME: Rich issue triage
+2026-10-23T06:31:24.4226107Z   WORKFLOW_DESCRIPTION: First-response triage for new issues. Proposes up to 3 allowlisted labels and at most 1 comment; cannot close, edit or delete anything.
+2026-10-23T06:31:24.4226785Z   HAS_PATCH: false
+2026-10-23T06:31:24.4227032Z   GH_AW_DETECTION_CONTINUE_ON_ERROR: true
+2026-10-23T06:31:24.4227359Z   GH_AW_DETECTION_SKIP_PROMPT_SUMMARY: true
+2026-10-23T06:31:24.4227651Z ##[endgroup]
+2026-10-23T06:31:24.5233119Z Removed framework system prompt block from /tmp/gh-aw/threat-detection/aw-prompts/prompt.txt
+2026-10-23T06:31:24.5234942Z Prompt file found: /tmp/gh-aw/threat-detection/aw-prompts/prompt.txt (922 bytes)
+2026-10-23T06:31:24.5236936Z Agent output file found: /tmp/gh-aw/threat-detection/agent_output.json (71 bytes)
+2026-10-23T06:31:24.5243100Z Skipping threat detection prompt step summary (external detector renders its own prompt)
+2026-10-23T06:31:24.5253562Z Threat detection setup completed

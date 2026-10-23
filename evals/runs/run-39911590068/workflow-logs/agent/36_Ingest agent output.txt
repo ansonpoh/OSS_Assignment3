@@ -1,0 +1,67 @@
+﻿2026-10-23T06:30:28.2995941Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T06:30:28.2996378Z with:
+2026-10-23T06:30:28.2997539Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'collect_ndjson_output.cjs'));
+await main();
+
+2026-10-23T06:30:28.3001467Z   github-token: ***
+2026-10-23T06:30:28.3001719Z   debug: false
+2026-10-23T06:30:28.3001952Z   user-agent: actions/github-script
+2026-10-23T06:30:28.3002229Z   result-encoding: json
+2026-10-23T06:30:28.3002454Z   retries: 0
+2026-10-23T06:30:28.3002702Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T06:30:28.3002997Z env:
+2026-10-23T06:30:28.3003204Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:30:28.3003485Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:30:28.3004243Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39911590068,github.run_id=39911590068,gh-aw.engine.id=codex
+2026-10-23T06:30:28.3005037Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:30:28.3005323Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:30:28.3005629Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:30:28.3005875Z   DEFAULT_BRANCH: main
+2026-10-23T06:30:28.3006108Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-23T06:30:28.3006353Z   GH_AW_ASSETS_BRANCH: 
+2026-10-23T06:30:28.3006584Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-23T06:30:28.3006831Z   GH_AW_ENGINE_VERSION: 0.163.0
+2026-10-23T06:30:28.3007119Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-23T06:30:28.3007435Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-23T06:30:28.3007687Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-23T06:30:28.3007940Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-23T06:30:28.3008191Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-23T06:30:28.3008428Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-23T06:30:28.3008663Z   GH_AW_PR_HEAD_REPO: 
+2026-10-23T06:30:28.3008891Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:30:28.3009328Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-23T06:30:28.3009617Z   GH_AW_WORKFLOW_ID_SANITIZED: richtriage
+2026-10-23T06:30:28.3009968Z   GITHUB_AW_OTEL_TRACE_ID: fe9f959687388d1d7ed0972589392eb2
+2026-10-23T06:30:28.3010336Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 08ed9c5790daa148
+2026-10-23T06:30:28.3010661Z   GITHUB_AW_OTEL_JOB_START_MS: 1792736928627
+2026-10-23T06:30:28.3011102Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-23T06:30:28.3011661Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-23T06:30:28.3012068Z   GH_AW_ALLOWED_GITHUB_REFS: repo
+2026-10-23T06:30:28.3012349Z   GITHUB_SERVER_URL: https://github.com
+2026-10-23T06:30:28.3012656Z   GITHUB_API_URL: https://api.github.com
+2026-10-23T06:30:28.3012943Z ##[endgroup]
+2026-10-23T06:30:28.4283726Z Loaded validation config from /home/runner/work/_temp/gh-aw/safeoutputs/validation.json
+2026-10-23T06:30:28.4285490Z [INGESTION] Reading config from: /home/runner/work/_temp/gh-aw/safeoutputs/config.json
+2026-10-23T06:30:28.4289761Z [INGESTION] Raw config content: {"add_comment":{"max":1,"target":"triggering"},"add_labels":{"allowed":["bug","enhancement","question","documentation","duplicate","invalid","upstream","more information needed"],"blocked":["wontfix","accepted","good first issue","help wanted","Needs triage","done","blocked","task"],"max":3,"target":"triggering"},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-23T06:30:28.4293094Z [INGESTION] Parsed config keys: ["add_comment","add_labels","noop","report_incomplete","report_missing_data","report_missing_tool"]
+2026-10-23T06:30:28.4293962Z [INGESTION] Output file path: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-23T06:30:28.4294805Z Raw output content length: 86
+2026-10-23T06:30:28.4295598Z [INGESTION] First 500 chars of output: {"item_number":11,"labels":[{"name":"bug"},{"name":"duplicate"}],"type":"add_labels"}
+2026-10-23T06:30:28.4296646Z 
+2026-10-23T06:30:28.4297033Z [INGESTION] Normalizing config keys (dash -> underscore)
+2026-10-23T06:30:28.4297925Z [INGESTION] Expected output types after normalization: ["add_comment","add_labels","noop","report_incomplete","report_missing_data","report_missing_tool"]
+2026-10-23T06:30:28.4301161Z [INGESTION] Expected output types full config: {"add_comment":{"max":1,"target":"triggering"},"add_labels":{"allowed":["bug","enhancement","question","documentation","duplicate","invalid","upstream","more information needed"],"blocked":["wontfix","accepted","good first issue","help wanted","Needs triage","done","blocked","task"],"max":3,"target":"triggering"},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-23T06:30:28.4303203Z [INGESTION] Processing line 1: {"item_number":11,"labels":[{"name":"bug"},{"name":"duplicate"}],"type":"add_labels"}...
+2026-10-23T06:30:28.4303927Z [INGESTION] Line 1: Original type='add_labels', Normalized type='add_labels'
+2026-10-23T06:30:28.4304355Z Line 1: type 'add_labels'
+2026-10-23T06:30:28.4311860Z GitHub reference filtering: allowed repos = repo
+2026-10-23T06:30:28.4343120Z GitHub reference filtering: allowed repos = repo
+2026-10-23T06:30:28.4344892Z Line 1: Valid add_labels item
+2026-10-23T06:30:28.4345486Z Successfully parsed 1 valid output items
+2026-10-23T06:30:28.5128310Z Stored validated output to: /tmp/gh-aw/agent_output.json
+2026-10-23T06:30:28.5135933Z output_types: add_labels
+2026-10-23T06:30:28.5137771Z No patch or bundle files found in: /tmp/gh-aw

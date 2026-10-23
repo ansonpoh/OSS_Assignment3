@@ -1,0 +1,32 @@
+﻿2026-10-23T06:27:25.0630468Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T06:27:25.0631412Z with:
+2026-10-23T06:27:25.0633347Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'compute_text.cjs'));
+await main();
+
+2026-10-23T06:27:25.0641832Z   github-token: ***
+2026-10-23T06:27:25.0642370Z   debug: false
+2026-10-23T06:27:25.0642843Z   user-agent: actions/github-script
+2026-10-23T06:27:25.0643388Z   result-encoding: json
+2026-10-23T06:27:25.0645345Z   retries: 0
+2026-10-23T06:27:25.0645896Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T06:27:25.0646503Z env:
+2026-10-23T06:27:25.0646948Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:27:25.0647503Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:27:25.0648896Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39911532377,github.run_id=39911532377,gh-aw.engine.id=codex
+2026-10-23T06:27:25.0651635Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:27:25.0652257Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:27:25.0652877Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:27:25.0653408Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-23T06:27:25.0654224Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:27:25.0654833Z   GITHUB_AW_OTEL_TRACE_ID: 5f784516f03cdb4789d8a6ce8898d4e5
+2026-10-23T06:27:25.0658501Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 638c9d2fef97e5b9
+2026-10-23T06:27:25.0659236Z   GITHUB_AW_OTEL_JOB_START_MS: 1792736839231
+2026-10-23T06:27:25.0659811Z ##[endgroup]
+2026-10-23T06:27:25.5128151Z Repository permission level: admin
+2026-10-23T06:27:25.5322027Z text: test - will delete\n\ntest
+2026-10-23T06:27:25.5327271Z title: test - will delete
+2026-10-23T06:27:25.5330678Z body: test

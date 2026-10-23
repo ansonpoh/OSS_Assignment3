@@ -1,0 +1,47 @@
+﻿2026-10-23T06:27:21.1017390Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T06:27:21.1018255Z with:
+2026-10-23T06:27:21.1022020Z   github-token: ***
+2026-10-23T06:27:21.1024373Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_daily_aic_workflow_guardrail.cjs'));
+await main();
+
+2026-10-23T06:27:21.1028796Z   debug: false
+2026-10-23T06:27:21.1029284Z   user-agent: actions/github-script
+2026-10-23T06:27:21.1032265Z   result-encoding: json
+2026-10-23T06:27:21.1032852Z   retries: 0
+2026-10-23T06:27:21.1033348Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T06:27:21.1034549Z env:
+2026-10-23T06:27:21.1034994Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:27:21.1035533Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:27:21.1036888Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39911532377,github.run_id=39911532377,gh-aw.engine.id=codex
+2026-10-23T06:27:21.1038394Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:27:21.1038958Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:27:21.1039557Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:27:21.1040305Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-23T06:27:21.1040833Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:27:21.1041404Z   GITHUB_AW_OTEL_TRACE_ID: 5f784516f03cdb4789d8a6ce8898d4e5
+2026-10-23T06:27:21.1042103Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 638c9d2fef97e5b9
+2026-10-23T06:27:21.1042714Z   GITHUB_AW_OTEL_JOB_START_MS: 1792736839231
+2026-10-23T06:27:21.1043286Z   GH_AW_WORKFLOW_NAME: Rich issue triage
+2026-10-23T06:27:21.1044062Z   GH_AW_WORKFLOW_ID: rich-triage
+2026-10-23T06:27:21.1044804Z   GH_AW_RUN_URL: https://github.com/ansonpoh/OSS_Assignment3/actions/runs/39911532377
+2026-10-23T06:27:21.1045598Z   GH_AW_WORKFLOW_DISPATCH_AW_CONTEXT: 
+2026-10-23T06:27:21.1046157Z   GH_AW_HAS_SLASH_COMMAND: false
+2026-10-23T06:27:21.1046669Z   GH_AW_HAS_LABEL_COMMAND: false
+2026-10-23T06:27:21.1050483Z   GH_AW_GITHUB_TOKEN: ***
+2026-10-23T06:27:21.1050969Z   GH_AW_MAX_AI_CREDITS: 50
+2026-10-23T06:27:21.1051429Z ##[endgroup]
+2026-10-23T06:27:21.2957601Z [daily-workflow-aic] Resolved daily AIC guardrail limits: {"dailyAICThreshold":600,"perRunMaxAICredits":50,"perRunFallbackAvailable":true}
+2026-10-23T06:27:21.4954623Z [daily-workflow-aic] Started authoritative AIC scan: {"repository":"ansonpoh/OSS_Assignment3","currentRunId":39911532377,"workflowId":393703717,"fallbackAIC":50}
+2026-10-23T06:27:21.5010572Z [daily-workflow-aic] Loaded scan observations: {"workflowId":393703717,"cachedEntries":1}
+2026-10-23T06:27:21.8296380Z [daily-workflow-aic] Listed workflow run candidates: {"page":1,"lookupMode":"workflow_id","sourceRunCount":1,"returnedRunCount":1}
+2026-10-23T06:27:21.8303443Z [daily-workflow-aic] Resolving run AIC: {"runId":39910044209,"runAttempt":2,"conclusion":"success","cacheHit":true}
+2026-10-23T06:27:21.8310544Z [daily-workflow-aic] Computed run AIC: {"runId":39910044209,"aic":0.8445729999999999,"reason":"scan_cache"}
+2026-10-23T06:27:21.8319590Z [daily-workflow-aic] Persisted scan observations: {"cachePath":"/tmp/gh-aw/agentic-workflow-usage-scan-v2.jsonl","entries":1}
+2026-10-23T06:27:21.8326736Z [daily-workflow-aic] Completed authoritative AIC scan: {"candidateRuns":1,"countedRuns":1,"cacheHits":1}
+2026-10-23T06:27:21.8346276Z [daily-workflow-aic] Completed AIC inspection window: {"candidateRunsCount":1,"inspectedRunsCount":1,"countedRunIds":[39910044209],"currentAIC":0.8445729999999999,"threshold":600,"exceeded":false}
+2026-10-23T06:27:21.8355130Z [daily-workflow-aic] Daily AIC business API requests: {"requests":2,"cacheHits":1}
+2026-10-23T06:27:21.8470229Z Daily workflow AIC guardrail not exceeded (0.8445729999999999/600).

@@ -1,0 +1,106 @@
+﻿2026-10-23T06:28:27.2930768Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T06:28:27.2931748Z with:
+2026-10-23T06:28:27.2934125Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'generate_aw_info.cjs'));
+await main(core, context);
+
+2026-10-23T06:28:27.2941254Z   github-token: ***
+2026-10-23T06:28:27.2941793Z   debug: false
+2026-10-23T06:28:27.2942283Z   user-agent: actions/github-script
+2026-10-23T06:28:27.2942872Z   result-encoding: json
+2026-10-23T06:28:27.2943618Z   retries: 0
+2026-10-23T06:28:27.2944129Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T06:28:27.2945046Z env:
+2026-10-23T06:28:27.2945502Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T06:28:27.2946078Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T06:28:27.2948371Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39911628498,github.run_id=39911628498,gh-aw.engine.id=codex
+2026-10-23T06:28:27.2950660Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T06:28:27.2951291Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T06:28:27.2951939Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T06:28:27.2952496Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-23T06:28:27.2953056Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T06:28:27.2953680Z   GITHUB_AW_OTEL_TRACE_ID: 788b5a78106360b7b0fa0560fbe711c6
+2026-10-23T06:28:27.2954659Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: cdbd0a8b8d26542e
+2026-10-23T06:28:27.2955353Z   GITHUB_AW_OTEL_JOB_START_MS: 1792736907222
+2026-10-23T06:28:27.2988872Z   GH_AW_INFO_ENGINE_ID: codex
+2026-10-23T06:28:27.2989687Z   GH_AW_INFO_ENGINE_NAME: Codex
+2026-10-23T06:28:27.2990284Z   GH_AW_INFO_MODEL: gpt-6-luna-2026-09-22
+2026-10-23T06:28:27.2990932Z   GH_AW_INFO_VERSION: 0.163.0
+2026-10-23T06:28:27.2991498Z   GH_AW_INFO_AGENT_VERSION: 0.163.0
+2026-10-23T06:28:27.2992171Z   GH_AW_INFO_WORKFLOW_NAME: Rich issue triage
+2026-10-23T06:28:27.2993200Z   GH_AW_INFO_WORKFLOW_ID: ansonpoh/OSS_Assignment3/.github/workflows/rich-triage.lock.yml@refs/heads/main
+2026-10-23T06:28:27.2994188Z   GH_AW_INFO_EXPERIMENTAL: false
+2026-10-23T06:28:27.2995069Z   GH_AW_INFO_SUPPORTS_TOOLS_ALLOWLIST: true
+2026-10-23T06:28:27.2995702Z   GH_AW_INFO_STAGED: false
+2026-10-23T06:28:27.2996841Z   GH_AW_INFO_ALLOWED_DOMAINS: []
+2026-10-23T06:28:27.2997468Z   GH_AW_INFO_FIREWALL_ENABLED: true
+2026-10-23T06:28:27.2998048Z   GH_AW_INFO_AWF_VERSION: v0.28.70
+2026-10-23T06:28:27.2998608Z   GH_AW_INFO_AWMG_VERSION: 
+2026-10-23T06:28:27.2999142Z   GH_AW_INFO_FIREWALL_TYPE: squid
+2026-10-23T06:28:27.2999708Z   GH_AW_INFO_AGENT_RUNTIME: 
+2026-10-23T06:28:27.3000684Z   GH_AW_INFO_MODEL_CONFIG: {"routing":{"enabled":false},"models":{"allowed":[],"blocked":[]},"max_ai_credits_source":"frontmatter"}
+2026-10-23T06:28:27.3001725Z   GH_AW_INFO_MAX_AI_CREDITS: 50
+2026-10-23T06:28:27.3002294Z   GH_AW_COMPILED_STRICT: true
+2026-10-23T06:28:27.3002833Z ##[endgroup]
+2026-10-23T06:28:27.4702125Z Starting context variable validation...
+2026-10-23T06:28:27.4715677Z ✓ github.event.issue.number is valid: 15
+2026-10-23T06:28:27.4723708Z ✓ github.event.repository.id is valid: 1430612354
+2026-10-23T06:28:27.4729386Z ✓ github.event.sender.id is valid: 111339101
+2026-10-23T06:28:27.4732972Z Validated 3 context variables
+2026-10-23T06:28:27.4738161Z ✅ All context variables validated successfully
+2026-10-23T06:28:27.4746903Z Lockdown mode not explicitly enabled, skipping validation
+2026-10-23T06:28:27.4751055Z Repository visibility: unknown
+2026-10-23T06:28:27.4753393Z Compiled with strict mode: true
+2026-10-23T06:28:27.4855278Z Generated merged models.json at: /tmp/gh-aw/models.json
+2026-10-23T06:28:27.4861039Z Generated aw_info.json at: /tmp/gh-aw/aw_info.json
+2026-10-23T06:28:27.4867473Z {
+2026-10-23T06:28:27.4868281Z   "engine_id": "codex",
+2026-10-23T06:28:27.4910986Z   "engine_name": "Codex",
+2026-10-23T06:28:27.4912157Z   "model": "gpt-6-luna-2026-09-22",
+2026-10-23T06:28:27.4912786Z   "version": "0.163.0",
+2026-10-23T06:28:27.4913315Z   "agent_version": "0.163.0",
+2026-10-23T06:28:27.4913889Z   "workflow_name": "Rich issue triage",
+2026-10-23T06:28:27.4915272Z   "workflow_id": "ansonpoh/OSS_Assignment3/.github/workflows/rich-triage.lock.yml@refs/heads/main",
+2026-10-23T06:28:27.4916762Z   "workflow_call_id": "39911628498-1:ansonpoh/OSS_Assignment3/.github/workflows/rich-triage.lock.yml@refs/heads/main",
+2026-10-23T06:28:27.4918274Z   "caller_workflow_ref": "ansonpoh/OSS_Assignment3/.github/workflows/rich-triage.lock.yml@refs/heads/main",
+2026-10-23T06:28:27.4919328Z   "experimental": false,
+2026-10-23T06:28:27.4919877Z   "supports_tools_allowlist": true,
+2026-10-23T06:28:27.4920457Z   "cache_memory": false,
+2026-10-23T06:28:27.4920951Z   "run_id": 39911628498,
+2026-10-23T06:28:27.4921447Z   "run_number": 14,
+2026-10-23T06:28:27.4921913Z   "run_attempt": "1",
+2026-10-23T06:28:27.4922467Z   "repository": "ansonpoh/OSS_Assignment3",
+2026-10-23T06:28:27.4923311Z   "ref": "refs/heads/main",
+2026-10-23T06:28:27.4923898Z   "sha": "22320f64799ef44784e2056780d13a2922319602",
+2026-10-23T06:28:27.4926980Z   "actor": "ansonpoh",
+2026-10-23T06:28:27.4927576Z   "event_name": "issues",
+2026-10-23T06:28:27.4928099Z   "target_repo": "",
+2026-10-23T06:28:27.4928597Z   "staged": false,
+2026-10-23T06:28:27.4929077Z   "dry_run": false,
+2026-10-23T06:28:27.4929558Z   "allowed_domains": [],
+2026-10-23T06:28:27.4930078Z   "firewall_enabled": true,
+2026-10-23T06:28:27.4930605Z   "awf_version": "v0.28.70",
+2026-10-23T06:28:27.4931136Z   "awmg_version": "",
+2026-10-23T06:28:27.4931631Z   "agent_runtime": "",
+2026-10-23T06:28:27.4932123Z   "steps": {
+2026-10-23T06:28:27.4932576Z     "firewall": "squid"
+2026-10-23T06:28:27.4933056Z   },
+2026-10-23T06:28:27.4933511Z   "created_at": "2026-10-23T06:28:27.475Z",
+2026-10-23T06:28:27.4935269Z   "workflow_ref": "ansonpoh/OSS_Assignment3/.github/workflows/rich-triage.lock.yml@refs/heads/main",
+2026-10-23T06:28:27.4936373Z   "server_url": "https://github.com",
+2026-10-23T06:28:27.4936977Z   "model_config": {
+2026-10-23T06:28:27.4937448Z     "routing": {
+2026-10-23T06:28:27.4937910Z       "enabled": false
+2026-10-23T06:28:27.4938391Z     },
+2026-10-23T06:28:27.4938812Z     "models": {
+2026-10-23T06:28:27.4939262Z       "allowed": [],
+2026-10-23T06:28:27.4939729Z       "blocked": []
+2026-10-23T06:28:27.4940180Z     },
+2026-10-23T06:28:27.4940650Z     "max_ai_credits_source": "frontmatter",
+2026-10-23T06:28:27.4941247Z     "max_ai_credits": 50
+2026-10-23T06:28:27.4941734Z   }
+2026-10-23T06:28:27.4942138Z }
+2026-10-23T06:28:27.4964315Z Generated workflow overview in step summary
