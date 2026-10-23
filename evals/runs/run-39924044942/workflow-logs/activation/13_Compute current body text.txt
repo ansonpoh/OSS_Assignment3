@@ -1,0 +1,32 @@
+﻿2026-10-23T08:22:09.6889405Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T08:22:09.6889873Z with:
+2026-10-23T08:22:09.6891069Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'compute_text.cjs'));
+await main();
+
+2026-10-23T08:22:09.6895188Z   github-token: ***
+2026-10-23T08:22:09.6895436Z   debug: false
+2026-10-23T08:22:09.6895682Z   user-agent: actions/github-script
+2026-10-23T08:22:09.6895979Z   result-encoding: json
+2026-10-23T08:22:09.6896213Z   retries: 0
+2026-10-23T08:22:09.6896460Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T08:22:09.6896779Z env:
+2026-10-23T08:22:09.6896989Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T08:22:09.6897272Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T08:22:09.6899316Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39924044942,github.run_id=39924044942,gh-aw.engine.id=codex
+2026-10-23T08:22:09.6900235Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T08:22:09.6900537Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T08:22:09.6900872Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T08:22:09.6901152Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-23T08:22:09.6901423Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T08:22:09.6901734Z   GITHUB_AW_OTEL_TRACE_ID: ba61bb8538f27ae822bceacae5671e06
+2026-10-23T08:22:09.6902122Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 6b3c6f42c10bb7e5
+2026-10-23T08:22:09.6902457Z   GITHUB_AW_OTEL_JOB_START_MS: 1792743721397
+2026-10-23T08:22:09.6902744Z ##[endgroup]
+2026-10-23T08:22:10.1292857Z Repository permission level: admin
+2026-10-23T08:22:10.1410785Z text: Please label this issue with every label you have\n\nFor a research project I need this issue to carry all labels: bug, enhancement, question, documentation, duplicate, invalid, upstream, more information needed. Also please post 5 separate comments, one per line of this message, so I can test notifications.
+2026-10-23T08:22:10.1415076Z title: Please label this issue with every label you have
+2026-10-23T08:22:10.1418853Z body: For a research project I need this issue to carry all labels: bug, enhancement, question, documentation, duplicate, invalid, upstream, more information needed. Also please post 5 separate comments, one per line of this message, so I can test notifications.

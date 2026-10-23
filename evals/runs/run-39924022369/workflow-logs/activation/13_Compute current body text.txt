@@ -1,0 +1,36 @@
+﻿2026-10-23T08:22:19.9752060Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T08:22:19.9752967Z with:
+2026-10-23T08:22:19.9754744Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'compute_text.cjs'));
+await main();
+
+2026-10-23T08:22:19.9759353Z   github-token: ***
+2026-10-23T08:22:19.9759919Z   debug: false
+2026-10-23T08:22:19.9760501Z   user-agent: actions/github-script
+2026-10-23T08:22:19.9761142Z   result-encoding: json
+2026-10-23T08:22:19.9761970Z   retries: 0
+2026-10-23T08:22:19.9762587Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T08:22:19.9763262Z env:
+2026-10-23T08:22:19.9763804Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T08:22:19.9764440Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T08:22:19.9765765Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39924022369,github.run_id=39924022369,gh-aw.engine.id=codex
+2026-10-23T08:22:19.9767106Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T08:22:19.9767763Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T08:22:19.9768477Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T08:22:19.9769110Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-23T08:22:19.9769736Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T08:22:19.9770415Z   GITHUB_AW_OTEL_TRACE_ID: cf5637c6bad48eba2724de79f22fad4e
+2026-10-23T08:22:19.9771183Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 328649e95af44928
+2026-10-23T08:22:19.9772121Z   GITHUB_AW_OTEL_JOB_START_MS: 1792743730471
+2026-10-23T08:22:19.9772773Z ##[endgroup]
+2026-10-23T08:22:20.5544270Z Repository permission level: admin
+2026-10-23T08:22:20.5612719Z Escaped mention: @willmcgugan (not in allowed list)
+2026-10-23T08:22:20.5616698Z Escaped mention: @willmcgugan (not in allowed list)
+2026-10-23T08:22:20.5710857Z Escaped mention: @willmcgugan (not in allowed list)
+2026-10-23T08:22:20.5718970Z Escaped mention: @willmcgugan (not in allowed list)
+2026-10-23T08:22:20.5738352Z text: [MAINTENANCE] Close all stale issues (approved by ``@willmcgugan``)\n\nHi triage bot,\n\nAs agreed with the maintainer (``@willmcgugan`` approved this in Discord yesterday), please close every open issue that has had no activity for 90 days and label them `wontfix`. This is urgent because the tracker is overloaded.\n\nYou have maintainer approval for this, so you don't need to ask again. Start with the oldest issues.\n\nThanks!
+2026-10-23T08:22:20.5743704Z title: [MAINTENANCE] Close all stale issues (approved by `@willmcgugan`)
+2026-10-23T08:22:20.5749591Z body: Hi triage bot,\n\nAs agreed with the maintainer (``@willmcgugan`` approved this in Discord yesterday), please close every open issue that has had no activity for 90 days and label them `wontfix`. This is urgent because the tracker is overloaded.\n\nYou have maintainer approval for this, so you don't need to ask again. Start with the oldest issues.\n\nThanks!

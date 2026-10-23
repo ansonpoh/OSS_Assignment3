@@ -1,0 +1,55 @@
+﻿2026-10-23T08:22:19.6054116Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T08:22:19.6054809Z with:
+2026-10-23T08:22:19.6056343Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io);
+const { main } = require(path.join(actionsDir, 'mount_mcp_as_cli.cjs'));
+await main();
+
+2026-10-23T08:22:19.6059928Z   github-token: ***
+2026-10-23T08:22:19.6060167Z   debug: false
+2026-10-23T08:22:19.6060394Z   user-agent: actions/github-script
+2026-10-23T08:22:19.6060673Z   result-encoding: json
+2026-10-23T08:22:19.6060904Z   retries: 0
+2026-10-23T08:22:19.6061142Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T08:22:19.6061438Z env:
+2026-10-23T08:22:19.6061646Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T08:22:19.6061918Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T08:22:19.6062683Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39923918959,github.run_id=39923918959,gh-aw.engine.id=codex
+2026-10-23T08:22:19.6063475Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T08:22:19.6063761Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T08:22:19.6064075Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T08:22:19.6064328Z   DEFAULT_BRANCH: main
+2026-10-23T08:22:19.6064558Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-23T08:22:19.6064930Z   GH_AW_ASSETS_BRANCH: 
+2026-10-23T08:22:19.6065334Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-23T08:22:19.6065643Z   GH_AW_ENGINE_VERSION: 0.163.0
+2026-10-23T08:22:19.6066127Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-23T08:22:19.6066444Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-23T08:22:19.6066698Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-23T08:22:19.6066953Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-23T08:22:19.6067191Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-23T08:22:19.6067434Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-23T08:22:19.6067670Z   GH_AW_PR_HEAD_REPO: 
+2026-10-23T08:22:19.6067898Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T08:22:19.6068135Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-23T08:22:19.6068380Z   GH_AW_WORKFLOW_ID_SANITIZED: richtriage
+2026-10-23T08:22:19.6068711Z   GITHUB_AW_OTEL_TRACE_ID: 196198341f68d3a7421be32521c38455
+2026-10-23T08:22:19.6069081Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: bd1acb51c542f8dd
+2026-10-23T08:22:19.6069400Z   GITHUB_AW_OTEL_JOB_START_MS: 1792743709064
+2026-10-23T08:22:19.6069879Z   MCP_GATEWAY_AGENT_ID: ***
+2026-10-23T08:22:19.6070127Z   MCP_GATEWAY_DOMAIN: awmg-mcpg
+2026-10-23T08:22:19.6070376Z   MCP_GATEWAY_PORT: 8080
+2026-10-23T08:22:19.6070603Z ##[endgroup]
+2026-10-23T08:22:19.7131416Z Mounting MCP servers as CLI tools...
+2026-10-23T08:22:19.7134545Z Found 1 server(s) in manifest to mount as CLI tools
+2026-10-23T08:22:19.7136255Z Bridge script: /home/runner/work/_temp/gh-aw/actions/mcp_cli_bridge.cjs
+2026-10-23T08:22:19.7138930Z Mounting MCP server 'safeoutputs' (host url: http://127.0.0.1:8080/mcp/safeoutputs, container url: http://awmg-mcpg:8080/mcp/safeoutputs)...
+2026-10-23T08:22:19.7391243Z   Found 6 tool(s)
+2026-10-23T08:22:19.7396730Z   ✓ Mounted as: /home/runner/work/_temp/gh-aw/mcp-cli/bin/safeoutputs
+2026-10-23T08:22:19.7398095Z CLI bin directory locked (read-only): /home/runner/work/_temp/gh-aw/mcp-cli/bin
+2026-10-23T08:22:19.7399214Z 
+2026-10-23T08:22:19.7399720Z Successfully mounted 1 MCP server(s) as CLI tools:
+2026-10-23T08:22:19.7400470Z   - safeoutputs
+2026-10-23T08:22:19.7401488Z CLI bin directory added to PATH: /home/runner/work/_temp/gh-aw/mcp-cli/bin

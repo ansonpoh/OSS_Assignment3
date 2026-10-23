@@ -1,0 +1,31 @@
+﻿2026-10-23T08:20:08.1481942Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T08:20:08.1482981Z with:
+2026-10-23T08:20:08.1485190Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_skip_bots.cjs'));
+await main();
+
+2026-10-23T08:20:08.1492104Z   github-token: ***
+2026-10-23T08:20:08.1493171Z   debug: false
+2026-10-23T08:20:08.1494273Z   user-agent: actions/github-script
+2026-10-23T08:20:08.1495034Z   result-encoding: json
+2026-10-23T08:20:08.1495625Z   retries: 0
+2026-10-23T08:20:08.1496592Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T08:20:08.1497434Z env:
+2026-10-23T08:20:08.1498046Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T08:20:08.1498723Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T08:20:08.1500354Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39923874287,github.run_id=39923874287,gh-aw.engine.id=codex
+2026-10-23T08:20:08.1502148Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T08:20:08.1502888Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T08:20:08.1503677Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T08:20:08.1504325Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T08:20:08.1505053Z   GITHUB_AW_OTEL_TRACE_ID: 89fff13b2cde58f87aa92ac5640dacb3
+2026-10-23T08:20:08.1506677Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 48e1d4a73d2a7c4e
+2026-10-23T08:20:08.1507502Z   GITHUB_AW_OTEL_JOB_START_MS: 1792743607181
+2026-10-23T08:20:08.1508364Z   GH_AW_SKIP_BOTS: github-actions,dependabot,renovate
+2026-10-23T08:20:08.1509159Z   GH_AW_WORKFLOW_NAME: Rich issue triage
+2026-10-23T08:20:08.1509866Z ##[endgroup]
+2026-10-23T08:20:08.3155282Z Checking if user 'ansonpoh' is in skip-bots: github-actions, dependabot, renovate
+2026-10-23T08:20:08.3166549Z ✅ User 'ansonpoh' is NOT in skip-bots [github-actions, dependabot, renovate]. Workflow will proceed.

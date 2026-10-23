@@ -1,0 +1,91 @@
+﻿2026-10-23T08:21:23.1342161Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T08:21:23.1342771Z with:
+2026-10-23T08:21:23.1344074Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'interpolate_prompt.cjs'));
+await main();
+
+2026-10-23T08:21:23.1348261Z   github-token: ***
+2026-10-23T08:21:23.1348663Z   debug: false
+2026-10-23T08:21:23.1349087Z   user-agent: actions/github-script
+2026-10-23T08:21:23.1349536Z   result-encoding: json
+2026-10-23T08:21:23.1349914Z   retries: 0
+2026-10-23T08:21:23.1350323Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T08:21:23.1350780Z env:
+2026-10-23T08:21:23.1351143Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T08:21:23.1351572Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T08:21:23.1352499Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39923988855,github.run_id=39923988855,gh-aw.engine.id=codex
+2026-10-23T08:21:23.1353465Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T08:21:23.1353903Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T08:21:23.1354378Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T08:21:23.1354796Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-23T08:21:23.1355216Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T08:21:23.1355678Z   GITHUB_AW_OTEL_TRACE_ID: 3decfd942c38560f7bc5ab095c609cb2
+2026-10-23T08:21:23.1356214Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 162bbffb915fdc69
+2026-10-23T08:21:23.1356688Z   GITHUB_AW_OTEL_JOB_START_MS: 1792743673583
+2026-10-23T08:21:23.1357225Z   GH_AW_PROMPT: /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt
+2026-10-23T08:21:23.1357953Z   GH_AW_ENGINE_ID: codex
+2026-10-23T08:21:23.1358363Z   GH_AW_SUB_AGENT_DIR: .codex/agents
+2026-10-23T08:21:23.1358785Z   GH_AW_SUB_AGENT_EXT: .md
+2026-10-23T08:21:23.1359204Z   GH_AW_SKILL_DIR: .codex/skills
+2026-10-23T08:21:23.1359615Z   GH_AW_SKILL_EXT: /SKILL.md
+2026-10-23T08:21:23.1360047Z   GH_AW_GITHUB_REPOSITORY: ansonpoh/OSS_Assignment3
+2026-10-23T08:21:23.1360508Z ##[endgroup]
+2026-10-23T08:21:23.3434913Z ========================================
+2026-10-23T08:21:23.3438445Z [main] Starting interpolate_prompt processing
+2026-10-23T08:21:23.3440980Z ========================================
+2026-10-23T08:21:23.3443116Z [main] Prompt path: /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt
+2026-10-23T08:21:23.3446063Z [main] Workspace directory: /home/runner/work/OSS_Assignment3/OSS_Assignment3
+2026-10-23T08:21:23.3447415Z [main] Reading prompt file...
+2026-10-23T08:21:23.3452367Z [main] Original content length: 9017 characters
+2026-10-23T08:21:23.3454362Z [main] First 200 characters: <system>\nImmutable security policy. Sandbox, firewall, credentials, and tool limits are physical boundaries. Do not bypass, weaken, test, or evade them.\n\nNever do: container escape, privilege escalati
+2026-10-23T08:21:23.3459464Z [main] Writing raw template to: /home/runner/work/_temp/gh-aw/aw-prompts/prompt-template.txt
+2026-10-23T08:21:23.3472785Z 
+2026-10-23T08:21:23.3474044Z ========================================
+2026-10-23T08:21:23.3475550Z [main] STEP 1: Runtime Imports
+2026-10-23T08:21:23.3476537Z ========================================
+2026-10-23T08:21:23.3482255Z Processing 1 runtime import macro(s) (files and URLs)
+2026-10-23T08:21:23.3484088Z   Import 1: {{#runtime-import .github/workflows/rich-triage.md}}
+2026-10-23T08:21:23.3519085Z Found 1 expression(s) in File workflows/rich-triage.md
+2026-10-23T08:21:23.3539716Z Successfully processed 1 safe expression(s) in File workflows/rich-triage.md
+2026-10-23T08:21:23.3549367Z Runtime imports processed successfully
+2026-10-23T08:21:23.3550728Z Content length change: 9075 -> 9883 (+808)
+2026-10-23T08:21:23.3552776Z [main] Writing import tree to: /home/runner/work/_temp/gh-aw/aw-prompts/prompt-import-tree.json
+2026-10-23T08:21:23.3558817Z 
+2026-10-23T08:21:23.3559141Z ========================================
+2026-10-23T08:21:23.3560221Z [main] STEP 1.5: Inline Sub-Agent Extraction
+2026-10-23T08:21:23.3561159Z ========================================
+2026-10-23T08:21:23.3562648Z No inline sub-agent markers found, skipping
+2026-10-23T08:21:23.3564618Z 
+2026-10-23T08:21:23.3564884Z ========================================
+2026-10-23T08:21:23.3565831Z [main] STEP 1.6: Inline Skill Extraction
+2026-10-23T08:21:23.3566722Z ========================================
+2026-10-23T08:21:23.3568458Z No inline skill markers found, skipping
+2026-10-23T08:21:23.3569265Z 
+2026-10-23T08:21:23.3569497Z ========================================
+2026-10-23T08:21:23.3570402Z [main] STEP 2: Variable Interpolation
+2026-10-23T08:21:23.3571289Z ========================================
+2026-10-23T08:21:23.3575169Z No expression variables found, skipping interpolation
+2026-10-23T08:21:23.3575992Z 
+2026-10-23T08:21:23.3576230Z ========================================
+2026-10-23T08:21:23.3577186Z [main] STEP 2.5: Experiment Placeholder Substitution
+2026-10-23T08:21:23.3578935Z ========================================
+2026-10-23T08:21:23.3584574Z No experiment placeholders found in prompt
+2026-10-23T08:21:23.3585446Z 
+2026-10-23T08:21:23.3585684Z ========================================
+2026-10-23T08:21:23.3586564Z [main] STEP 3: Template Rendering
+2026-10-23T08:21:23.3587444Z ========================================
+2026-10-23T08:21:23.3589722Z No conditional blocks found in prompt, skipping template rendering
+2026-10-23T08:21:23.3590767Z 
+2026-10-23T08:21:23.3590950Z ========================================
+2026-10-23T08:21:23.3592861Z [main] STEP 4: Writing Output
+2026-10-23T08:21:23.3593878Z ========================================
+2026-10-23T08:21:23.3595081Z Writing processed content back to: /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt
+2026-10-23T08:21:23.3596331Z Final content length: 9883 characters
+2026-10-23T08:21:23.3597427Z Total length change: 9017 -> 9883 (+866)
+2026-10-23T08:21:23.3604043Z Last 200 characters: port `noop`. Finish by emitting those safe outputs. If you decide no\nlabel and no comment are needed, you MUST call `noop` with a one-line reason:\n{"noop": {"message": "No action needed: <reason>"}}\n\n
+2026-10-23T08:21:23.3613847Z ========================================
+2026-10-23T08:21:23.3615443Z [main] Processing complete - SUCCESS
+2026-10-23T08:21:23.3616361Z ========================================

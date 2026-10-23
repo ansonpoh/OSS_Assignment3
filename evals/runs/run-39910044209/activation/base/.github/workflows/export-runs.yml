@@ -1,0 +1,46 @@
+# Audit trail export: downloads the triage workflow's run artifacts (agent
+# output, usage/cost, firewall log, skill trace) and commits them to the
+# data/runs branch so they outlive the 90-day artifact retention.
+name: export-runs
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: number of most recent rich-triage runs to export
+        default: "30"
+permissions:
+  contents: write   # push to data/runs only
+  actions: read     # read run logs and artifacts
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install gh-aw CLI (pinned)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh extension install github/gh-aw --pin v0.93.0
+      - name: Download runs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COUNT: ${{ inputs.count }}
+        run: |
+          set -euo pipefail
+          mkdir -p evals/runs
+          gh aw logs rich-triage --repo "$GITHUB_REPOSITORY" --artifacts all --parse \
+            -c "$COUNT" -o evals/runs --format markdown --report-file evals/runs/report.md || true
+          gh aw logs rich-triage --repo "$GITHUB_REPOSITORY" -c "$COUNT" -o evals/runs --json > evals/runs/summary-cli.json || true
+          for id in $(gh run list --workflow rich-triage.lock.yml -L "$COUNT" --json databaseId -q '.[].databaseId'); do
+            mkdir -p "evals/runs/trace/$id"
+            gh run download "$id" -n skill-trace -D "evals/runs/trace/$id" || echo "no skill-trace for $id"
+          done
+          du -sh evals/runs
+      - name: Commit to data/runs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B data/runs
+          git add -f evals/runs
+          git commit -m "runs: export (run $GITHUB_RUN_ID)"
+          git push -f origin data/runs

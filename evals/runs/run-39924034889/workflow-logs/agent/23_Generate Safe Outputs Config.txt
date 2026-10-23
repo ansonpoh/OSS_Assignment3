@@ -1,0 +1,45 @@
+﻿2026-10-23T08:23:06.7186292Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-23T08:23:06.7186737Z with:
+2026-10-23T08:23:06.7188200Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'create_files.cjs'));
+await main();
+
+2026-10-23T08:23:06.7191795Z   github-token: ***
+2026-10-23T08:23:06.7192026Z   debug: false
+2026-10-23T08:23:06.7192252Z   user-agent: actions/github-script
+2026-10-23T08:23:06.7192525Z   result-encoding: json
+2026-10-23T08:23:06.7192744Z   retries: 0
+2026-10-23T08:23:06.7192986Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-23T08:23:06.7193276Z env:
+2026-10-23T08:23:06.7193493Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-23T08:23:06.7193768Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-23T08:23:06.7194533Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=39924034889,github.run_id=39924034889,gh-aw.engine.id=codex
+2026-10-23T08:23:06.7195329Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-23T08:23:06.7195609Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-23T08:23:06.7195917Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-23T08:23:06.7196159Z   DEFAULT_BRANCH: main
+2026-10-23T08:23:06.7196383Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-23T08:23:06.7196632Z   GH_AW_ASSETS_BRANCH: 
+2026-10-23T08:23:06.7196859Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-23T08:23:06.7197097Z   GH_AW_ENGINE_VERSION: 0.163.0
+2026-10-23T08:23:06.7197382Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-23T08:23:06.7197932Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-23T08:23:06.7198179Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-23T08:23:06.7198437Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-23T08:23:06.7198682Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-23T08:23:06.7198919Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-23T08:23:06.7199147Z   GH_AW_PR_HEAD_REPO: 
+2026-10-23T08:23:06.7199371Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-23T08:23:06.7199618Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-23T08:23:06.7199866Z   GH_AW_WORKFLOW_ID_SANITIZED: richtriage
+2026-10-23T08:23:06.7200214Z   GITHUB_AW_OTEL_TRACE_ID: 6d0cd7fdabda30f254d6b8deca61de19
+2026-10-23T08:23:06.7200584Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: d7d4decc72ce513b
+2026-10-23T08:23:06.7200892Z   GITHUB_AW_OTEL_JOB_START_MS: 1792743757198
+2026-10-23T08:23:06.7201211Z   GH_AW_FILE_ROOT: /home/runner/work/_temp/gh-aw
+2026-10-23T08:23:06.7201719Z   GH_AW_FILE_CONFIG: {"files":[{"path":"safeoutputs/config.json","content_env":"GH_AW_SAFE_OUTPUTS_CONFIG"}]}
+2026-10-23T08:23:06.7203525Z   GH_AW_SAFE_OUTPUTS_CONFIG: {"add_comment":{"max":1,"target":"triggering"},"add_labels":{"allowed":["bug","enhancement","question","documentation","duplicate","invalid","upstream","more information needed"],"blocked":["wontfix","accepted","good first issue","help wanted","Needs triage","done","blocked","task"],"max":1,"max_labels":3,"target":"triggering"},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-23T08:23:06.7205136Z ##[endgroup]
+2026-10-23T08:23:06.8199382Z Created 1 generated file(s) under /home/runner/work/_temp/gh-aw
