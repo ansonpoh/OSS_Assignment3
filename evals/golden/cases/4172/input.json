@@ -1,0 +1,11 @@
+{
+  "repo": "Textualize/rich",
+  "number": 4172,
+  "title": "Expand typing for Title field in Table object",
+  "body": "## Description\n\nWhen building tables in a CLI program I am working on, I have varying sized tables that are smaller than the console width. I was using the Rule object as a separator between them, but I also had a Text object centered in the middle of the Rule object as sort of a title. The issue came in that the Rule was spanning the entire width of the console instead of just the Table's width. I then passed the Rule in for the title field which then restricted the Rule to the Table's width. This worked cleaning except for the typing. The title field is currently set to `Union[str, Text], optional` and I think it would benefit from a less strict typing.\n\n## Suggested Change\n\nUpdate the Title arg in the Table Class with a more open typing that accepts more than just str and Text objects.\n\n## Benefits\n\nThere are currently a couple of other ways I can think of handling this. One would be putting both the Rule and the Table in a Table.grid object. Another way is determining the width of the Table and then building a Text object the same size. Both seem cumbersome and overall would be more cleanly solved by just passing a Rule in for the title of a Table.\n",
+  "author": "klaw-rii",
+  "author_association": "NONE",
+  "created_at": "2026-06-18T18:30:14Z",
+  "labels": [],
+  "source_url": "https://github.com/Textualize/rich/issues/4172"
+}

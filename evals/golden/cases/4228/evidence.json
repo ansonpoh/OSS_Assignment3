@@ -1,0 +1,37 @@
+{
+  "final_state": "closed",
+  "state_reason": "completed",
+  "closed_at": "2026-09-26T11:06:03Z",
+  "final_labels": [],
+  "events": [
+    {
+      "event": "closed",
+      "actor": "loot-midget",
+      "label": null,
+      "at": "2026-09-26T11:06:03Z"
+    }
+  ],
+  "comments": [
+    {
+      "author": "YS-OH-CORE",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-09-26T04:06:26Z",
+      "body": "Use `Text.from_markup(value).plain` to get the displayed text without the markup. Keep the original string for the menu, and use the plain text only as the search key.\n\nFor the `filter_options()` in your linked Beaupy example:\n\n```python\nfrom rich.text import Text\n\ndef filter_options(*, options: list[str], substring: str) -> list[str]:\n    if not substring:\n        return list(options)\n    needle = substring.lower()\n    return [\n        item\n        for item in options\n        if needle in Text.from_markup(item).plain.lower()\n    ]\n```\n\nFor example, `[bold red]Apple[/bold red]` is searched as `Apple`: `red` no longer matches, while `app` does. The returned item still contains its original styling.\n\nI checked this search function with Rich 15.0.0, including style-name exclusion, case-insensitive visible text, link text versus its hidden URL, empty filters, emoji expansion, and escaped literal brackets. This checks the filtering step, not a complete interactive Beaupy session.\n\n[API reference](https://rich.readthedocs.io/en/stable/reference/text.html#rich.text.Text.from_markup)\n\nAI assistance disclosure: prepared and tested for Youngseok Oh using OpenAI Codex.\n"
+    },
+    {
+      "author": "loot-midget",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-09-26T11:06:03Z",
+      "body": "It works!\nThank you! \n"
+    },
+    {
+      "author": "github-actions[bot]",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-09-26T11:06:11Z",
+      "body": "I hope I helped!\n\nConsider [sponsoring](https://github.com/sponsors/willmcgugan) my work on Rich. I give tech support for free, in addition to maintaining Rich and Textual.\n\nIf you like using Rich, you might also enjoy [Textual](https://textual.textualize.io).\n\nWill McGugan"
+    }
+  ]
+}

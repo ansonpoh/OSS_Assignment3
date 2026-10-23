@@ -1,0 +1,39 @@
+{
+  "final_state": "open",
+  "state_reason": null,
+  "closed_at": null,
+  "final_labels": [
+    "Needs triage"
+  ],
+  "events": [
+    {
+      "event": "labeled",
+      "actor": "anonymous756fsd",
+      "label": "Needs triage",
+      "at": "2026-09-03T04:24:49Z"
+    }
+  ],
+  "comments": [
+    {
+      "author": "eminsk",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-09-04T13:39:55Z",
+      "body": "I took a look at this and reproduced the crash with a test case.\n\nWhen `max_width <= self.width + width_padding` (or with `width=0, padding=0`), `column_count` in `rich/columns.py` evaluates to `0`, causing the `ZeroDivisionError` when iterating.\n\nGuarding `column_count` with `max(1, ...)` resolves the issue cleanly:\n```python\ncolumn_count = (\n    max(1, max_width // (self.width + width_padding))\n    if (self.width + width_padding) > 0\n    else 1\n)\n```\n\nI've put together a fix with regression tests on my fork:\n- Commit: [eminsk/rich@c9f68f3](https://github.com/eminsk/rich/commit/c9f68f339457092728cf5ac86264ad3d8571073c)\n- Branch: [`fix/columns-zero-division`](https://github.com/eminsk/rich/tree/fix/columns-zero-division)\n\nSince PRs are currently limited to collaborators on this repo, feel free to cherry-pick this directly or let me know if you'd like me to open a PR once permissions allow.\n"
+    },
+    {
+      "author": "TrueFurina",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-09-12T05:37:28Z",
+      "body": "I hit this while using `Columns` with a fixed width and traced it to `rich/columns.py`. Here's a minimal fix \u2014 happy to send a proper PR if collaborators would like one (I can't open one due to the repository's collaborator-only pull request policy).\n\n**Root cause:** in `__rich_console__`, when `self.width` is set:\n\n```python\ncolumn_count = (max_width) // (self.width + width_padding)\n```\n\nIf `self.width + width_padding > max_width` (e.g. `Columns(width=10)` on a console of width 10 with the default padding `(0, 1)`), this evaluates to `0`. `iter_renderables` then evaluates `item_count % column_count`, raising `ZeroDivisionError`.\n\n**Fix:** clamp the column count to at least 1, falling back to a single column:\n\n```python\ncolumn_count = max(1, max_width // (self.width + width_padding))\n```\n\n**Reproduction (rich 15.0.0):**\n\n```python\nfrom io import StringIO\nfrom rich.console import Console\nfrom rich.columns import Columns\n\nconsole = Console(file=StringIO(), width=10)\nconsole.print(Columns([\"a\", \"b\", \"c\"], width=10))  # ZeroDivisionError\n```\n\nAfter the fix this renders the items stacked in a single column.\n\nFull fix with a regression test (`test_width_narrower_than_console_does_not_crash`, covering `width == console_width`, `width == 0` on a wider console, and `column_first` with an oversized width) is on my fork, built on current `main`:\n\n**https://github.com/TrueFurina/rich/compare/main...TrueFurina:fix/columns-zero-width-fallback**\n\n(`rich/columns.py` +4/-1, `tests/test_columns.py` +11; `pytest tests/test_columns.py` \u2014 2 passed.)\n\nFeel free to cherry-pick or use it as a base if a collaborator picks this up."
+    },
+    {
+      "author": "Pitchfork-and-Torch",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-09-18T01:30:12Z",
+      "body": "Opened a fix on a fork (CreatePullRequest scope blocked for this account against upstream):\n\nhttps://github.com/Textualize/rich/compare/main...Pitchfork-and-Torch:rich:cook/columns-zerodiv-narrow-width?expand=1\n\nClamps `column_count` to at least 1 when fixed `width` does not fit (and when `width + padding <= 0`). Includes a regression test for the issue repro."
+    }
+  ]
+}

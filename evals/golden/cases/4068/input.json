@@ -1,0 +1,13 @@
+{
+  "repo": "Textualize/rich",
+  "number": 4068,
+  "title": "[BUG] rich.print does not overwrite previous line with \\r like built-in print",
+  "body": "- [x] I've checked the documentation: https://rich.readthedocs.io/en/latest/introduction.html\n- [x] I can't find my issue in the FAQ: https://github.com/Textualize/rich/blob/master/FAQ.md\n\n## Describe the bug\n\nI'm trying to overwrite the previous line in stdout using `rich.print()`, in the same way this is commonly done with the built-in `print()` function using `\\r` (carriage return) and flushing the output.\n\nBelow is a minimal example that demonstrates the behavior I'm seeing.\n\n```python\nimport sys\nfrom time import sleep\nfrom rich import print as rprint\n\n\nfor i in range(10):\n    rprint(f\"\\rNumber: {i}\", end=\"\")\n    sleep(0.5)\n\nprint()\n\nfor i in range(10):\n    print(f\"\\rNumber: {i}\", end=\"\", flush=True)\n    sys.stdout.flush()\n    sleep(0.5)\n```\n\nIn the second loop (using print()), the output behaves as expected: the same line is continuously overwritten with the updated value of Number.\nHowever, in the first loop (using rich.print()), the output does not overwrite the previous line and instead prints successive output differently.\nWhat I find confusing is that the documentation for rich.print() states that Rich always flushes output. Based on that, I would expect the two loops to behave the same way, but they clearly don't.\nI'm trying to understand:\n\nWhy \\r does not produce the same overwrite behavior when using rich.print()\nWhether this is expected behavior due to how Rich handles rendering and cursor control\nOr whether I'm misunderstanding the documentation around flushing.\n\nAlso if there is any other way to achieve the same behavior do let me know!\n\nThank you!",
+  "author": "1Doomdie1",
+  "author_association": "NONE",
+  "created_at": "2026-04-07T13:36:25Z",
+  "labels": [
+    "Needs triage"
+  ],
+  "source_url": "https://github.com/Textualize/rich/issues/4068"
+}
