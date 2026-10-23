@@ -1,0 +1,32 @@
+{
+  "final_state": "open",
+  "state_reason": null,
+  "closed_at": null,
+  "final_labels": [
+    "Needs triage"
+  ],
+  "events": [
+    {
+      "event": "labeled",
+      "actor": "DaerenKim",
+      "label": "Needs triage",
+      "at": "2026-08-22T05:13:22Z"
+    }
+  ],
+  "comments": [
+    {
+      "author": "Mynk11",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-08-26T18:50:38Z",
+      "body": "Independent confirmation of the diagnosis, plus one thing that isn't in the report: this reaches users through `Text.truncate`, not only the helper.\n\n`Text.truncate` passes `max_width - 1` straight into `set_cell_size` for ellipsis overflow, so a zero budget becomes `-1`:\n\n```python\n>>> from rich.text import Text\n>>> t = Text(\"hello\"); t.truncate(0, overflow=\"ellipsis\"); t.plain\n'hell\u2026'\n```\n\nTruncating to 0 cells returns 5 cells \u2014 wider than `truncate(1)` \u2192 `'\u2026'` and `truncate(2)` \u2192 `'h\u2026'`, and wider than the budget the caller asked for. So a table column or nested panel squeezed to zero width gets text back instead of nothing, which makes this a layout bug rather than an internal edge case.\n\nI checked @DaerenKim's proposed fix (moving the `total <= 0` guard above the fast path) against `main` at 9d8f9a3 and it holds up: `set_cell_size` returns `''` for all negative totals, and `truncate(0, overflow=\"ellipsis\")` drops from `'hell\u2026'` to `'\u2026'`. No regressions \u2014 948 tests pass both with and without the change. The 8 failures I see in `test_syntax.py` / `test_markdown.py` are the pygments 2.21 incompatibility from #4209 and are byte-identical either way.\n\nOne residue worth a decision: the ellipsis branch appends `\"\u2026\"` unconditionally, so `truncate(0)` lands on `'\u2026'` (1 cell) rather than 0. Reaching exactly 0 would need a `max_width <= 0` guard in `truncate` itself \u2014 a separate behaviour change, so probably its own issue.\n\n@DaerenKim already has the fix and regression tests ready in a fork, so this is supporting evidence rather than a competing patch.\n\nDisclosure per AI_POLICY.md: this investigation was AI-assisted \u2014 Claude (Anthropic). The reproductions and test runs above were executed against a local checkout, not inferred.\n"
+    },
+    {
+      "author": "itzzdev09",
+      "association": "NONE",
+      "is_maintainer": false,
+      "at": "2026-08-27T22:28:53Z",
+      "body": "I have a fix for this ready, but per [AI_POLICY.md](https://github.com/Textualize/rich/blob/master/AI_POLICY.md) a PR needs a maintainer-approved solution to link to first \u2014 so, @willmcgugan, would this approach be acceptable?\n\n**Proposed change** \u2014 move the existing guard above the fast path in `set_cell_size`, so a non-positive total is handled before any slicing:\n\n```diff\n+    if total <= 0:\n+        return \"\"\n     if _is_single_cell_widths(text):\n         size = len(text)\n         if size < total:\n             return text + \" \" * (total - size)\n         return text[:total]\n-    if total <= 0:\n-        return \"\"\n```\n\nThat's the whole change \u2014 no new branches, and the wide-character path is untouched since it already returned early for `total <= 0`.\n\n**On the `Text.truncate` angle** raised above: the reachable case is `max_width=0` rather than `1`. `truncate` passes `max_width - 1`, so `max_width=1` gives a `0` budget (already correct), and `max_width=0` gives `-1`. Before the change, `Text(\"abcdef\").truncate(0, overflow=\"ellipsis\")` produced `\"abcde\u2026\"` \u2014 six cells for a zero-width budget. After, it produces `\"\u2026\"`.\n\n**Verified locally:**\n\n- Negative totals return `\"\"` for both narrow and wide text; `total=0` and all positive totals are unchanged (padding and cropping behave exactly as before, including the existing `\ud83d\ude3d\ud83d\ude3d` cases).\n- Full suite: `975 passed, 9 failed` both before and after \u2014 the 9 failures are all in `test_syntax.py` and are the pre-existing pygments 2.21.0 incompatibility from #4209, unrelated to this.\n- The regression test I'd add fails without the change and passes with it.\n\nHappy to open the PR with the test if you're on board. Disclosure per the policy: written with Claude Code (Claude Opus 5)."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "repo": "Textualize/rich",
+  "number": 4211,
+  "title": "[BUG] set_cell_size returns incorrect result for negative total with narrow text",
+  "body": "- [x] I've checked [docs](https://rich.readthedocs.io/en/latest/introduction.html) and [closed issues](https://github.com/Textualize/rich/issues?q=is%3Aissue+is%3Aclosed) for possible solutions. \n- [x] I can't find my issue in the [FAQ](https://github.com/Textualize/rich/blob/master/FAQ.md).\n\n**Describe the bug**\n\n`set_cell_size()` returns incorrectly truncated text when `total` is negative and the input consists entirely of single-cell-width characters.\n\nFor example:\n\n```python\nfrom rich.cells import set_cell_size\n\nprint(repr(set_cell_size(\"ab\", -1)))\nprint(repr(set_cell_size(\"abc\", -1)))\nprint(repr(set_cell_size(\"abcdef\", -1)))\n```\n\nCurrently this produces:\n\n```\n'a'\n'ab'\n'abcde'\n```\n\nExpected:\n\n```\n''\n''\n''\n```\n\nThe issue is caused by the `total <= 0` guard being placed after the single-cell-width fast path:\n\n```python\nif _is_single_cell_widths(text):\n    size = len(text)\n    if size < total:\n        return text + \" \" * (total - size)\n    return text[:total]\n\nif total <= 0:\n    return \"\"\n```\n\nFor single-cell-width strings, negative slicing is therefore reached before the guard. Python's negative slicing causes part of the string to be returned.\n\nFor comparison, strings containing wide characters correctly return an empty string because they do not take the single-cell-width fast path.\n\nThe fix is to move the `total <= 0` check before the `_is_single_cell_widths()` fast path.\n\nI have also added regression tests covering negative `total` values.\n\n**Platform**\n\n- macOS\n- Python 3.13.6\n\nThe issue is reproducible independently of terminal software.\n\nI have already implemented the fix and added regression tests in my fork. I would be happy to submit the changes as a pull request if I can be granted contributor access, or I can follow whatever contribution process you prefer.",
+  "author": "DaerenKim",
+  "author_association": "NONE",
+  "created_at": "2026-08-22T05:13:21Z",
+  "labels": [
+    "Needs triage"
+  ],
+  "source_url": "https://github.com/Textualize/rich/issues/4211"
+}
