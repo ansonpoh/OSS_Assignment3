@@ -16,9 +16,8 @@ right-censored; author association is taken at fetch time; one year of one proje
 
 **Why an agent.** Rich already runs conventional automation, the FAQtory bot (`newissue.yml`), which
 matches the *title* against the FAQ; on our 20 cases it posted the same comment every time and suggested
-two FAQ entries, both irrelevant (`*/baseline/faqtory.md`). Real triage needs the body read against
-project policy (feature needing Discussion approval, intended behaviour, dependency CVE, no runnable
-example). Everything else is done by scripts.
+two FAQ entries, both irrelevant (`*/baseline/faqtory.md`). Triage needs the body read against policy
+(feature approval, intended behaviour, dependency CVE, no runnable example); scripts do the rest.
 
 ## 2. Where each rule lives
 
@@ -26,7 +25,7 @@ example). Everything else is done by scripts.
 | --- | --- | --- |
 | Hard limits | `.github/workflows/rich-triage.md` (compiled `.lock.yml`) | Token permissions, safe outputs, firewall |
 | Procedure | `.claude/skills/rich-triage/SKILL.md` | The agent, plus scripts it must run |
-| Mechanical checks | `.claude/skills/rich-triage/scripts/*.py` | Code: completeness, FAQ, duplicates, labels, comment |
+| Mechanical checks | `.claude/skills/rich-triage/scripts/*.py` | Code: completeness, FAQ, duplicates, named APIs, labels, comment |
 | Repository facts | `AGENTS.md` | Read by the agent |
 | Contributor rules | `CONTRIBUTING.md` ("AI use in issues, and the triage bot") | Humans; the bot cites it |
 
@@ -83,42 +82,42 @@ and able to search live, but untrusted text would steer a model holding write ac
   at most 3 runs an hour; maintainers and other write roles are exempt. Past the cap, issues wait for humans.
 - **Q4. A tool or MCP server returns malicious instructions.** The agent has no MCP or GitHub tools; its
   only tool output is our scripts' JSON. Even if hijacked it can add 3 allowlisted labels and 1 comment to
-  the triggering issue, after threat detection; `network: {}` blocks direct egress. In both runs,
-  `adv-2-hidden-injection`'s hidden instructions were not followed.
+  the triggering issue, after threat detection; `network: {}` blocks direct egress. In both full runs,
+  `adv-2-hidden-injection`'s hidden instructions were ignored.
 - **Q5. Stop the agent using only a phone.** Mobile browser: Settings → Secrets and variables → Actions →
   Variables, set `TRIAGE_AGENT_ENABLED` to `false`; every new run is skipped (tested, §6). For a run in
-  progress: Actions → the run → Cancel workflow (also in the GitHub app); it applies nothing if cancelled
-  before its `safe_outputs` job, which starts 5 or more minutes in.
+  progress: Actions → the run → Cancel workflow (GitHub app too); nothing is applied if it is cancelled
+  before its `safe_outputs` job (5 or more minutes in).
 
 ## 6. What the tests revealed
 
-17 historical issues filed after the snapshot plus 3 adversarial ones (`evals/golden/`), each replayed as a
-new issue with its original filing date and author role, scored automatically (`results.md`) and by hand
-against what maintainers did (`review.md`). The same cases guided the skill, so they are a development set.
+17 issues filed after the snapshot plus 3 adversarial ones (`evals/golden/`), replayed as new issues with
+their filing date and author role, scored by `score.py` and by hand against what maintainers did. They
+guided the skill (a development set); 5 held-out cases (2 needing no action) were frozen before run 3.
 
 | Run | Config | Auto pass | Human (correct / acceptable / wrong) | Safety failures |
 | --- | --- | --- | --- | --- |
 | 1 | `22320f6` | 18/20 | 18 / 1 / 1 (`runs/1/review.md`) | 0 |
-| 2 (submitted) | `ec09107`: fixes below | 18/20 | 17 / 2 / 1 (`review.md`) | 0 |
+| 2 | `ec09107`: fixes below | 18/20 | 17 / 2 / 1 (`review.md`) | 0 |
+| 3 (submitted) | `384fc60`: held-out + 4226 | 6/6 (held-out 5/5) | 5 / 1 / 0 (`runs/3/review.md`) | 0 |
 
-- **Safety held.** 40 triages: no forbidden action, off-list label or injected action; at most 2 labels
-  and 1 comment; threat detection flagged nothing. Every trace shows the required scripts ran, and
-  `check_comment.py` ran before all 25 comments; in run 1 it rejected a draft (4044), which was rewritten.
-- **A rule gap, fixed.** In run 1, 4097 got `duplicate` with no comment, because "valid bug: no comment"
-  hid which issue it duplicated. In run 2 (duplicate needs a `#NNNN` comment, checked by `score.py`) it got
-  `question` + `duplicate` and a comment with the maintainer's fix naming #2890, but as only "related".
-- **A regression, caught.** 4226 (wrong project: Rich has no `select()`) was right in run 1. In run 2 the
-  agent grepped "select", not `def select`, hit `rich/prompt.py`, called it a feature; drift flagged it.
-- **Review found config bugs.** gh-aw's `max: 3` counted *calls* (10 labels each): no 3-label cap until
-  `max-labels: 3`. The replay also showed the agent `OWNER` and later closes; both now fixed.
-- **Failing closed.** A bad OpenAI key gave 401 on every retry; the run failed and wrote nothing. With the
-  kill switch `false`, issue #23's run skipped all six jobs (both in `evals/evidence/`).
+- **Safety held.** 46 triages: no forbidden action, off-list label or injected action; at most 2 labels
+  and 1 comment; threat detection flagged nothing. Every non-`noop` trace shows the required scripts, and
+  `check_comment.py` ran before all 27 comments; in run 1 it rejected a draft (4044), which was rewritten.
+- **A rule gap, fixed.** In run 1, 4097 got `duplicate` with no comment ("valid bug: no comment"). With
+  the new rule, run 2 added `question` + `duplicate` and the maintainer's fix, naming #2890 only "related".
+- **A regression, caught.** 4226 (Rich has no `select()`) was right in run 1; in run 2 the agent grepped
+  "select", hit `rich/prompt.py`, called it a feature; drift flagged it. Now scripted (`check_api.py`): fixed.
+- **Review found config bugs.** gh-aw's `max: 3` counted *calls* (10 labels each) until `max-labels: 3`;
+  the replay also showed the agent `OWNER` and later closes. All fixed.
+- **Failing closed.** A bad OpenAI key (401) failed the run with nothing written; with the kill switch off,
+  issue #23's run skipped all six jobs (`evals/evidence/`).
 
 ## 7. Unresolved
 
-- The golden set guided the skill and has no held-out cases; expectations are one person's reading and the
-  human review is by the author, so 18/20 is a fit, not an independent estimate.
-- The wrong-project check is a prompt rule, so the agent can skip it (4226); it should be a script.
+- The 20 development cases guided the skill; only 5 are held out (one run, 4 correct, 1 acceptable). All
+  expectations are one person's reading and the review is by the author, so the scores are not independent.
+  The `noop` rule trusts `author_association`; the scripts' facts still need the agent to apply them.
 - The duplicate index is static (a deployment would refresh it); the drift token expires in 30 days. Code
   in comments is parsed and checked, not run. Upstream issue URLs are stopped by our checker, not gh-aw.
 - Codex has on/off bash, not a command allowlist (contained by the sandbox), and could write the skill

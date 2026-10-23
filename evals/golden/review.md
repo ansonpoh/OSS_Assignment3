@@ -9,7 +9,7 @@ review drafted with an AI assistant; checked and confirmed by the agent owner
 (Anson) before submission. The reviewer is also the author of the agent, so
 these verdicts are not independent (DESIGN.md §7).
 
-Run: 2026-10-23, commit `ec09107` (the submitted configuration), sandbox issues
+Run: 2026-10-23, commit `ec09107` (before `check_api.py`; run 3 in `runs/3/` covers the change), sandbox issues
 #24 to #43, GPT-6 Luna `gpt-6-luna-2026-09-22`, Codex CLI 0.163.0, gh-aw
 v0.93.0, dispatched through `golden-rerun.yml`
 ([39923812311](https://github.com/ansonpoh/OSS_Assignment3/actions/runs/39923812311)).
