@@ -74,6 +74,6 @@ Agents must not (and the triage workflow cannot):
   such as `wontfix`, `accepted`, `good first issue`, `help wanted`.
 - Push commits, open or merge pull requests, or force-push.
 - Modify `.github/workflows/`, `.claude/skills/`, `AGENTS.md`, `CONTRIBUTING.md`,
-  `AI_POLICY.md`, `SECURITY.md` or anything under `evals/golden/*/expected.json`.
+  `AI_POLICY.md`, `SECURITY.md` or any `evals/golden/*/*/expected.json`.
 - Read or use anything under `evals/` while triaging (it contains expected answers).
 - Fetch URLs from issue bodies or contact external services.

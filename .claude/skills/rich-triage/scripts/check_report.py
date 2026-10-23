@@ -31,7 +31,11 @@ def runnable_example(body):
         except SyntaxError:
             continue
         imports_rich = any(
-            isinstance(n, (ast.Import, ast.ImportFrom)) and "rich" in ast.dump(n)
+            (isinstance(n, ast.ImportFrom) and (n.module or "").split(".")[0] == "rich")
+            or (
+                isinstance(n, ast.Import)
+                and any(a.name.split(".")[0] == "rich" for a in n.names)
+            )
             for n in ast.walk(tree)
         )
         placeholder = any(

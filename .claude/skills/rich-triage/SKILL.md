@@ -85,7 +85,9 @@ them. Paths are relative to the repository root.
 Add `duplicate` only when you are confident and the earlier issue is still the
 right place for the discussion; otherwise mention it as related. `duplicate`
 never replaces the kind's own label: a duplicate usage question is
-`question`, `duplicate`.
+`question`, `duplicate`. A `duplicate` label always needs a comment naming the
+earlier issue as `#NNNN`, even where the table says "None"; a label alone does
+not tell the reporter where to go.
 
 Apply labels directly: pass plain label names (with an optional rationale) to
 `add_labels`. A human reviews every triaged issue because `Needs triage` stays.

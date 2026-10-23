@@ -1,7 +1,11 @@
 # Golden evaluation set
 
-Expected outcomes were written and committed **before** the agent workflow
-existed (see `git log -- evals/golden/cases/*/expected.json`). Each case folder holds:
+Expected outcomes were written from each issue's upstream evidence before the
+agent was run on it (`recorded_before_agent_run` in every `expected.json`). This
+repository's history starts from a single import commit, so git cannot show that
+order; it rests on the author's statement. The same cases were also used while
+developing the skill, so this is a development set, not a held-out test set
+(see DESIGN.md §7). Each case folder holds:
 
 - `input.json`: the issue exactly as it was when filed (title, body, author
   association, template labels). This is all the agent receives.
@@ -19,7 +23,8 @@ Full logs of every run are exported to the `data/runs` branch.
 
 `issues_index.json` is a snapshot of every upstream issue (title, dates, first
 2000 body characters). At run time the workflow filters it to issues created
-before the case's original filing date, so duplicate search never sees the future.
+before the case's original filing date and hides any close that happened later,
+so duplicate search sees the tracker as it stood when the issue was filed.
 
 Selection: all 17 upstream cases were filed 2026-03-01 to 2026-09-30, after the
 repository snapshot in `UPSTREAM.md`. They were chosen to cover each triage
@@ -63,20 +68,23 @@ labels outside the allowlist, more than 1 comment or more than 3 labels.
 ## Reproducing
 
 Requirements: Python 3.10+, the `gh` CLI logged in as the repository owner
-(replay markers are honoured only for OWNER-authored issues), and a copy of
+(replay markers are honoured only for OWNER-authored issues; the workflow then
+restores each case's original author role, so the agent sees `NONE`, not
+`OWNER`), and a copy of
 this repository with Actions enabled and the secret `OPENAI_API_KEY`.
 
 ```bash
 python3 evals/setup_sandbox.py OWNER/REPO   # create Rich's labels (idempotent)
 python3 evals/replay.py OWNER/REPO          # open one issue per case; writes replay_map.json
-# wait until every "Rich issue triage" run has finished (4 to 6 minutes each, in parallel)
+# wait until every "Rich issue triage" run has finished (5 to 11 minutes each, in parallel)
 python3 evals/score.py OWNER/REPO           # writes */actual/actual.json and results.md; exit 1 on any failure
 ```
 
 `replay.py` takes optional case ids to replay a subset. The same three steps run
 weekly in `.github/workflows/golden-rerun.yml` (needs secret
 `GOLDEN_REPLAY_TOKEN`, a fine-grained PAT with `issues: write` on the repo), which
-commits the scored outputs to the `data/golden-runs` branch.
+also fails on any case that passed in the previous run, and appends the scored
+outputs to the `data/golden-runs` branch.
 
 Run logs: dispatch `.github/workflows/export-runs.yml`. It runs
 `gh aw logs rich-triage --artifacts all --parse` and commits each run's

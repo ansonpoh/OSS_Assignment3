@@ -1,6 +1,7 @@
 # Audit trail export: downloads the triage workflow's run artifacts (agent
 # output, usage/cost, firewall log, skill trace) and commits them to the
-# data/runs branch so they outlive the 90-day artifact retention.
+# data/runs branch so they outlive the 90-day artifact retention. Each export
+# adds to the branch, so earlier runs are kept.
 name: export-runs
 on:
   workflow_dispatch:
@@ -40,7 +41,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B data/runs
+          # Add to the branch instead of replacing it, so runs older than the
+          # last COUNT stay exported.
+          mv evals/runs "$RUNNER_TEMP/runs"
+          git reset -q --hard && git clean -qfd
+          if git fetch -q origin data/runs; then git checkout -q -B data/runs FETCH_HEAD
+          else git checkout -q --orphan data/runs && git rm -rqf .; fi
+          mkdir -p evals/runs && cp -r "$RUNNER_TEMP/runs/." evals/runs/
           git add -f evals/runs
-          git commit -m "runs: export (run $GITHUB_RUN_ID)"
-          git push -f origin data/runs
+          git commit -q -m "runs: export (run $GITHUB_RUN_ID)" || echo "nothing new to export"
+          git push origin HEAD:data/runs

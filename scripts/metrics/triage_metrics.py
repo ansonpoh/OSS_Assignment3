@@ -17,7 +17,6 @@ import argparse
 import csv
 import json
 import os
-import statistics
 import sys
 import time
 import urllib.request

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Replay golden cases as new issues in the sandbox so the triage workflow runs.
 
-Each issue body gets a hidden marker with the case id and original filing time.
-The workflow honours the marker only for OWNER-authored issues and uses it to
-hide later issues from duplicate search. Template labels present at filing
+Each issue body gets a hidden marker with the case id, original filing time and
+original author role. The workflow honours the marker only for OWNER-authored
+issues: it strips it, restores the author role, and hides later issues (and
+later closes) from duplicate search. Template labels present at filing
 (e.g. "Needs triage") are applied at creation, as the template would.
 
   python evals/replay.py OWNER/REPO [case ...]      # default: all cases
@@ -34,9 +35,10 @@ def main():
     for d in case_dirs(selected):
         cid = os.path.basename(d)
         inp = json.load(open(os.path.join(d, "input.json")))
-        body = (
-            inp["body"] or ""
-        ) + f"\n\n<!-- golden-case: {cid} filed: {inp['created_at']} -->"
+        body = (inp["body"] or "") + (
+            f"\n\n<!-- golden-case: {cid} filed: {inp['created_at']}"
+            f" as: {inp.get('author_association') or 'NONE'} -->"
+        )
         issue = api(
             f"repos/{repo}/issues",
             "POST",

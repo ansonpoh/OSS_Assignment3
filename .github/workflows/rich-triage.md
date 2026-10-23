@@ -49,7 +49,8 @@ safe-outputs:
   add-labels:
     allowed: [bug, enhancement, question, documentation, duplicate, invalid, upstream, "more information needed"]
     blocked: [wontfix, accepted, "good first issue", "help wanted", "Needs triage", done, blocked, task]
-    max: 3
+    max: 1          # one add_labels call per run...
+    max-labels: 3   # ...with at most 3 labels (gh-aw's default is 10 per call)
     target: triggering
     # Labels are applied directly. Without this schema the agent may set
     # "suggest": true, which turns a label into a pending suggestion that
@@ -93,21 +94,35 @@ steps:
       # Replay of a historical case: the repository owner's harness records
       # the original filing time so duplicate search cannot see later issues.
       # Only honoured for OWNER-authored issues.
-      m = re.search(r"<!-- golden-case: (\S+) filed: (\S+) -->", body)
-      if m and ev.get("author_association") == "OWNER":
-          created = m.group(2)
+      # The replay posts as the owner, so the original author role is
+      # restored too; the agent never sees that a case is a replay.
+      assoc = ev.get("author_association")
+      m = re.search(r"<!-- golden-case: (\S+) filed: (\S+) as: (\S+) -->", body)
+      if m and assoc == "OWNER":
+          created, assoc = m.group(2), m.group(3)
           body = body.replace(m.group(0), "").rstrip()
       issue = {"number": ev["number"], "title": ev["title"], "body": body,
-               "author_association": ev.get("author_association"),
+               "author_association": assoc,
                "created_at": created, "labels": [l["name"] for l in ev.get("labels", [])]}
       json.dump(issue, open("/tmp/gh-aw/agent/issue.json", "w"), indent=2)
-      idx = json.load(open(os.environ["INDEX"]))
-      idx = [r for r in idx if r["created_at"] < created]
+      # Duplicate index as it stood when the issue was filed: only earlier
+      # issues, and any later close is hidden.
+      idx = []
+      for r in json.load(open(os.environ["INDEX"])):
+          if r["created_at"] >= created:
+              continue
+          if r.get("closed_at") and r["closed_at"] >= created:
+              r = {**r, "closed_at": None, "state_reason": None}
+          idx.append(r)
       json.dump(idx, open("/tmp/gh-aw/agent/issues_index.json", "w"))
       print(f"issue #{issue['number']} as of {created}; {len(idx)} earlier issues indexed")
       PY
-      # Expected answers must never be visible to the agent.
-      rm -rf evals scripts/metrics
+      # Expected answers must never be visible to the agent: delete them and
+      # replace the checkout's git history (which still holds them) with an
+      # empty repository that keeps the origin remote gh-aw's later steps use.
+      rm -rf evals scripts/metrics .git
+      git init -q
+      git remote add origin "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
       # Codex discovers skills in .agents/skills; the canonical copy stays in
       # .claude/skills (required by the assignment) and is mirrored here.
       mkdir -p .agents/skills .codex/skills
