@@ -1,0 +1,26 @@
+# Free checks of the triage configuration on every change to it (no model
+# calls): unit tests for the skill scripts, and the skill-use check of every
+# committed run's trace against its engine transcript.
+name: skill-tests
+on:
+  push:
+    paths: [".claude/skills/**", "evals/**", ".github/workflows/skill-tests.yml"]
+  pull_request:
+    paths: [".claude/skills/**", "evals/**", ".github/workflows/skill-tests.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - name: Skill script tests
+        run: python -m pytest evals/tests -q
+      - name: Skill use in committed runs
+        run: python evals/verify_skill_use.py

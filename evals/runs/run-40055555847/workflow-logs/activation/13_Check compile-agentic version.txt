@@ -1,0 +1,35 @@
+﻿2026-10-24T02:46:53.8004313Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:46:53.8026968Z with:
+2026-10-24T02:46:53.8031386Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_version_updates.cjs'));
+await main();
+
+2026-10-24T02:46:53.8044155Z   github-token: ***
+2026-10-24T02:46:53.8045029Z   debug: false
+2026-10-24T02:46:53.8045881Z   user-agent: actions/github-script
+2026-10-24T02:46:53.8046900Z   result-encoding: json
+2026-10-24T02:46:53.8047745Z   retries: 0
+2026-10-24T02:46:53.8048663Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:46:53.8049751Z env:
+2026-10-24T02:46:53.8050730Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:46:53.8051742Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:46:53.8054383Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055555847,github.run_id=40055555847,gh-aw.engine.id=codex
+2026-10-24T02:46:53.8057106Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:46:53.8058145Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:46:53.8059310Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:46:53.8060436Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-24T02:46:53.8061425Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:46:53.8109013Z   GITHUB_AW_OTEL_TRACE_ID: a335a0c92b2cd935dcda62b5fb8dd0cd
+2026-10-24T02:46:53.8110684Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 1bf88ff0bedeefe6
+2026-10-24T02:46:53.8111840Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810003679
+2026-10-24T02:46:53.8112916Z   GH_AW_COMPILED_VERSION: v0.93.0
+2026-10-24T02:46:53.8113873Z   GH_AW_HAS_SAFE_OUTPUTS: true
+2026-10-24T02:46:53.8114850Z   GH_AW_BLOCKED_VERSION_REPORT_AS_ISSUE: false
+2026-10-24T02:46:53.8115949Z   GH_AW_WORKFLOW_NAME: Rich issue triage
+2026-10-24T02:46:53.8116949Z ##[endgroup]
+2026-10-24T02:46:53.9792808Z Checking compile-agentic version: v0.93.0
+2026-10-24T02:46:53.9804300Z Fetching update configuration from: https://raw.githubusercontent.com/github/gh-aw-actions/main/.github/aw/compat.json
+2026-10-24T02:46:54.0600731Z ✅ Version check passed: v0.93.0

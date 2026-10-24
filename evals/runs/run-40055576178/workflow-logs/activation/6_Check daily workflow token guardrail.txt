@@ -1,0 +1,143 @@
+﻿2026-10-24T02:46:57.9975470Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:46:57.9976316Z with:
+2026-10-24T02:46:57.9980691Z   github-token: ***
+2026-10-24T02:46:57.9982807Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_daily_aic_workflow_guardrail.cjs'));
+await main();
+
+2026-10-24T02:46:57.9984978Z   debug: false
+2026-10-24T02:46:57.9985435Z   user-agent: actions/github-script
+2026-10-24T02:46:57.9985969Z   result-encoding: json
+2026-10-24T02:46:57.9986433Z   retries: 0
+2026-10-24T02:46:57.9986914Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:46:57.9987497Z env:
+2026-10-24T02:46:57.9987921Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:46:57.9988453Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:46:57.9990008Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055576178,github.run_id=40055576178,gh-aw.engine.id=codex
+2026-10-24T02:46:57.9991404Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:46:57.9991952Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:46:57.9992542Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:46:57.9993055Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-24T02:46:57.9993868Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:46:57.9994439Z   GITHUB_AW_OTEL_TRACE_ID: b78872f20e2fba7b5d8b58664cfe5caa
+2026-10-24T02:46:57.9995130Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: bbecb1c022924d20
+2026-10-24T02:46:57.9995745Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810016102
+2026-10-24T02:46:57.9996580Z   GH_AW_WORKFLOW_NAME: Rich issue triage
+2026-10-24T02:46:57.9997136Z   GH_AW_WORKFLOW_ID: rich-triage
+2026-10-24T02:46:57.9997869Z   GH_AW_RUN_URL: https://github.com/ansonpoh/OSS_Assignment3/actions/runs/40055576178
+2026-10-24T02:46:57.9998666Z   GH_AW_WORKFLOW_DISPATCH_AW_CONTEXT: 
+2026-10-24T02:46:57.9999376Z   GH_AW_HAS_SLASH_COMMAND: false
+2026-10-24T02:46:57.9999905Z   GH_AW_HAS_LABEL_COMMAND: false
+2026-10-24T02:46:58.0003958Z   GH_AW_GITHUB_TOKEN: ***
+2026-10-24T02:46:58.0004440Z   GH_AW_MAX_AI_CREDITS: 50
+2026-10-24T02:46:58.0004995Z ##[endgroup]
+2026-10-24T02:46:58.1407189Z [daily-workflow-aic] Resolved daily AIC guardrail limits: {"dailyAICThreshold":600,"perRunMaxAICredits":50,"perRunFallbackAvailable":true}
+2026-10-24T02:46:58.4109747Z [daily-workflow-aic] Started authoritative AIC scan: {"repository":"ansonpoh/OSS_Assignment3","currentRunId":40055576178,"workflowId":393703717,"fallbackAIC":50}
+2026-10-24T02:46:58.4124858Z [daily-workflow-aic] Loaded scan observations: {"workflowId":393703717,"cachedEntries":49}
+2026-10-24T02:46:59.3053640Z [daily-workflow-aic] Listed workflow run candidates: {"page":1,"lookupMode":"workflow_id","sourceRunCount":49,"returnedRunCount":49}
+2026-10-24T02:46:59.3060603Z [daily-workflow-aic] Resolving run AIC: {"runId":40054887851,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3065741Z [daily-workflow-aic] Computed run AIC: {"runId":40054887851,"aic":0.9008010000000001,"reason":"scan_cache"}
+2026-10-24T02:46:59.3088335Z [daily-workflow-aic] Resolving run AIC: {"runId":39930821237,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3091232Z [daily-workflow-aic] Computed run AIC: {"runId":39930821237,"aic":0.646719,"reason":"scan_cache"}
+2026-10-24T02:46:59.3093525Z [daily-workflow-aic] Resolving run AIC: {"runId":39930813402,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3095898Z [daily-workflow-aic] Computed run AIC: {"runId":39930813402,"aic":0.867433,"reason":"scan_cache"}
+2026-10-24T02:46:59.3098006Z [daily-workflow-aic] Resolving run AIC: {"runId":39930799732,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3102183Z [daily-workflow-aic] Computed run AIC: {"runId":39930799732,"aic":0.707699,"reason":"scan_cache"}
+2026-10-24T02:46:59.3113270Z [daily-workflow-aic] Resolving run AIC: {"runId":39930787211,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3114591Z [daily-workflow-aic] Computed run AIC: {"runId":39930787211,"aic":0.50261,"reason":"scan_cache"}
+2026-10-24T02:46:59.3115866Z [daily-workflow-aic] Resolving run AIC: {"runId":39930776447,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3117126Z [daily-workflow-aic] Computed run AIC: {"runId":39930776447,"aic":0.497675,"reason":"scan_cache"}
+2026-10-24T02:46:59.3118351Z [daily-workflow-aic] Resolving run AIC: {"runId":39930766480,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3171052Z [daily-workflow-aic] Computed run AIC: {"runId":39930766480,"aic":0.875102,"reason":"scan_cache"}
+2026-10-24T02:46:59.3172416Z [daily-workflow-aic] Resolving run AIC: {"runId":39924044942,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3173676Z [daily-workflow-aic] Computed run AIC: {"runId":39924044942,"aic":0.711778,"reason":"scan_cache"}
+2026-10-24T02:46:59.3174899Z [daily-workflow-aic] Resolving run AIC: {"runId":39924034889,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3176111Z [daily-workflow-aic] Computed run AIC: {"runId":39924034889,"aic":0.777366,"reason":"scan_cache"}
+2026-10-24T02:46:59.3177901Z [daily-workflow-aic] Resolving run AIC: {"runId":39924022369,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3193074Z [daily-workflow-aic] Computed run AIC: {"runId":39924022369,"aic":0.716156,"reason":"scan_cache"}
+2026-10-24T02:46:59.3199812Z [daily-workflow-aic] Resolving run AIC: {"runId":39924012648,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3201470Z [daily-workflow-aic] Computed run AIC: {"runId":39924012648,"aic":0.9911919999999999,"reason":"scan_cache"}
+2026-10-24T02:46:59.3202750Z [daily-workflow-aic] Resolving run AIC: {"runId":39924001081,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3203994Z [daily-workflow-aic] Computed run AIC: {"runId":39924001081,"aic":0.976134,"reason":"scan_cache"}
+2026-10-24T02:46:59.3205236Z [daily-workflow-aic] Resolving run AIC: {"runId":39923988855,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3206476Z [daily-workflow-aic] Computed run AIC: {"runId":39923988855,"aic":0.756128,"reason":"scan_cache"}
+2026-10-24T02:46:59.3207681Z [daily-workflow-aic] Resolving run AIC: {"runId":39923977377,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3208873Z [daily-workflow-aic] Computed run AIC: {"runId":39923977377,"aic":0.94174,"reason":"scan_cache"}
+2026-10-24T02:46:59.3217619Z [daily-workflow-aic] Resolving run AIC: {"runId":39923966963,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3219317Z [daily-workflow-aic] Computed run AIC: {"runId":39923966963,"aic":1.106534,"reason":"scan_cache"}
+2026-10-24T02:46:59.3221090Z [daily-workflow-aic] Resolving run AIC: {"runId":39923955422,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3222329Z [daily-workflow-aic] Computed run AIC: {"runId":39923955422,"aic":0.954587,"reason":"scan_cache"}
+2026-10-24T02:46:59.3225057Z [daily-workflow-aic] Resolving run AIC: {"runId":39923942468,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3226683Z [daily-workflow-aic] Computed run AIC: {"runId":39923942468,"aic":0.891547,"reason":"scan_cache"}
+2026-10-24T02:46:59.3227894Z [daily-workflow-aic] Resolving run AIC: {"runId":39923932900,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3229263Z [daily-workflow-aic] Computed run AIC: {"runId":39923932900,"aic":0.912307,"reason":"scan_cache"}
+2026-10-24T02:46:59.3230495Z [daily-workflow-aic] Resolving run AIC: {"runId":39923918959,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3232079Z [daily-workflow-aic] Computed run AIC: {"runId":39923918959,"aic":1.451604,"reason":"scan_cache"}
+2026-10-24T02:46:59.3233510Z [daily-workflow-aic] Resolving run AIC: {"runId":39923904973,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3235623Z [daily-workflow-aic] Computed run AIC: {"runId":39923904973,"aic":0.8512920000000002,"reason":"scan_cache"}
+2026-10-24T02:46:59.3236885Z [daily-workflow-aic] Resolving run AIC: {"runId":39923893693,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3238070Z [daily-workflow-aic] Computed run AIC: {"runId":39923893693,"aic":1.630147,"reason":"scan_cache"}
+2026-10-24T02:46:59.3239422Z [daily-workflow-aic] Resolving run AIC: {"runId":39923886099,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3240628Z [daily-workflow-aic] Computed run AIC: {"runId":39923886099,"aic":0.647114,"reason":"scan_cache"}
+2026-10-24T02:46:59.3241831Z [daily-workflow-aic] Resolving run AIC: {"runId":39923874287,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3243020Z [daily-workflow-aic] Computed run AIC: {"runId":39923874287,"aic":0.99075,"reason":"scan_cache"}
+2026-10-24T02:46:59.3244211Z [daily-workflow-aic] Resolving run AIC: {"runId":39923864011,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3245449Z [daily-workflow-aic] Computed run AIC: {"runId":39923864011,"aic":0.8722589999999999,"reason":"scan_cache"}
+2026-10-24T02:46:59.3246692Z [daily-workflow-aic] Resolving run AIC: {"runId":39923852434,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3247907Z [daily-workflow-aic] Computed run AIC: {"runId":39923852434,"aic":0.6376459999999999,"reason":"scan_cache"}
+2026-10-24T02:46:59.3249282Z [daily-workflow-aic] Resolving run AIC: {"runId":39923842388,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3250653Z [daily-workflow-aic] Computed run AIC: {"runId":39923842388,"aic":0.7029510000000001,"reason":"scan_cache"}
+2026-10-24T02:46:59.3251897Z [daily-workflow-aic] Resolving run AIC: {"runId":39923830583,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3253543Z [daily-workflow-aic] Computed run AIC: {"runId":39923830583,"aic":0.9891730000000002,"reason":"scan_cache"}
+2026-10-24T02:46:59.3254784Z [daily-workflow-aic] Resolving run AIC: {"runId":39916646675,"runAttempt":1,"conclusion":"skipped","cacheHit":true}
+2026-10-24T02:46:59.3256211Z [daily-workflow-aic] Computed run AIC: {"runId":39916646675,"aic":0,"reason":"scan_cache"}
+2026-10-24T02:46:59.3257374Z [daily-workflow-aic] Resolving run AIC: {"runId":39911695776,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3258606Z [daily-workflow-aic] Computed run AIC: {"runId":39911695776,"aic":0.9108669999999999,"reason":"scan_cache"}
+2026-10-24T02:46:59.3260006Z [daily-workflow-aic] Resolving run AIC: {"runId":39911687908,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3261258Z [daily-workflow-aic] Computed run AIC: {"runId":39911687908,"aic":0.6779390000000001,"reason":"scan_cache"}
+2026-10-24T02:46:59.3262508Z [daily-workflow-aic] Resolving run AIC: {"runId":39911677905,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3264305Z [daily-workflow-aic] Computed run AIC: {"runId":39911677905,"aic":0.724189,"reason":"scan_cache"}
+2026-10-24T02:46:59.3265644Z [daily-workflow-aic] Resolving run AIC: {"runId":39911668874,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3266867Z [daily-workflow-aic] Computed run AIC: {"runId":39911668874,"aic":0.92055,"reason":"scan_cache"}
+2026-10-24T02:46:59.3268342Z [daily-workflow-aic] Resolving run AIC: {"runId":39911657500,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3270072Z [daily-workflow-aic] Computed run AIC: {"runId":39911657500,"aic":0.9030660000000001,"reason":"scan_cache"}
+2026-10-24T02:46:59.3272177Z [daily-workflow-aic] Resolving run AIC: {"runId":39911649232,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3273398Z [daily-workflow-aic] Computed run AIC: {"runId":39911649232,"aic":0.916713,"reason":"scan_cache"}
+2026-10-24T02:46:59.3275096Z [daily-workflow-aic] Resolving run AIC: {"runId":39911637873,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3276385Z [daily-workflow-aic] Computed run AIC: {"runId":39911637873,"aic":0.899808,"reason":"scan_cache"}
+2026-10-24T02:46:59.3278934Z [daily-workflow-aic] Resolving run AIC: {"runId":39911628498,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3280412Z [daily-workflow-aic] Computed run AIC: {"runId":39911628498,"aic":1.0166529999999998,"reason":"scan_cache"}
+2026-10-24T02:46:59.3281671Z [daily-workflow-aic] Resolving run AIC: {"runId":39911618382,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3282881Z [daily-workflow-aic] Computed run AIC: {"runId":39911618382,"aic":0.961766,"reason":"scan_cache"}
+2026-10-24T02:46:59.3284070Z [daily-workflow-aic] Resolving run AIC: {"runId":39911607645,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3285747Z [daily-workflow-aic] Computed run AIC: {"runId":39911607645,"aic":1.039027,"reason":"scan_cache"}
+2026-10-24T02:46:59.3286961Z [daily-workflow-aic] Resolving run AIC: {"runId":39911598927,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3288199Z [daily-workflow-aic] Computed run AIC: {"runId":39911598927,"aic":0.9683999999999999,"reason":"scan_cache"}
+2026-10-24T02:46:59.3289935Z [daily-workflow-aic] Resolving run AIC: {"runId":39911590068,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3291123Z [daily-workflow-aic] Computed run AIC: {"runId":39911590068,"aic":1.106778,"reason":"scan_cache"}
+2026-10-24T02:46:59.3292294Z [daily-workflow-aic] Resolving run AIC: {"runId":39911578649,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3293661Z [daily-workflow-aic] Computed run AIC: {"runId":39911578649,"aic":0.867854,"reason":"scan_cache"}
+2026-10-24T02:46:59.3294856Z [daily-workflow-aic] Resolving run AIC: {"runId":39911569744,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3296034Z [daily-workflow-aic] Computed run AIC: {"runId":39911569744,"aic":1.152895,"reason":"scan_cache"}
+2026-10-24T02:46:59.3297204Z [daily-workflow-aic] Resolving run AIC: {"runId":39911560198,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3298437Z [daily-workflow-aic] Computed run AIC: {"runId":39911560198,"aic":0.7125170000000001,"reason":"scan_cache"}
+2026-10-24T02:46:59.3300314Z [daily-workflow-aic] Resolving run AIC: {"runId":39911551289,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3301588Z [daily-workflow-aic] Computed run AIC: {"runId":39911551289,"aic":0.9749139999999998,"reason":"scan_cache"}
+2026-10-24T02:46:59.3303292Z [daily-workflow-aic] Resolving run AIC: {"runId":39911542702,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3304560Z [daily-workflow-aic] Computed run AIC: {"runId":39911542702,"aic":0.9120950000000001,"reason":"scan_cache"}
+2026-10-24T02:46:59.3305800Z [daily-workflow-aic] Resolving run AIC: {"runId":39911532377,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3307123Z [daily-workflow-aic] Computed run AIC: {"runId":39911532377,"aic":0.6438630000000001,"reason":"scan_cache"}
+2026-10-24T02:46:59.3308366Z [daily-workflow-aic] Resolving run AIC: {"runId":39911523112,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3309744Z [daily-workflow-aic] Computed run AIC: {"runId":39911523112,"aic":0.6701779999999999,"reason":"scan_cache"}
+2026-10-24T02:46:59.3311003Z [daily-workflow-aic] Resolving run AIC: {"runId":39911515194,"runAttempt":1,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3312216Z [daily-workflow-aic] Computed run AIC: {"runId":39911515194,"aic":0.894576,"reason":"scan_cache"}
+2026-10-24T02:46:59.3313423Z [daily-workflow-aic] Resolving run AIC: {"runId":39910044209,"runAttempt":2,"conclusion":"success","cacheHit":true}
+2026-10-24T02:46:59.3315215Z [daily-workflow-aic] Computed run AIC: {"runId":39910044209,"aic":0.8445729999999999,"reason":"scan_cache"}
+2026-10-24T02:46:59.3316629Z [daily-workflow-aic] Persisted scan observations: {"cachePath":"/tmp/gh-aw/agentic-workflow-usage-scan-v2.jsonl","entries":49}
+2026-10-24T02:46:59.3318046Z [daily-workflow-aic] Completed authoritative AIC scan: {"candidateRuns":49,"countedRuns":49,"cacheHits":49}
+2026-10-24T02:46:59.3323721Z [daily-workflow-aic] Completed AIC inspection window: {"candidateRunsCount":49,"inspectedRunsCount":49,"countedRunIds":[40054887851,39930821237,39930813402,39930799732,39930787211,39930776447,39930766480,39924044942,39924034889,39924022369,39924012648,39924001081,39923988855,39923977377,39923966963,39923955422,39923942468,39923932900,39923918959,39923904973,39923893693,39923886099,39923874287,39923864011,39923852434,39923842388,39923830583,39916646675,39911695776,39911687908,39911677905,39911668874,39911657500,39911649232,39911637873,39911628498,39911618382,39911607645,39911598927,39911590068,39911578649,39911569744,39911560198,39911551289,39911542702,39911532377,39911523112,39911515194,39910044209],"currentAIC":42.225665,"threshold":600,"exceeded":false}
+2026-10-24T02:46:59.3328905Z [daily-workflow-aic] Daily AIC business API requests: {"requests":2,"cacheHits":49}
+2026-10-24T02:46:59.3370733Z Daily workflow AIC guardrail not exceeded (42.225665/600).

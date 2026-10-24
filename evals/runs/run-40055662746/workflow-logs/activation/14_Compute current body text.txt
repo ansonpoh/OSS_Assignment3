@@ -1,0 +1,32 @@
+﻿2026-10-24T02:48:27.7635986Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:48:27.7637148Z with:
+2026-10-24T02:48:27.7640800Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'compute_text.cjs'));
+await main();
+
+2026-10-24T02:48:27.7655085Z   github-token: ***
+2026-10-24T02:48:27.7656016Z   debug: false
+2026-10-24T02:48:27.7656546Z   user-agent: actions/github-script
+2026-10-24T02:48:27.7657220Z   result-encoding: json
+2026-10-24T02:48:27.7658056Z   retries: 0
+2026-10-24T02:48:27.7659135Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:48:27.7659887Z env:
+2026-10-24T02:48:27.7660346Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:48:27.7661692Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:48:27.7664133Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055662746,github.run_id=40055662746,gh-aw.engine.id=codex
+2026-10-24T02:48:27.7666538Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:48:27.7667220Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:48:27.7667994Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:48:27.7668615Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-24T02:48:27.7669240Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:48:27.7670504Z   GITHUB_AW_OTEL_TRACE_ID: 82dcf79a2f70963710438cc057eb832f
+2026-10-24T02:48:27.7671417Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 7e52c963c73cd26e
+2026-10-24T02:48:27.7672563Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810100018
+2026-10-24T02:48:27.7673261Z ##[endgroup]
+2026-10-24T02:48:28.2515379Z Repository permission level: admin
+2026-10-24T02:48:28.2663733Z text: How to remove formatting styles from string?\n\nHi, \n\nI would like to search custom substring in items' text but now tags/color names are matching too.\n\nIs there a way to cleanup tags/styles from passed string?\n\nThank you.\n\nUpdate: the goal is filtering menu items which could be styled:\nhttps://github.com/petereon/beaupy/issues/201
+2026-10-24T02:48:28.2670951Z title: How to remove formatting styles from string?
+2026-10-24T02:48:28.2677421Z body: Hi, \n\nI would like to search custom substring in items' text but now tags/color names are matching too.\n\nIs there a way to cleanup tags/styles from passed string?\n\nThank you.\n\nUpdate: the goal is filtering menu items which could be styled:\nhttps://github.com/petereon/beaupy/issues/201

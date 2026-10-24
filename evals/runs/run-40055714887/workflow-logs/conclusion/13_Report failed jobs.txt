@@ -1,0 +1,38 @@
+﻿2026-10-24T03:00:52.7106369Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T03:00:52.7108289Z with:
+2026-10-24T03:00:52.7117524Z   github-token: ***
+2026-10-24T03:00:52.7122831Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'report_failed_jobs.cjs'));
+await main();
+
+2026-10-24T03:00:52.7127337Z   debug: false
+2026-10-24T03:00:52.7128526Z   user-agent: actions/github-script
+2026-10-24T03:00:52.7130664Z   result-encoding: json
+2026-10-24T03:00:52.7131665Z   retries: 0
+2026-10-24T03:00:52.7132694Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T03:00:52.7135011Z env:
+2026-10-24T03:00:52.7135916Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T03:00:52.7137055Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T03:00:52.7220633Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055714887,github.run_id=40055714887,gh-aw.engine.id=codex
+2026-10-24T03:00:52.7228370Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T03:00:52.7230222Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T03:00:52.7231565Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T03:00:52.7237125Z   GH_AW_JOB_DISPLAY_NAMES: {"activation":"activation","agent":"agent","conclusion":"conclusion","detection":"detection","pre_activation":"pre_activation","safe_outputs":"safe_outputs"}
+2026-10-24T03:00:52.7242244Z   GH_AW_JOB_RESULTS: {"activation":{"result":"success"},"agent":{"result":"success"},"detection":{"result":"success"},"safe_outputs":{"result":"success"}}
+2026-10-24T03:00:52.7245598Z   GH_AW_JOB_TIMING_ELIGIBLE: {"activation":true,"agent":true,"conclusion":true,"detection":true,"pre_activation":true,"safe_outputs":true}
+2026-10-24T03:00:52.7250214Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T03:00:52.7251514Z   GITHUB_AW_OTEL_TRACE_ID: c9a49b3ce0016f13bbcf8c23ddf0f3b3
+2026-10-24T03:00:52.7253038Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 69bd536528fef96a
+2026-10-24T03:00:52.7254783Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810847421
+2026-10-24T03:00:52.7256129Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-10-24T03:00:52.7258323Z   GH_AW_WORKFLOW_NAME: Rich issue triage
+2026-10-24T03:00:52.7261110Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/ansonpoh/OSS_Assignment3/blob/main/.github/workflows/rich-triage.md
+2026-10-24T03:00:52.7263738Z   GH_AW_RUN_URL: https://github.com/ansonpoh/OSS_Assignment3/actions/runs/40055714887
+2026-10-24T03:00:52.7265411Z   GH_AW_REPORT_FAILED_JOBS: true
+2026-10-24T03:00:52.7267145Z ##[endgroup]
+2026-10-24T03:00:52.9229505Z Checking GitHub API rate limit before querying jobs
+2026-10-24T03:00:53.3699510Z Checking GitHub API rate limit after querying jobs
+2026-10-24T03:00:53.6436812Z No failed non-builtin jobs found, skipping issue creation

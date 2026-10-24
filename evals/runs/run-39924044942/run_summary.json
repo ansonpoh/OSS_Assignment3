@@ -1,7 +1,7 @@
 {
   "cli_version": "v0.93.0",
   "run_id": 39924044942,
-  "processed_at": "2026-10-23T09:26:45.784905889Z",
+  "processed_at": "2026-10-24T03:13:50.761030423Z",
   "run": {
     "databaseId": 39924044942,
     "number": 42,
@@ -23,7 +23,7 @@
     "Duration": 514000000000,
     "ActionMinutes": 9,
     "TokenUsage": 195153,
-    "Turns": 0,
+    "Turns": 1,
     "TurnsAvailable": true,
     "ErrorCount": 0,
     "WarningCount": 0,
@@ -33,15 +33,68 @@
     "safe_items_count": 1,
     "AvgTimeBetweenTurns": 0,
     "LogsPath": "evals/runs/run-39924044942",
-    "DownloadDuration": 1088634100,
-    "DownloadSizeBytes": 1453
+    "DownloadDuration": 5639453913,
+    "DownloadSizeBytes": 1600229
   },
   "metrics": {
     "TokenUsage": 195153,
     "EstimatedCost": 0,
-    "Turns": 0,
-    "ToolCalls": null,
-    "ToolSequences": null,
+    "Turns": 1,
+    "ToolCalls": [
+      {
+        "Name": "bash_/bin/bash -lc \"pytho...",
+        "CallCount": 2,
+        "MaxInputSize": 217,
+        "MaxOutputSize": 7321,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'cat ....",
+        "CallCount": 1,
+        "MaxInputSize": 55,
+        "MaxOutputSize": 7680,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'cat /...",
+        "CallCount": 1,
+        "MaxInputSize": 47,
+        "MaxOutputSize": 440,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'pytho...",
+        "CallCount": 4,
+        "MaxInputSize": 140,
+        "MaxOutputSize": 1093,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "safeoutputs_add_labels",
+        "CallCount": 1,
+        "MaxInputSize": 176,
+        "MaxOutputSize": 20,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      }
+    ],
+    "ToolSequences": [
+      [
+        "bash_/bin/bash -lc 'cat ....",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc 'cat /...",
+        "bash_/bin/bash -lc \"pytho...",
+        "bash_/bin/bash -lc \"pytho...",
+        "bash_/bin/bash -lc 'pytho...",
+        "safeoutputs_add_labels"
+      ]
+    ],
     "AvgTimeBetweenTurns": 0,
     "MaxTimeBetweenTurns": 0,
     "MedianTimeBetweenTurns": 0,
@@ -53,12 +106,12 @@
     "reason": "The run focused on classification, routing, or issue state updates."
   },
   "behavior_fingerprint": {
-    "execution_style": "directed",
-    "tool_breadth": "narrow",
+    "execution_style": "adaptive",
+    "tool_breadth": "moderate",
     "actuation_style": "selective_write",
     "resource_profile": "moderate",
     "dispatch_mode": "standalone",
-    "agentic_fraction": 0
+    "agentic_fraction": 1
   },
   "agentic_assessments": [
     {
@@ -72,29 +125,14 @@
   "access_analysis": null,
   "firewall_analysis": {
     "allowed_domains": [
-      "api.openai.com:443",
-      "chatgpt.com:443",
-      "github.com",
-      "github.com:443"
+      "api.openai.com:443"
     ],
-    "total_requests": 33,
-    "allowed_requests": 33,
+    "total_requests": 22,
+    "allowed_requests": 22,
     "blocked_requests": 0,
     "requests_by_domain": {
       "api.openai.com:443": {
-        "allowed": 28,
-        "blocked": 0
-      },
-      "chatgpt.com:443": {
-        "allowed": 1,
-        "blocked": 0
-      },
-      "github.com": {
-        "allowed": 2,
-        "blocked": 0
-      },
-      "github.com:443": {
-        "allowed": 2,
+        "allowed": 22,
         "blocked": 0
       }
     }
@@ -119,13 +157,12 @@
     ],
     "tool_calls": [
       {
-        "tool_call_id": "call-1",
         "timestamp": "2026-10-23T08:24:03.595Z",
         "server_name": "safeoutputs",
         "tool_name": "add_labels",
-        "input_size": 176,
+        "input_size": 0,
         "output_size": 0,
-        "status": "incomplete"
+        "status": "unknown"
       }
     ],
     "servers": [
@@ -136,7 +173,8 @@
         "total_input_size": 176,
         "total_output_size": 0,
         "avg_input_size": 176,
-        "max_input_size": 176
+        "max_input_size": 176,
+        "avg_duration": "0ns"
       }
     ]
   },
@@ -287,116 +325,18 @@
     ]
   },
   "github_rate_limit_usage": {
-    "total_requests_made": 14,
-    "core_consumed": 336,
+    "total_requests_made": 12,
+    "core_consumed": 280,
     "core_consumed_source": "response_headers_delta",
-    "core_remaining": 4664,
+    "core_remaining": 4720,
     "core_limit": 5000,
     "resources": [
       {
         "resource": "core",
-        "requests_made": 14,
-        "quota_consumed": 336,
-        "final_remaining": 4664,
+        "requests_made": 12,
+        "quota_consumed": 280,
+        "final_remaining": 4720,
         "limit": 5000
-      },
-      {
-        "resource": "actions_runner_registration",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 10000,
-        "limit": 10000
-      },
-      {
-        "resource": "code_search",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 10,
-        "limit": 10
-      },
-      {
-        "resource": "graphql",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 5000,
-        "limit": 5000
-      },
-      {
-        "resource": "dependency_snapshots",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 100,
-        "limit": 100
-      },
-      {
-        "resource": "dependency_sbom",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 100,
-        "limit": 100
-      },
-      {
-        "resource": "audit_log",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 1750,
-        "limit": 1750
-      },
-      {
-        "resource": "audit_log_streaming",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 15,
-        "limit": 15
-      },
-      {
-        "resource": "enterprise_token_inventory",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 1750,
-        "limit": 1750
-      },
-      {
-        "resource": "search",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 30,
-        "limit": 30
-      },
-      {
-        "resource": "source_import",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 100,
-        "limit": 100
-      },
-      {
-        "resource": "code_scanning_autofix",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 10,
-        "limit": 10
-      },
-      {
-        "resource": "copilot_usage_records",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 1750,
-        "limit": 1750
-      },
-      {
-        "resource": "integration_manifest",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 5000,
-        "limit": 5000
-      },
-      {
-        "resource": "scim",
-        "requests_made": 0,
-        "quota_consumed": 0,
-        "final_remaining": 15000,
-        "limit": 15000
       }
     ]
   },
@@ -1771,8 +1711,84 @@
     }
   ],
   "artifacts_list": [
-    ".downloaded-artifacts/info",
+    ".downloaded-artifacts/all",
+    "agent/model-resolution.json",
+    "agent-errors.jsonl",
+    "agent-session.jsonl",
+    "agent-stdio.log",
+    "agent_execution.json",
+    "agent_execution_exit_code.txt",
+    "agent_output.json",
+    "agent_usage.json",
+    "agentic-workflow-usage-scan-v2.jsonl",
+    "aw-prompts/prompt-import-tree.json",
+    "aw-prompts/prompt-template.txt",
+    "aw-prompts/prompt.txt",
+    "aw-prompts/system.txt",
+    "aw-prompts/user.txt",
     "aw_info.json",
+    "awf-config.json",
+    "base/.github/CODEOWNERS",
+    "base/.github/ISSUE_TEMPLATE/bug_report.md",
+    "base/.github/ISSUE_TEMPLATE/feature_request.md",
+    "base/.github/pull_request_template.md",
+    "base/.github/workflows/collect-cases.yml",
+    "base/.github/workflows/export-runs.yml",
+    "base/.github/workflows/golden-rerun.yml",
+    "base/.github/workflows/measure-need.yml",
+    "base/.github/workflows/newissue.yml",
+    "base/.github/workflows/pythonpackage.yml",
+    "base/.github/workflows/rich-triage.lock.yml",
+    "base/.github/workflows/rich-triage.md",
+    "base/AGENTS.md",
+    "detection/detection_result.json",
+    "detection/detection_usage.json",
+    "detection/execution.json",
+    "detection/sandbox/firewall/audit/awf-resolved-config.json",
+    "detection/sandbox/firewall/audit/docker-compose.redacted.yml",
+    "detection/sandbox/firewall/audit/image-manifest.json",
+    "detection/sandbox/firewall/audit/policy-manifest.json",
+    "detection/sandbox/firewall/audit/sensitive-paths.json",
+    "detection/sandbox/firewall/audit/squid.conf",
+    "detection/sandbox/firewall/logs/access.log",
+    "detection/sandbox/firewall/logs/api-proxy-logs/agent-runtime/started-at-ms",
+    "detection/sandbox/firewall/logs/api-proxy-logs/models.json",
+    "detection/sandbox/firewall/logs/api-proxy-logs/otel.jsonl",
+    "detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl",
+    "detection/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl",
+    "detection/sandbox/firewall/logs/audit.jsonl",
+    "detection/sandbox/firewall/logs/cache.log",
+    "github_rate_limits.jsonl",
+    "mcp-logs/configuration.jsonl",
+    "mcp-logs/gateway.md",
+    "mcp-logs/mcp-gateway.log",
+    "mcp-logs/observed-url-domains.json",
+    "mcp-logs/rpc-messages.jsonl",
+    "mcp-logs/safeoutputs.log",
+    "mcp-logs/tools.json",
+    "models.json",
+    "otel.jsonl",
+    "pre-agent-audit.txt",
+    "safe-output-items.jsonl",
+    "safeoutputs.jsonl",
+    "sandbox/firewall/audit/awf-resolved-config.json",
+    "sandbox/firewall/audit/docker-compose.redacted.yml",
+    "sandbox/firewall/audit/image-manifest.json",
+    "sandbox/firewall/audit/policy-manifest.json",
+    "sandbox/firewall/audit/sensitive-paths.json",
+    "sandbox/firewall/audit/squid.conf",
+    "sandbox/firewall/awf-reflect.json",
+    "sandbox/firewall/logs/access.log",
+    "sandbox/firewall/logs/api-proxy-logs/agent-runtime/started-at-ms",
+    "sandbox/firewall/logs/api-proxy-logs/models.json",
+    "sandbox/firewall/logs/api-proxy-logs/otel.jsonl",
+    "sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl",
+    "sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl",
+    "sandbox/firewall/logs/audit.jsonl",
+    "sandbox/firewall/logs/cache.log",
+    "skill-trace.jsonl",
+    "skill_inventory.json",
+    "temporary-id-map.json",
     "usage/activity/summary.json",
     "usage/agent/execution.json",
     "usage/agent/token_usage.jsonl",
@@ -1792,66 +1808,9 @@
     "workflow-logs/5_pre_activation.txt",
     "workflow-logs/activation/system.txt",
     "workflow-logs/agent/system.txt",
-    "workflow-logs/conclusion/10_Record missing tool.txt",
-    "workflow-logs/conclusion/11_Record incomplete.txt",
-    "workflow-logs/conclusion/12_Handle agent failure.txt",
-    "workflow-logs/conclusion/13_Report failed jobs.txt",
-    "workflow-logs/conclusion/14_Collect usage artifact files.txt",
-    "workflow-logs/conclusion/15_Generate usage activity summary and unified session.txt",
-    "workflow-logs/conclusion/16_Upload usage artifact.txt",
-    "workflow-logs/conclusion/1_Set up job.txt",
-    "workflow-logs/conclusion/2_Setup Scripts.txt",
-    "workflow-logs/conclusion/36_Post Setup Scripts.txt",
-    "workflow-logs/conclusion/37_Complete job.txt",
-    "workflow-logs/conclusion/3_Download agent output artifact.txt",
-    "workflow-logs/conclusion/4_Setup agent output environment variable.txt",
-    "workflow-logs/conclusion/6_Download detection artifact.txt",
-    "workflow-logs/conclusion/7_Download Safe Outputs Items Manifest.txt",
-    "workflow-logs/conclusion/8_Process no-op messages.txt",
-    "workflow-logs/conclusion/9_Log detection run.txt",
     "workflow-logs/conclusion/system.txt",
-    "workflow-logs/detection/10_Download container images.txt",
-    "workflow-logs/detection/11_Check if detection needed.txt",
-    "workflow-logs/detection/12_Clear MCP Config for detection.txt",
-    "workflow-logs/detection/13_Prepare threat detection files.txt",
-    "workflow-logs/detection/14_Setup threat detection.txt",
-    "workflow-logs/detection/15_Ensure threat-detection directory and log.txt",
-    "workflow-logs/detection/16_Install AWF binary.txt",
-    "workflow-logs/detection/17_Setup Node.js.txt",
-    "workflow-logs/detection/18_Install Codex CLI.txt",
-    "workflow-logs/detection/19_Prepare Codex config for threat-detect.txt",
-    "workflow-logs/detection/1_Set up job.txt",
-    "workflow-logs/detection/20_Install threat-detect binary.txt",
-    "workflow-logs/detection/21_Execute threat detection with AWF.txt",
-    "workflow-logs/detection/22_Copy detection firewall logs.txt",
-    "workflow-logs/detection/23_Redact secrets in detection logs.txt",
-    "workflow-logs/detection/24_Parse threat detection token usage for step summary.txt",
-    "workflow-logs/detection/25_Redact secrets in detection artifacts.txt",
-    "workflow-logs/detection/26_Render detection log.txt",
-    "workflow-logs/detection/27_Upload threat detection artifact.txt",
-    "workflow-logs/detection/28_Conclude threat detection.txt",
-    "workflow-logs/detection/2_Setup Scripts.txt",
-    "workflow-logs/detection/3_Download activation artifact.txt",
-    "workflow-logs/detection/4_Download agent output artifact.txt",
-    "workflow-logs/detection/57_Post Setup Node.js.txt",
-    "workflow-logs/detection/58_Post Setup Scripts.txt",
-    "workflow-logs/detection/59_Complete job.txt",
-    "workflow-logs/detection/5_Setup agent output environment variable.txt",
-    "workflow-logs/detection/7_Initialize detection execution evidence.txt",
-    "workflow-logs/detection/8_Clear inherited Copilot session state.txt",
-    "workflow-logs/detection/9_Clean stale firewall files from agent artifact.txt",
     "workflow-logs/detection/system.txt",
     "workflow-logs/pre_activation/system.txt",
-    "workflow-logs/safe_outputs/16_Post Setup Scripts.txt",
-    "workflow-logs/safe_outputs/17_Complete job.txt",
-    "workflow-logs/safe_outputs/1_Set up job.txt",
-    "workflow-logs/safe_outputs/2_Setup Scripts.txt",
-    "workflow-logs/safe_outputs/3_Mask OTLP telemetry headers.txt",
-    "workflow-logs/safe_outputs/4_Download agent output artifact.txt",
-    "workflow-logs/safe_outputs/5_Setup agent output environment variable.txt",
-    "workflow-logs/safe_outputs/6_Configure GH_HOST for enterprise compatibility.txt",
-    "workflow-logs/safe_outputs/7_Process Safe Outputs.txt",
-    "workflow-logs/safe_outputs/8_Upload Safe Outputs Items.txt",
     "workflow-logs/safe_outputs/system.txt"
   ]
 }

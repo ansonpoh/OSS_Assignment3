@@ -1,0 +1,29 @@
+﻿2026-10-24T02:47:46.5467476Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:47:46.5468996Z with:
+2026-10-24T02:47:46.5473420Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'collect_skill_install_failures.cjs'));
+await main();
+
+2026-10-24T02:47:46.5526961Z   github-token: ***
+2026-10-24T02:47:46.5528020Z   debug: false
+2026-10-24T02:47:46.5528900Z   user-agent: actions/github-script
+2026-10-24T02:47:46.5531660Z   result-encoding: json
+2026-10-24T02:47:46.5532698Z   retries: 0
+2026-10-24T02:47:46.5533612Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:47:46.5534724Z env:
+2026-10-24T02:47:46.5535528Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:47:46.5536562Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:47:46.5539172Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055621670,github.run_id=40055621670,gh-aw.engine.id=codex
+2026-10-24T02:47:46.5543031Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:47:46.5544109Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:47:46.5545266Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:47:46.5546266Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-24T02:47:46.5547270Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:47:46.5548363Z   GITHUB_AW_OTEL_TRACE_ID: 4b657594f189b4f742e9806162796785
+2026-10-24T02:47:46.5549936Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 6bc4a8d46ae6a88c
+2026-10-24T02:47:46.5551560Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810058078
+2026-10-24T02:47:46.5552621Z ##[endgroup]
+2026-10-24T02:47:46.7595768Z Skill install failures detected: 0

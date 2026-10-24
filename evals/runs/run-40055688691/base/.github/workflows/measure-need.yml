@@ -1,0 +1,50 @@
+# Reproducible measurement of triage need on the upstream project (read-only).
+# The data/metrics branch is created on first dispatch. The committed copy in
+# evals/metrics/ came from running the same script locally (same arguments).
+name: measure-need
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        default: Textualize/rich
+      since:
+        default: "2025-10-01"
+      until:
+        default: "2026-10-01"
+permissions:
+  contents: write  # only to push results to the data/metrics branch
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Measure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ inputs.repo }}
+          SINCE: ${{ inputs.since }}
+          UNTIL: ${{ inputs.until }}
+        # Inputs go through env, never interpolated into the script.
+        run: |
+          python scripts/metrics/triage_metrics.py --repo "$REPO" \
+            --since "$SINCE" --until "$UNTIL" --out evals/metrics
+      - uses: actions/upload-artifact@v4
+        with:
+          name: triage-metrics
+          path: evals/metrics/
+      - name: Commit results to data/metrics branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B data/metrics
+          git add -f evals/metrics
+          git commit -m "metrics: $REPO $SINCE..$UNTIL (run $GITHUB_RUN_ID)"
+          git push -f origin data/metrics  # a scratch snapshot; the reviewed copy is committed on main
+        env:
+          REPO: ${{ inputs.repo }}
+          SINCE: ${{ inputs.since }}
+          UNTIL: ${{ inputs.until }}

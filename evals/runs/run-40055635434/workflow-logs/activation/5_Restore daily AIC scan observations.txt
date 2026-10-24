@@ -1,0 +1,44 @@
+﻿2026-10-24T02:47:52.0849496Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:47:52.0851634Z with:
+2026-10-24T02:47:52.0855712Z   github-token: ***
+2026-10-24T02:47:52.0858050Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'restore_aic_scan_cache.cjs'));
+await main();
+
+2026-10-24T02:47:52.0860216Z   debug: false
+2026-10-24T02:47:52.0860654Z   user-agent: actions/github-script
+2026-10-24T02:47:52.0861172Z   result-encoding: json
+2026-10-24T02:47:52.0861608Z   retries: 0
+2026-10-24T02:47:52.0862059Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:47:52.0862617Z env:
+2026-10-24T02:47:52.0863012Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:47:52.0863538Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:47:52.0864876Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055635434,github.run_id=40055635434,gh-aw.engine.id=codex
+2026-10-24T02:47:52.0866381Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:47:52.0868287Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:47:52.0868925Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:47:52.0869436Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-24T02:47:52.0869953Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:47:52.0870524Z   GITHUB_AW_OTEL_TRACE_ID: 072cc374b4839f35904e9addab5c4781
+2026-10-24T02:47:52.0871211Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: e3c6c7abdd73ee32
+2026-10-24T02:47:52.0871811Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810071849
+2026-10-24T02:47:52.0872368Z   GH_AW_HAS_SLASH_COMMAND: false
+2026-10-24T02:47:52.0872875Z   GH_AW_HAS_LABEL_COMMAND: false
+2026-10-24T02:47:52.0873359Z ##[endgroup]
+2026-10-24T02:47:52.8470732Z [daily-aic-cache] Querying workflow-specific run history: {"workflowId":393703717}
+2026-10-24T02:47:52.9889131Z [daily-aic-cache] Workflow-specific run history returned candidates: {"workflowId":393703717,"runs":10}
+2026-10-24T02:47:52.9893617Z [daily-aic-cache] Evaluated snapshot producer: {"producerRunId":40055662746,"isCurrentRun":false,"trusted":true,"workflowMatches":true,"pathMatches":true,"repositoryMatches":true,"defaultBranchMatches":true,"headRepositoryMatches":true}
+2026-10-24T02:47:53.1347758Z [daily-aic-cache] Skipped snapshot producer: {"producerRunId":40055662746,"reason":"no_unexpired_scan_artifact"}
+2026-10-24T02:47:53.1353067Z [daily-aic-cache] Evaluated snapshot producer: {"producerRunId":40055655310,"isCurrentRun":false,"trusted":true,"workflowMatches":true,"pathMatches":true,"repositoryMatches":true,"defaultBranchMatches":true,"headRepositoryMatches":true}
+2026-10-24T02:47:53.2748012Z [daily-aic-cache] Skipped snapshot producer: {"producerRunId":40055655310,"reason":"no_unexpired_scan_artifact"}
+2026-10-24T02:47:53.2758140Z [daily-aic-cache] Evaluated snapshot producer: {"producerRunId":40055649260,"isCurrentRun":false,"trusted":true,"workflowMatches":true,"pathMatches":true,"repositoryMatches":true,"defaultBranchMatches":true,"headRepositoryMatches":true}
+2026-10-24T02:47:53.4014104Z [daily-aic-cache] Skipped snapshot producer: {"producerRunId":40055649260,"reason":"no_unexpired_scan_artifact"}
+2026-10-24T02:47:53.4019537Z [daily-aic-cache] Evaluated snapshot producer: {"producerRunId":40055641494,"isCurrentRun":false,"trusted":true,"workflowMatches":true,"pathMatches":true,"repositoryMatches":true,"defaultBranchMatches":true,"headRepositoryMatches":true}
+2026-10-24T02:47:53.5716144Z [daily-aic-cache] Skipped snapshot producer: {"producerRunId":40055641494,"reason":"no_unexpired_scan_artifact"}
+2026-10-24T02:47:53.5719588Z [daily-aic-cache] Evaluated snapshot producer: {"producerRunId":40055635434,"isCurrentRun":true,"trusted":true,"workflowMatches":true,"pathMatches":true,"repositoryMatches":true,"defaultBranchMatches":true,"headRepositoryMatches":true}
+2026-10-24T02:47:53.5723842Z [daily-aic-cache] Evaluated snapshot producer: {"producerRunId":40055629099,"isCurrentRun":false,"trusted":true,"workflowMatches":true,"pathMatches":true,"repositoryMatches":true,"defaultBranchMatches":true,"headRepositoryMatches":true}
+2026-10-24T02:47:54.1610788Z [daily-aic-cache] Restored verified scan observations: {"producerRunId":40055629099,"artifactId":12545296354,"entries":49}
+2026-10-24T02:47:54.1620505Z [daily-aic-cache] GitHub API rate limit level: {"requests":8,"remaining":4834,"limit":5000,"used":166,"reset":"2026-10-24T03:36:50.000Z"}

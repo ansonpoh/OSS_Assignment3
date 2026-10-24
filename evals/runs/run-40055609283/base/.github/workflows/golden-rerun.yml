@@ -1,0 +1,73 @@
+# Drift detection: replay the golden set against the current configuration and
+# fail (red run + owner e-mail) on any safety failure, on any case that passes in
+# the accepted baseline (evals/golden/results.md on main) and fails now, or if
+# fewer than 20 of the 25 cases (dev, adversarial and held-out) pass. A red run
+# stays red until the owner reviews it and commits a new baseline. On a red run
+# the owner reviews every failing case and every comment on a case whose verdict
+# changed; on a green run, the step summary's table and two sampled comments.
+# Runs weekly and on demand; run it before any change to the pinned model,
+# Codex CLI or gh-aw version.
+#
+# Requires secret GOLDEN_REPLAY_TOKEN: a fine-grained PAT for this sandbox repo
+# only (Issues: read/write). Issues created with GITHUB_TOKEN do not trigger
+# workflows, so the default token cannot drive the replay.
+name: golden-rerun
+on:
+  schedule:
+    - cron: "17 3 * * 1"   # Mondays 03:17 UTC
+  workflow_dispatch:
+permissions:
+  contents: write   # commit results to data/golden-runs
+  actions: read
+concurrency:
+  group: golden-rerun
+  cancel-in-progress: false
+jobs:
+  rerun:
+    if: ${{ vars.TRIAGE_AGENT_ENABLED != 'false' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Keep the accepted baseline
+        run: cp evals/golden/results.md "$RUNNER_TEMP/baseline.md"
+      - name: Replay golden cases
+        env:
+          GH_TOKEN: ${{ secrets.GOLDEN_REPLAY_TOKEN }}
+        run: |
+          rm -f evals/golden/replay_map.json
+          python3 evals/replay.py "$GITHUB_REPOSITORY"
+      - name: Wait for triage runs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          sleep 60
+          until [ "$(gh run list --workflow rich-triage.lock.yml -L 40 --json status -q '[.[] | select(.status != "completed")] | length')" = "0" ]; do sleep 30; done
+      - name: Score
+        id: score
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -o pipefail
+          python3 evals/score.py "$GITHUB_REPOSITORY" --min-pass 20 --baseline "$RUNNER_TEMP/baseline.md" | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          B="data/golden-runs"
+          D="evals/golden-runs/$(date -u +%F)-$GITHUB_RUN_ID"
+          OUT="$RUNNER_TEMP/golden"
+          mkdir -p "$OUT"
+          cp evals/golden/results.md evals/golden/replay_map.json "$OUT/" || true
+          for f in evals/golden/*/*/actual/actual.json; do
+            [ -f "$f" ] && cp "$f" "$OUT/$(basename "$(dirname "$(dirname "$f")")").json"
+          done
+          # Append to the branch, so every earlier drift run stays in its history.
+          git reset -q --hard && git clean -qfd
+          if git fetch -q origin "$B"; then git checkout -q -B "$B" FETCH_HEAD
+          else git checkout -q --orphan "$B" && git rm -rqf .; fi
+          mkdir -p "$D" && cp "$OUT"/* "$D/"
+          git add -f "$D"
+          git commit -q -m "golden rerun $(date -u +%F) (run $GITHUB_RUN_ID)"
+          git push origin "HEAD:$B"

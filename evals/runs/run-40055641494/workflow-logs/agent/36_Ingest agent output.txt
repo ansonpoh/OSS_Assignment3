@@ -1,0 +1,72 @@
+﻿2026-10-24T02:50:34.8556173Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:50:34.8556500Z with:
+2026-10-24T02:50:34.8557380Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'collect_ndjson_output.cjs'));
+await main();
+
+2026-10-24T02:50:34.8560437Z   github-token: ***
+2026-10-24T02:50:34.8560621Z   debug: false
+2026-10-24T02:50:34.8560804Z   user-agent: actions/github-script
+2026-10-24T02:50:34.8561018Z   result-encoding: json
+2026-10-24T02:50:34.8561195Z   retries: 0
+2026-10-24T02:50:34.8561381Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:50:34.8561608Z env:
+2026-10-24T02:50:34.8561774Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:50:34.8561989Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:50:34.8562563Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055641494,github.run_id=40055641494,gh-aw.engine.id=codex
+2026-10-24T02:50:34.8563154Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:50:34.8563378Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:50:34.8563787Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:50:34.8563983Z   DEFAULT_BRANCH: main
+2026-10-24T02:50:34.8564171Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-24T02:50:34.8564364Z   GH_AW_ASSETS_BRANCH: 
+2026-10-24T02:50:34.8564546Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-24T02:50:34.8564737Z   GH_AW_ENGINE_VERSION: 0.163.0
+2026-10-24T02:50:34.8564958Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-24T02:50:34.8565210Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-24T02:50:34.8565410Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-24T02:50:34.8565609Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-24T02:50:34.8565799Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-24T02:50:34.8565990Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-24T02:50:34.8566175Z   GH_AW_PR_HEAD_REPO: 
+2026-10-24T02:50:34.8566356Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:50:34.8566540Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-24T02:50:34.8566735Z   GH_AW_WORKFLOW_ID_SANITIZED: richtriage
+2026-10-24T02:50:34.8566999Z   GITHUB_AW_OTEL_TRACE_ID: e7bc1d44ab038a515904ac81c4f2fe3c
+2026-10-24T02:50:34.8567286Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: f60077112d21f952
+2026-10-24T02:50:34.8567536Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810117220
+2026-10-24T02:50:34.8567871Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-24T02:50:34.8568283Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-24T02:50:34.8568753Z   GH_AW_ALLOWED_GITHUB_REFS: repo
+2026-10-24T02:50:34.8568981Z   GITHUB_SERVER_URL: https://github.com
+2026-10-24T02:50:34.8569215Z   GITHUB_API_URL: https://api.github.com
+2026-10-24T02:50:34.8569435Z ##[endgroup]
+2026-10-24T02:50:34.9582110Z Loaded validation config from /home/runner/work/_temp/gh-aw/safeoutputs/validation.json
+2026-10-24T02:50:34.9583323Z [INGESTION] Reading config from: /home/runner/work/_temp/gh-aw/safeoutputs/config.json
+2026-10-24T02:50:34.9586445Z [INGESTION] Raw config content: {"add_comment":{"discussions":false,"max":1,"target":"triggering"},"add_labels":{"allowed":["bug","enhancement","question","documentation","duplicate","invalid","upstream","more information needed"],"blocked":["wontfix","accepted","good first issue","help wanted","Needs triage","done","blocked","task"],"max":1,"max_labels":3,"target":"triggering"},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-24T02:50:34.9588964Z [INGESTION] Parsed config keys: ["add_comment","add_labels","noop","report_incomplete","report_missing_data","report_missing_tool"]
+2026-10-24T02:50:34.9589626Z [INGESTION] Output file path: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-24T02:50:34.9590177Z Raw output content length: 853
+2026-10-24T02:50:34.9591828Z [INGESTION] First 500 chars of output: {"integrity":"high","item_number":64,"labels":[{"name":"question","rationale":"The requested text color is already available through Rich styles and console markup."}],"secrecy":"public","type":"add_labels"}
+2026-10-24T02:50:34.9593951Z {"body":"Use Rich's `style` parameter to set a foreground color, for example `console.print(\"Hello\", style=\"orange1\")`. Console markup works too: `[orange1]Hello[/]`. See [Styles](https://github.com/Textualize/rich/blob/master/docs/source/style.rst) and [Console Markup](https://github.co
+2026-10-24T02:50:34.9594901Z [INGESTION] Normalizing config keys (dash -> underscore)
+2026-10-24T02:50:34.9595578Z [INGESTION] Expected output types after normalization: ["add_comment","add_labels","noop","report_incomplete","report_missing_data","report_missing_tool"]
+2026-10-24T02:50:34.9597558Z [INGESTION] Expected output types full config: {"add_comment":{"discussions":false,"max":1,"target":"triggering"},"add_labels":{"allowed":["bug","enhancement","question","documentation","duplicate","invalid","upstream","more information needed"],"blocked":["wontfix","accepted","good first issue","help wanted","Needs triage","done","blocked","task"],"max":1,"max_labels":3,"target":"triggering"},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-24T02:50:34.9599760Z [INGESTION] Processing line 1: {"integrity":"high","item_number":64,"labels":[{"name":"question","rationale":"The requested text color is already available through Rich styles and console markup."}],"secrecy":"public","type":"add_l...
+2026-10-24T02:50:34.9600577Z [INGESTION] Line 1: Original type='add_labels', Normalized type='add_labels'
+2026-10-24T02:50:34.9600907Z Line 1: type 'add_labels'
+2026-10-24T02:50:34.9601961Z GitHub reference filtering: allowed repos = repo
+2026-10-24T02:50:34.9626053Z GitHub reference filtering: allowed repos = repo
+2026-10-24T02:50:34.9627691Z Line 1: Valid add_labels item
+2026-10-24T02:50:34.9629218Z [INGESTION] Processing line 2: {"body":"Use Rich's `style` parameter to set a foreground color, for example `console.print(\"Hello\", style=\"orange1\")`. Console markup works too: `[orange1]Hello[/]`. See [Styles](https://github.c...
+2026-10-24T02:50:34.9630224Z [INGESTION] Line 2: Original type='add_comment', Normalized type='add_comment'
+2026-10-24T02:50:34.9630623Z Line 2: type 'add_comment'
+2026-10-24T02:50:34.9630895Z GitHub reference filtering: allowed repos = repo
+2026-10-24T02:50:34.9675619Z Line 2: Valid add_comment item
+2026-10-24T02:50:34.9675935Z Successfully parsed 2 valid output items
+2026-10-24T02:50:35.0213138Z Stored validated output to: /tmp/gh-aw/agent_output.json
+2026-10-24T02:50:35.0218130Z output_types: add_labels, add_comment
+2026-10-24T02:50:35.0220080Z No patch or bundle files found in: /tmp/gh-aw

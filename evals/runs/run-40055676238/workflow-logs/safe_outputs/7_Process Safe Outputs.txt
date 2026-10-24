@@ -1,0 +1,100 @@
+﻿2026-10-24T02:52:46.0204863Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:52:46.0205704Z with:
+2026-10-24T02:52:46.0209806Z   github-token: ***
+2026-10-24T02:52:46.0212158Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit, process.env.GH_AW_GITHUB_TOKEN_SOURCE);
+const { main } = require(path.join(actionsDir, 'process_safe_outputs.cjs'));
+await main();
+
+2026-10-24T02:52:46.0214615Z   debug: false
+2026-10-24T02:52:46.0215096Z   user-agent: actions/github-script
+2026-10-24T02:52:46.0215668Z   result-encoding: json
+2026-10-24T02:52:46.0216154Z   retries: 0
+2026-10-24T02:52:46.0216662Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:52:46.0217283Z env:
+2026-10-24T02:52:46.0217751Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:52:46.0218327Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:52:46.0219998Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055676238,github.run_id=40055676238,gh-aw.engine.id=codex
+2026-10-24T02:52:46.0221441Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:52:46.0222043Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:52:46.0222688Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:52:46.0223235Z   GH_AW_AGENT_AIC: 0.860735
+2026-10-24T02:52:46.0223734Z   GH_AW_AIC: 0.860735
+2026-10-24T02:52:46.0224222Z   GH_AW_AMBIENT_CONTEXT: 13566
+2026-10-24T02:52:46.0224891Z   GH_AW_CALLER_WORKFLOW_ID: ansonpoh/OSS_Assignment3/rich-triage
+2026-10-24T02:52:46.0225623Z   GH_AW_DETECTION_CONCLUSION: success
+2026-10-24T02:52:46.0226206Z   GH_AW_DETECTION_REASON: 
+2026-10-24T02:52:46.0226711Z   GH_AW_ENGINE_ID: codex
+2026-10-24T02:52:46.0227243Z   GH_AW_ENGINE_MODEL: gpt-6-luna-2026-09-22
+2026-10-24T02:52:46.0227851Z   GH_AW_ENGINE_VERSION: 0.163.0
+2026-10-24T02:52:46.0228377Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:52:46.0229127Z   GH_AW_RUN_DETECTION: true
+2026-10-24T02:52:46.0229971Z   GH_AW_THREAT_DETECTION_AIC: 0.240016
+2026-10-24T02:52:46.0230571Z   GH_AW_WORKFLOW_ID: rich-triage
+2026-10-24T02:52:46.0231150Z   GH_AW_WORKFLOW_NAME: Rich issue triage
+2026-10-24T02:52:46.0232175Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/ansonpoh/OSS_Assignment3/blob/main/.github/workflows/rich-triage.md
+2026-10-24T02:52:46.0233307Z   GITHUB_AW_OTEL_TRACE_ID: c8bf0ee46dff592247741467cbd81409
+2026-10-24T02:52:46.0234035Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: daf7dfe2b501e5b9
+2026-10-24T02:52:46.0234695Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810365369
+2026-10-24T02:52:46.0235288Z   GH_HOST: github.com
+2026-10-24T02:52:46.0235780Z   GH_AW_JOB_CHECK_RUN_ID: 120758978672
+2026-10-24T02:52:46.0236416Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-10-24T02:52:46.0237059Z   GH_AW_COMMENT_ID: 
+2026-10-24T02:52:46.0241182Z   GH_AW_MENTIONS_GITHUB_TOKEN: ***
+2026-10-24T02:52:46.0241784Z   GITHUB_SERVER_URL: https://github.com
+2026-10-24T02:52:46.0242411Z   GITHUB_API_URL: https://api.github.com
+2026-10-24T02:52:46.0245370Z   GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: {"add_comment":{"discussions":false,"max":1,"target":"triggering"},"add_labels":{"allowed":["bug","enhancement","question","documentation","duplicate","invalid","upstream","more information needed"],"blocked":["wontfix","accepted","good first issue","help wanted","Needs triage","done","blocked","task"],"max":1,"max_labels":3,"target":"triggering"},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-24T02:52:46.0248530Z   GH_AW_GITHUB_TOKEN_SOURCE: github_actions
+2026-10-24T02:52:46.0249126Z ##[endgroup]
+2026-10-24T02:52:46.2034760Z Safe Output Handler Manager starting...
+2026-10-24T02:52:46.2141346Z Loaded config from GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: {"add_comment":{"discussions":false,"max":1,"target":"triggering"},"add_labels":{"allowed":["bug","enhancement","question","documentation","duplicate","invalid","upstream","more information needed"],"blocked":["wontfix","accepted","good first issue","help wanted","Needs triage","done","blocked","task"],"max":1,"max_labels":3,"target":"triggering"},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-24T02:52:46.9374504Z Agent output content length: 88
+2026-10-24T02:52:46.9375176Z Found 1 message(s) in agent output
+2026-10-24T02:52:46.9375980Z Loading and initializing safe output handlers based on configuration...
+2026-10-24T02:52:46.9379242Z Found 1 unique mentions in text
+2026-10-24T02:52:46.9380268Z Cached 1 recent collaborators for optimistic resolution
+2026-10-24T02:52:46.9381102Z Resolved 0 mentions via individual API calls
+2026-10-24T02:52:46.9381722Z Total allowed mentions: 1
+2026-10-24T02:52:46.9382518Z [OUTPUT COLLECTOR] Allowed mentions: ansonpoh
+2026-10-24T02:52:46.9383223Z Add comment configuration: max=1, target=triggering
+2026-10-24T02:52:46.9383910Z Default target repo: ansonpoh/OSS_Assignment3
+2026-10-24T02:52:46.9384872Z ✓ Loaded and initialized handler for: add_comment
+2026-10-24T02:52:46.9386727Z Add labels configuration: max=1, max-labels=3
+2026-10-24T02:52:46.9387775Z Allowed labels: bug, enhancement, question, documentation, duplicate, invalid, upstream, more information needed
+2026-10-24T02:52:46.9389140Z Blocked patterns: wontfix, accepted, good first issue, help wanted, Needs triage, done, blocked, task
+2026-10-24T02:52:46.9390343Z Create missing labels: false
+2026-10-24T02:52:46.9390930Z Default target repo: ansonpoh/OSS_Assignment3
+2026-10-24T02:52:46.9391668Z ✓ Loaded and initialized handler for: add_labels
+2026-10-24T02:52:46.9402000Z Max count: unlimited
+2026-10-24T02:52:46.9402661Z ✓ Loaded and initialized handler for: report_missing_tool
+2026-10-24T02:52:46.9403645Z Max count: unlimited
+2026-10-24T02:52:46.9408191Z ✓ Loaded and initialized handler for: report_missing_data
+2026-10-24T02:52:46.9410175Z Max count: 2
+2026-10-24T02:52:46.9410731Z ✓ Loaded and initialized handler for: noop
+2026-10-24T02:52:46.9411367Z Max count: unlimited
+2026-10-24T02:52:46.9412340Z ✓ Loaded and initialized handler for: report_incomplete
+2026-10-24T02:52:46.9417449Z Loaded 6 handler(s)
+2026-10-24T02:52:46.9418293Z ℹ️ Rate-limit headroom: 4827/5000 requests remaining (96%) [safe_outputs_pre_check]
+2026-10-24T02:52:46.9419669Z Collected 0 missing tool(s), 0 missing data item(s), 0 noop message(s), and 0 incomplete signal(s)
+2026-10-24T02:52:46.9420672Z Processing 1 message(s) in order of appearance...
+2026-10-24T02:52:46.9421357Z Processing message 1/1: add_labels
+2026-10-24T02:52:46.9421973Z Target repository: ansonpoh/OSS_Assignment3
+2026-10-24T02:52:46.9422600Z Requested labels: [{"name":"bug"}]
+2026-10-24T02:52:46.9423316Z Adding 1 labels to issue #69 in ansonpoh/OSS_Assignment3: ["bug"]
+2026-10-24T02:52:47.3502468Z Successfully added 1 labels to issue #69 in ansonpoh/OSS_Assignment3
+2026-10-24T02:52:47.3510833Z 📝 Manifest: logged add_labels #69
+2026-10-24T02:52:47.3511685Z ✓ Message 1 (add_labels) completed successfully
+2026-10-24T02:52:47.3512759Z Stored 0 missing tool(s), 0 missing data item(s), 0 noop message(s), and 0 incomplete signal(s) for footer generation
+2026-10-24T02:52:47.3513848Z 📝 Safe output summaries written to step summary
+2026-10-24T02:52:47.3514570Z 
+2026-10-24T02:52:47.3514815Z === Processing Summary ===
+2026-10-24T02:52:47.3515349Z Total messages: 1
+2026-10-24T02:52:47.3515847Z Status: success
+2026-10-24T02:52:47.3516456Z Successful: 1
+2026-10-24T02:52:47.3516914Z Failed: 0
+2026-10-24T02:52:47.3517393Z Temporary IDs registered: 0
+2026-10-24T02:52:47.3518111Z Synthetic updates: 0
+2026-10-24T02:52:47.3518700Z Wrote temporary ID map to file for artifact upload
+2026-10-24T02:52:47.3519391Z Safe Output Handler Manager completed

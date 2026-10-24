@@ -1,0 +1,58 @@
+﻿2026-10-24T02:47:30.4742913Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:47:30.4744047Z with:
+2026-10-24T02:47:30.4746408Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'install_frontmatter_skills.cjs'));
+await main();
+
+2026-10-24T02:47:30.4751402Z   github-token: ***
+2026-10-24T02:47:30.4752578Z   debug: false
+2026-10-24T02:47:30.4753458Z   user-agent: actions/github-script
+2026-10-24T02:47:30.4754382Z   result-encoding: json
+2026-10-24T02:47:30.4755432Z   retries: 0
+2026-10-24T02:47:30.4756324Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:47:30.4757254Z env:
+2026-10-24T02:47:30.4758060Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:47:30.4758977Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:47:30.4760526Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055601909,github.run_id=40055601909,gh-aw.engine.id=codex
+2026-10-24T02:47:30.4762107Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:47:30.4763043Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:47:30.4764008Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:47:30.4765115Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-24T02:47:30.4766025Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:47:30.4766967Z   GITHUB_AW_OTEL_TRACE_ID: 66749c4105f40f837600b389f7fa8e49
+2026-10-24T02:47:30.4767993Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 8607b66b283cb84c
+2026-10-24T02:47:30.4768992Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810039891
+2026-10-24T02:47:30.4772600Z   GH_TOKEN: ***
+2026-10-24T02:47:30.4773446Z   GH_AW_INFO_ENGINE_ID: codex
+2026-10-24T02:47:30.4774343Z   GH_AW_GH_SKILL_AGENT_NAME: codex
+2026-10-24T02:47:30.4775414Z   GH_AW_SKILL_DIR: .codex/skills
+2026-10-24T02:47:30.4776307Z   GH_AW_SKILL_INSTALL_INDEX: 1
+2026-10-24T02:47:30.4777292Z   GH_AW_FRONTMATTER_SKILLS: .claude/skills/rich-triage
+2026-10-24T02:47:30.4778235Z ##[endgroup]
+2026-10-24T02:47:30.6187099Z Installing frontmatter skills to /tmp/gh-aw/.codex/skills
+2026-10-24T02:47:30.6192810Z Installing frontmatter skills for gh skill agent codex
+2026-10-24T02:47:30.6198294Z Existing skills at destination may be replaced (--force) to ensure pinned refs are up to date
+2026-10-24T02:47:30.6201668Z Installing skill reference: .claude/skills/rich-triage
+2026-10-24T02:47:30.6351082Z [command]/usr/bin/gh skill install .claude/skills/rich-triage rich-triage --from-local --agent codex --dir /tmp/gh-aw/.codex/skills --force
+2026-10-24T02:47:30.6865632Z 
+2026-10-24T02:47:30.6873114Z ! Skills are not verified by GitHub and may contain prompt injections, hidden instructions, or malicious scripts. Always review skill contents before use.
+2026-10-24T02:47:30.6875081Z 
+2026-10-24T02:47:30.6916168Z Installed rich-triage (from .claude/skills/rich-triage) in /tmp/gh-aw/.codex/skills
+2026-10-24T02:47:30.6922742Z 
+2026-10-24T02:47:30.6923434Z   rich-triage/
+2026-10-24T02:47:30.6925178Z   ├── SKILL.md
+2026-10-24T02:47:30.6926798Z   └── scripts/
+2026-10-24T02:47:30.6928171Z       ├── _common.py
+2026-10-24T02:47:30.6957304Z       ├── check_api.py
+2026-10-24T02:47:30.6958261Z       ├── check_comment.py
+2026-10-24T02:47:30.6959177Z       ├── check_report.py
+2026-10-24T02:47:30.6960183Z       ├── faq_match.py
+2026-10-24T02:47:30.6961085Z       ├── find_duplicates.py
+2026-10-24T02:47:30.6962001Z       └── validate_labels.py
+2026-10-24T02:47:30.6963864Z 
+2026-10-24T02:47:30.6967353Z ! Skills may contain prompt injections or malicious scripts.
+2026-10-24T02:47:30.6969484Z   Review the installed files before use.
+2026-10-24T02:47:30.7018229Z Installed 1 skill file(s)

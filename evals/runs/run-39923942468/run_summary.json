@@ -1,7 +1,7 @@
 {
   "cli_version": "v0.93.0",
   "run_id": 39923942468,
-  "processed_at": "2026-10-23T09:26:48.962800596Z",
+  "processed_at": "2026-10-24T03:13:56.236265662Z",
   "run": {
     "databaseId": 39923942468,
     "number": 33,
@@ -23,7 +23,7 @@
     "Duration": 416000000000,
     "ActionMinutes": 7,
     "TokenUsage": 265504,
-    "Turns": 0,
+    "Turns": 1,
     "TurnsAvailable": true,
     "ErrorCount": 0,
     "WarningCount": 0,
@@ -33,15 +33,95 @@
     "safe_items_count": 2,
     "AvgTimeBetweenTurns": 0,
     "LogsPath": "evals/runs/run-39923942468",
-    "DownloadDuration": 974490786,
-    "DownloadSizeBytes": 216822
+    "DownloadDuration": 5507104483,
+    "DownloadSizeBytes": 1901258
   },
   "metrics": {
     "TokenUsage": 265504,
     "EstimatedCost": 0,
-    "Turns": 0,
-    "ToolCalls": null,
-    "ToolSequences": null,
+    "Turns": 1,
+    "ToolCalls": [
+      {
+        "Name": "bash_/bin/bash -lc \"cat /...",
+        "CallCount": 1,
+        "MaxInputSize": 321,
+        "MaxOutputSize": 8431,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc \"cat \u003e...",
+        "CallCount": 1,
+        "MaxInputSize": 621,
+        "MaxOutputSize": 35,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc \"safeo...",
+        "CallCount": 2,
+        "MaxInputSize": 553,
+        "MaxOutputSize": 811,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc \"sed -...",
+        "CallCount": 1,
+        "MaxInputSize": 162,
+        "MaxOutputSize": 10102,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'cat ....",
+        "CallCount": 1,
+        "MaxInputSize": 55,
+        "MaxOutputSize": 7680,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'comma...",
+        "CallCount": 1,
+        "MaxInputSize": 127,
+        "MaxOutputSize": 2099,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'pytho...",
+        "CallCount": 4,
+        "MaxInputSize": 140,
+        "MaxOutputSize": 1156,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      },
+      {
+        "Name": "bash_/bin/bash -lc 'rg -n...",
+        "CallCount": 1,
+        "MaxInputSize": 97,
+        "MaxOutputSize": 1860,
+        "MaxDuration": 0,
+        "OutputSample": ""
+      }
+    ],
+    "ToolSequences": [
+      [
+        "bash_/bin/bash -lc 'cat ....",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc \"cat /...",
+        "bash_/bin/bash -lc 'rg -n...",
+        "bash_/bin/bash -lc \"sed -...",
+        "bash_/bin/bash -lc 'pytho...",
+        "bash_/bin/bash -lc \"cat \u003e...",
+        "bash_/bin/bash -lc 'comma...",
+        "bash_/bin/bash -lc \"safeo...",
+        "bash_/bin/bash -lc \"safeo..."
+      ]
+    ],
     "AvgTimeBetweenTurns": 0,
     "MaxTimeBetweenTurns": 0,
     "MedianTimeBetweenTurns": 0,
@@ -53,48 +133,47 @@
     "reason": "The run focused on classification, routing, or issue state updates."
   },
   "behavior_fingerprint": {
-    "execution_style": "directed",
-    "tool_breadth": "narrow",
+    "execution_style": "exploratory",
+    "tool_breadth": "broad",
     "actuation_style": "selective_write",
-    "resource_profile": "moderate",
+    "resource_profile": "heavy",
     "dispatch_mode": "standalone",
-    "agentic_fraction": 0
+    "agentic_fraction": 1
   },
   "agentic_assessments": [
+    {
+      "kind": "resource_heavy_for_domain",
+      "severity": "high",
+      "summary": "This Triage run consumed a heavy execution profile for its task shape.",
+      "evidence": "turns=1 tool_types=8 duration=6m56s write_actions=4",
+      "recommendation": "Compare this run to similar successful runs and trim unnecessary turns, tools, or write actions."
+    },
+    {
+      "kind": "poor_agentic_control",
+      "severity": "medium",
+      "summary": "The run showed signs of broad or weakly controlled agentic behavior.",
+      "evidence": "friction=0 execution=exploratory actuation=selective_write",
+      "recommendation": "Tighten instructions, reduce unnecessary tools, or delay write actions until the workflow has stronger evidence."
+    },
     {
       "kind": "model_downgrade_available",
       "severity": "low",
       "summary": "This Triage run may not need a frontier model. A smaller model (e.g. gpt-4.1-mini, claude-haiku-4-5) could handle the task at lower cost.",
-      "evidence": "domain=triage resource_profile=moderate actuation=selective_write",
+      "evidence": "domain=triage resource_profile=heavy actuation=selective_write",
       "recommendation": "Try engine.model: gpt-4.1-mini or claude-haiku-4-5 in the workflow frontmatter."
     }
   ],
   "access_analysis": null,
   "firewall_analysis": {
     "allowed_domains": [
-      "api.openai.com:443",
-      "chatgpt.com:443",
-      "github.com",
-      "github.com:443"
+      "api.openai.com:443"
     ],
-    "total_requests": 39,
-    "allowed_requests": 39,
+    "total_requests": 28,
+    "allowed_requests": 28,
     "blocked_requests": 0,
     "requests_by_domain": {
       "api.openai.com:443": {
-        "allowed": 34,
-        "blocked": 0
-      },
-      "chatgpt.com:443": {
-        "allowed": 1,
-        "blocked": 0
-      },
-      "github.com": {
-        "allowed": 2,
-        "blocked": 0
-      },
-      "github.com:443": {
-        "allowed": 2,
+        "allowed": 28,
         "blocked": 0
       }
     }
@@ -129,22 +208,20 @@
     ],
     "tool_calls": [
       {
-        "tool_call_id": "call-1",
         "timestamp": "2026-10-23T08:23:08.615Z",
         "server_name": "safeoutputs",
         "tool_name": "add_labels",
-        "input_size": 52,
+        "input_size": 0,
         "output_size": 0,
-        "status": "incomplete"
+        "status": "unknown"
       },
       {
-        "tool_call_id": "call-2",
         "timestamp": "2026-10-23T08:23:11.797Z",
         "server_name": "safeoutputs",
         "tool_name": "add_comment",
-        "input_size": 499,
+        "input_size": 0,
         "output_size": 0,
-        "status": "incomplete"
+        "status": "unknown"
       }
     ],
     "servers": [
@@ -155,7 +232,8 @@
         "total_input_size": 551,
         "total_output_size": 0,
         "avg_input_size": 276,
-        "max_input_size": 499
+        "max_input_size": 499,
+        "avg_duration": "0ns"
       }
     ]
   },
@@ -1707,13 +1785,23 @@
     }
   ],
   "artifacts_list": [
-    ".downloaded-artifacts/usage",
+    ".downloaded-artifacts/all",
+    "agent/model-resolution.json",
+    "agent-errors.jsonl",
+    "agent-session.jsonl",
+    "agent-stdio.log",
+    "agent_execution.json",
+    "agent_execution_exit_code.txt",
+    "agent_output.json",
+    "agent_usage.json",
+    "agentic-workflow-usage-scan-v2.jsonl",
     "aw-prompts/prompt-import-tree.json",
     "aw-prompts/prompt-template.txt",
     "aw-prompts/prompt.txt",
     "aw-prompts/system.txt",
     "aw-prompts/user.txt",
     "aw_info.json",
+    "awf-config.json",
     "base/.github/CODEOWNERS",
     "base/.github/ISSUE_TEMPLATE/bug_report.md",
     "base/.github/ISSUE_TEMPLATE/feature_request.md",
@@ -1727,9 +1815,51 @@
     "base/.github/workflows/rich-triage.lock.yml",
     "base/.github/workflows/rich-triage.md",
     "base/AGENTS.md",
+    "detection/detection_result.json",
+    "detection/detection_usage.json",
+    "detection/execution.json",
+    "detection/sandbox/firewall/audit/awf-resolved-config.json",
+    "detection/sandbox/firewall/audit/docker-compose.redacted.yml",
+    "detection/sandbox/firewall/audit/image-manifest.json",
+    "detection/sandbox/firewall/audit/policy-manifest.json",
+    "detection/sandbox/firewall/audit/sensitive-paths.json",
+    "detection/sandbox/firewall/audit/squid.conf",
+    "detection/sandbox/firewall/logs/access.log",
+    "detection/sandbox/firewall/logs/api-proxy-logs/agent-runtime/started-at-ms",
+    "detection/sandbox/firewall/logs/api-proxy-logs/models.json",
+    "detection/sandbox/firewall/logs/api-proxy-logs/otel.jsonl",
+    "detection/sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl",
+    "detection/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl",
+    "detection/sandbox/firewall/logs/audit.jsonl",
+    "detection/sandbox/firewall/logs/cache.log",
     "github_rate_limits.jsonl",
+    "mcp-logs/configuration.jsonl",
+    "mcp-logs/gateway.md",
+    "mcp-logs/mcp-gateway.log",
+    "mcp-logs/observed-url-domains.json",
+    "mcp-logs/rpc-messages.jsonl",
+    "mcp-logs/safeoutputs.log",
+    "mcp-logs/tools.json",
     "models.json",
+    "otel.jsonl",
+    "pre-agent-audit.txt",
     "safe-output-items.jsonl",
+    "safeoutputs.jsonl",
+    "sandbox/firewall/audit/awf-resolved-config.json",
+    "sandbox/firewall/audit/docker-compose.redacted.yml",
+    "sandbox/firewall/audit/image-manifest.json",
+    "sandbox/firewall/audit/policy-manifest.json",
+    "sandbox/firewall/audit/sensitive-paths.json",
+    "sandbox/firewall/audit/squid.conf",
+    "sandbox/firewall/awf-reflect.json",
+    "sandbox/firewall/logs/access.log",
+    "sandbox/firewall/logs/api-proxy-logs/agent-runtime/started-at-ms",
+    "sandbox/firewall/logs/api-proxy-logs/models.json",
+    "sandbox/firewall/logs/api-proxy-logs/otel.jsonl",
+    "sandbox/firewall/logs/api-proxy-logs/token-tracker-audit.jsonl",
+    "sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl",
+    "sandbox/firewall/logs/audit.jsonl",
+    "sandbox/firewall/logs/cache.log",
     "skill-trace.jsonl",
     "skill_inventory.json",
     "temporary-id-map.json",
@@ -1752,23 +1882,6 @@
     "workflow-logs/5_pre_activation.txt",
     "workflow-logs/activation/system.txt",
     "workflow-logs/agent/system.txt",
-    "workflow-logs/conclusion/10_Record missing tool.txt",
-    "workflow-logs/conclusion/11_Record incomplete.txt",
-    "workflow-logs/conclusion/12_Handle agent failure.txt",
-    "workflow-logs/conclusion/13_Report failed jobs.txt",
-    "workflow-logs/conclusion/14_Collect usage artifact files.txt",
-    "workflow-logs/conclusion/15_Generate usage activity summary and unified session.txt",
-    "workflow-logs/conclusion/16_Upload usage artifact.txt",
-    "workflow-logs/conclusion/1_Set up job.txt",
-    "workflow-logs/conclusion/2_Setup Scripts.txt",
-    "workflow-logs/conclusion/36_Post Setup Scripts.txt",
-    "workflow-logs/conclusion/37_Complete job.txt",
-    "workflow-logs/conclusion/3_Download agent output artifact.txt",
-    "workflow-logs/conclusion/4_Setup agent output environment variable.txt",
-    "workflow-logs/conclusion/6_Download detection artifact.txt",
-    "workflow-logs/conclusion/7_Download Safe Outputs Items Manifest.txt",
-    "workflow-logs/conclusion/8_Process no-op messages.txt",
-    "workflow-logs/conclusion/9_Log detection run.txt",
     "workflow-logs/conclusion/system.txt",
     "workflow-logs/detection/system.txt",
     "workflow-logs/pre_activation/system.txt",

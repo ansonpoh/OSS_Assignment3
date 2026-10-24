@@ -1,0 +1,71 @@
+﻿2026-10-24T02:49:15.6338851Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:49:15.6339193Z with:
+2026-10-24T02:49:15.6340095Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'collect_ndjson_output.cjs'));
+await main();
+
+2026-10-24T02:49:15.6342942Z   github-token: ***
+2026-10-24T02:49:15.6343144Z   debug: false
+2026-10-24T02:49:15.6343353Z   user-agent: actions/github-script
+2026-10-24T02:49:15.6343789Z   result-encoding: json
+2026-10-24T02:49:15.6343985Z   retries: 0
+2026-10-24T02:49:15.6344201Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:49:15.6344449Z env:
+2026-10-24T02:49:15.6344628Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:49:15.6344865Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:49:15.6345463Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055576178,github.run_id=40055576178,gh-aw.engine.id=codex
+2026-10-24T02:49:15.6346102Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:49:15.6346347Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:49:15.6346600Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:49:15.6346807Z   DEFAULT_BRANCH: main
+2026-10-24T02:49:15.6347183Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-10-24T02:49:15.6347395Z   GH_AW_ASSETS_BRANCH: 
+2026-10-24T02:49:15.6347592Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-10-24T02:49:15.6347803Z   GH_AW_ENGINE_VERSION: 0.163.0
+2026-10-24T02:49:15.6348045Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-10-24T02:49:15.6348305Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-10-24T02:49:15.6348527Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-10-24T02:49:15.6348748Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-10-24T02:49:15.6348955Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-10-24T02:49:15.6349159Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-10-24T02:49:15.6349361Z   GH_AW_PR_HEAD_REPO: 
+2026-10-24T02:49:15.6349552Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:49:15.6349752Z   GH_AW_TARGET_REPO_SLUG: 
+2026-10-24T02:49:15.6349962Z   GH_AW_WORKFLOW_ID_SANITIZED: richtriage
+2026-10-24T02:49:15.6350239Z   GITHUB_AW_OTEL_TRACE_ID: b78872f20e2fba7b5d8b58664cfe5caa
+2026-10-24T02:49:15.6350535Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: a885153ccd858e9a
+2026-10-24T02:49:15.6350806Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810040276
+2026-10-24T02:49:15.6351156Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-24T02:49:15.6351585Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-24T02:49:15.6351917Z   GH_AW_ALLOWED_GITHUB_REFS: repo
+2026-10-24T02:49:15.6352157Z   GITHUB_SERVER_URL: https://github.com
+2026-10-24T02:49:15.6352403Z   GITHUB_API_URL: https://api.github.com
+2026-10-24T02:49:15.6352644Z ##[endgroup]
+2026-10-24T02:49:15.7433923Z Loaded validation config from /home/runner/work/_temp/gh-aw/safeoutputs/validation.json
+2026-10-24T02:49:15.7435328Z [INGESTION] Reading config from: /home/runner/work/_temp/gh-aw/safeoutputs/config.json
+2026-10-24T02:49:15.7437700Z [INGESTION] Raw config content: {"add_comment":{"discussions":false,"max":1,"target":"triggering"},"add_labels":{"allowed":["bug","enhancement","question","documentation","duplicate","invalid","upstream","more information needed"],"blocked":["wontfix","accepted","good first issue","help wanted","Needs triage","done","blocked","task"],"max":1,"max_labels":3,"target":"triggering"},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-24T02:49:15.7440092Z [INGESTION] Parsed config keys: ["add_comment","add_labels","noop","report_incomplete","report_missing_data","report_missing_tool"]
+2026-10-24T02:49:15.7440948Z [INGESTION] Output file path: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-10-24T02:49:15.7441473Z Raw output content length: 677
+2026-10-24T02:49:15.7442495Z [INGESTION] First 500 chars of output: {"item_number":54,"labels":[{"name":"upstream"}],"type":"add_labels"}
+2026-10-24T02:49:15.7445108Z {"body":"Please report these advisories to the affected projects and update the packages in the audited environment. The output identifies Pygments and Requests; Pygments is a Rich dependency, while Requests is not listed as one, so this output does not by itself show that Rich is vulnerable. If you have evidence of a vulnerability in Rich itself, report it through [SECURITY.md](https://github.com/Textualize/rich/blob/master/S
+2026-10-24T02:49:15.7447215Z [INGESTION] Normalizing config keys (dash -> underscore)
+2026-10-24T02:49:15.7447954Z [INGESTION] Expected output types after normalization: ["add_comment","add_labels","noop","report_incomplete","report_missing_data","report_missing_tool"]
+2026-10-24T02:49:15.7449985Z [INGESTION] Expected output types full config: {"add_comment":{"discussions":false,"max":1,"target":"triggering"},"add_labels":{"allowed":["bug","enhancement","question","documentation","duplicate","invalid","upstream","more information needed"],"blocked":["wontfix","accepted","good first issue","help wanted","Needs triage","done","blocked","task"],"max":1,"max_labels":3,"target":"triggering"},"noop":{"max":2,"report-as-issue":"false"},"report_incomplete":{},"report_missing_data":{},"report_missing_tool":{}}
+2026-10-24T02:49:15.7451760Z [INGESTION] Processing line 1: {"item_number":54,"labels":[{"name":"upstream"}],"type":"add_labels"}...
+2026-10-24T02:49:15.7452281Z [INGESTION] Line 1: Original type='add_labels', Normalized type='add_labels'
+2026-10-24T02:49:15.7452617Z Line 1: type 'add_labels'
+2026-10-24T02:49:15.7454148Z GitHub reference filtering: allowed repos = repo
+2026-10-24T02:49:15.7477070Z Line 1: Valid add_labels item
+2026-10-24T02:49:15.7478769Z [INGESTION] Processing line 2: {"body":"Please report these advisories to the affected projects and update the packages in the audited environment. The output identifies Pygments and Requests; Pygments is a Rich dependency, while R...
+2026-10-24T02:49:15.7480358Z [INGESTION] Line 2: Original type='add_comment', Normalized type='add_comment'
+2026-10-24T02:49:15.7480939Z Line 2: type 'add_comment'
+2026-10-24T02:49:15.7481400Z GitHub reference filtering: allowed repos = repo
+2026-10-24T02:49:15.7493511Z Line 2: Valid add_comment item
+2026-10-24T02:49:15.7494143Z Successfully parsed 2 valid output items
+2026-10-24T02:49:15.8038553Z Stored validated output to: /tmp/gh-aw/agent_output.json
+2026-10-24T02:49:15.8043872Z output_types: add_labels, add_comment
+2026-10-24T02:49:15.8045950Z No patch or bundle files found in: /tmp/gh-aw

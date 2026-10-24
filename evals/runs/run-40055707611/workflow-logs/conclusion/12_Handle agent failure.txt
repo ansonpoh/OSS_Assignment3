@@ -1,0 +1,117 @@
+﻿2026-10-24T03:01:11.0966291Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T03:01:11.0968282Z with:
+2026-10-24T03:01:11.0972507Z   github-token: ***
+2026-10-24T03:01:11.0975105Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'handle_agent_failure.cjs'));
+await main();
+
+2026-10-24T03:01:11.0977331Z   debug: false
+2026-10-24T03:01:11.0977831Z   user-agent: actions/github-script
+2026-10-24T03:01:11.0978510Z   result-encoding: json
+2026-10-24T03:01:11.0979012Z   retries: 0
+2026-10-24T03:01:11.0979532Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T03:01:11.0980155Z env:
+2026-10-24T03:01:11.0980619Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T03:01:11.0981254Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T03:01:11.0982878Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055707611,github.run_id=40055707611,gh-aw.engine.id=codex
+2026-10-24T03:01:11.0984335Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T03:01:11.0986203Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T03:01:11.0986954Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T03:01:11.0988265Z   GH_AW_JOB_DISPLAY_NAMES: {"activation":"activation","agent":"agent","conclusion":"conclusion","detection":"detection","pre_activation":"pre_activation","safe_outputs":"safe_outputs"}
+2026-10-24T03:01:11.0990115Z   GH_AW_JOB_RESULTS: {"activation":{"result":"success"},"agent":{"result":"success"},"detection":{"result":"success"},"safe_outputs":{"result":"success"}}
+2026-10-24T03:01:11.0992050Z   GH_AW_JOB_TIMING_ELIGIBLE: {"activation":true,"agent":true,"conclusion":true,"detection":true,"pre_activation":true,"safe_outputs":true}
+2026-10-24T03:01:11.0993232Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T03:01:11.0993872Z   GITHUB_AW_OTEL_TRACE_ID: 155555fb0e32a5bfcb8a0a60a789c972
+2026-10-24T03:01:11.0994903Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 9e15fc4b1aa351f8
+2026-10-24T03:01:11.0995593Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810868137
+2026-10-24T03:01:11.0996274Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-10-24T03:01:11.0996949Z   GH_AW_WORKFLOW_NAME: Rich issue triage
+2026-10-24T03:01:11.0998001Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/ansonpoh/OSS_Assignment3/blob/main/.github/workflows/rich-triage.md
+2026-10-24T03:01:11.0999239Z   GH_AW_RUN_URL: https://github.com/ansonpoh/OSS_Assignment3/actions/runs/40055707611
+2026-10-24T03:01:11.1000085Z   GH_AW_AGENT_CONCLUSION: success
+2026-10-24T03:01:11.1000660Z   GH_AW_WORKFLOW_ID: rich-triage
+2026-10-24T03:01:11.1001251Z   GH_AW_ACTION_FAILURE_ISSUE_EXPIRES_HOURS: 0
+2026-10-24T03:01:11.1002061Z   GH_AW_ENGINE_ID: codex
+2026-10-24T03:01:11.1003215Z   GH_AW_SECRET_VERIFICATION_RESULT: success
+2026-10-24T03:01:11.1004277Z   GH_AW_CHECKOUT_PR_SUCCESS: true
+2026-10-24T03:01:11.1004887Z   GH_AW_CHECKOUT_PR_INVALIDATED: false
+2026-10-24T03:01:11.1005509Z   GH_AW_AI_CREDITS_RATE_LIMIT_ERROR: false
+2026-10-24T03:01:11.1006132Z   GH_AW_UNKNOWN_MODEL_AI_CREDITS: false
+2026-10-24T03:01:11.1006703Z   GH_AW_AIC: 0.763747
+2026-10-24T03:01:11.1007213Z   GH_AW_THREAT_DETECTION_AIC: 0.240236
+2026-10-24T03:01:11.1007828Z   GH_AW_DETECTION_JOB_RESULT: success
+2026-10-24T03:01:11.1008396Z   GH_AW_MAX_AI_CREDITS: 50
+2026-10-24T03:01:11.1008964Z   GH_AW_DEFAULT_CHECKOUT_USES_TRIGGER_REF: true
+2026-10-24T03:01:11.1009613Z   GH_AW_INFERENCE_ACCESS_ERROR: false
+2026-10-24T03:01:11.1010197Z   GH_AW_MCP_POLICY_ERROR: false
+2026-10-24T03:01:11.1010763Z   GH_AW_AGENTIC_ENGINE_TIMEOUT: false
+2026-10-24T03:01:11.1011369Z   GH_AW_MODEL_NOT_SUPPORTED_ERROR: false
+2026-10-24T03:01:11.1012220Z   GH_AW_MODEL_ENDPOINT_MISMATCH_ERROR: false
+2026-10-24T03:01:11.1012863Z   GH_AW_HTTP_400_RESPONSE_ERROR: false
+2026-10-24T03:01:11.1013473Z   GH_AW_MAX_CACHE_MISSES_EXCEEDED: false
+2026-10-24T03:01:11.1014090Z   GH_AW_MISSING_MODEL_PRICING_ERROR: false
+2026-10-24T03:01:11.1014978Z   GH_AW_MISSING_MODEL_PRICING_MODEL_NAME: 
+2026-10-24T03:01:11.1015623Z   GH_AW_SHELL_EXPANSION_GUARD_REJECTED: false
+2026-10-24T03:01:11.1016281Z   GH_AW_ENGINE_API_HOSTS: api.openai.com
+2026-10-24T03:01:11.1016905Z   GH_AW_LOCKDOWN_CHECK_FAILED: false
+2026-10-24T03:01:11.1017506Z   GH_AW_OAUTH_TOKEN_CHECK_FAILED: false
+2026-10-24T03:01:11.1018118Z   GH_AW_STALE_LOCK_FILE_FAILED: false
+2026-10-24T03:01:11.1018726Z   GH_AW_SKILL_INSTALL_FAILURE_COUNT: 0
+2026-10-24T03:01:11.1019325Z   GH_AW_SKILL_INSTALL_ERRORS: 
+2026-10-24T03:01:11.1019889Z   GH_AW_DAILY_AI_CREDITS_EXCEEDED: false
+2026-10-24T03:01:11.1020571Z   GH_AW_DAILY_AI_CREDITS_GUARDRAIL_STATUS: under_budget
+2026-10-24T03:01:11.1021270Z   GH_AW_DAILY_AI_CREDITS_GUARDRAIL_ERROR: 
+2026-10-24T03:01:11.1022086Z   GH_AW_DAILY_AI_CREDITS_TOTAL: 42.225665
+2026-10-24T03:01:11.1022716Z   GH_AW_DAILY_AI_CREDITS_ESTIMATED: 0
+2026-10-24T03:01:11.1023323Z   GH_AW_DAILY_AI_CREDITS_THRESHOLD: 600
+2026-10-24T03:01:11.1054101Z   GH_AW_DAILY_AI_CREDITS_CONTINUE_ON_ERROR: false
+2026-10-24T03:01:11.1055070Z   GH_AW_GROUP_REPORTS: false
+2026-10-24T03:01:11.1055667Z   GH_AW_FAILURE_REPORT_AS_ISSUE: false
+2026-10-24T03:01:11.1056299Z   GH_AW_MISSING_TOOL_REPORT_AS_FAILURE: true
+2026-10-24T03:01:11.1056965Z   GH_AW_MISSING_DATA_REPORT_AS_FAILURE: true
+2026-10-24T03:01:11.1057595Z   GH_AW_TIMEOUT_MINUTES: 10
+2026-10-24T03:01:11.1058120Z ##[endgroup]
+2026-10-24T03:01:11.2988056Z [ai-credits] aiCredits source=token_usage value=0.763747
+2026-10-24T03:01:11.2993892Z [ai-credits] maxAICredits source=awf_config value=50
+2026-10-24T03:01:11.2999014Z [ai-credits] rateLimitSignal source=none
+2026-10-24T03:01:11.3012021Z Agent conclusion: success
+2026-10-24T03:01:11.3014978Z Workflow name: Rich issue triage
+2026-10-24T03:01:11.3017843Z Workflow ID: rich-triage
+2026-10-24T03:01:11.3020638Z Secret verification result: success
+2026-10-24T03:01:11.3023815Z Engine secret failure message: (none)
+2026-10-24T03:01:11.3026669Z Assignment error count: 0
+2026-10-24T03:01:11.3031993Z Assign copilot failure count: 0
+2026-10-24T03:01:11.3035458Z Skill install failure count: 0
+2026-10-24T03:01:11.3038385Z Create discussion error count: 0
+2026-10-24T03:01:11.3041274Z Code push failure count: 0
+2026-10-24T03:01:11.3045256Z Checkout PR success: true
+2026-10-24T03:01:11.3048250Z AI credits: 0.763747
+2026-10-24T03:01:11.3050046Z Configured max AI credits: 50
+2026-10-24T03:01:11.3051886Z AI credits rate-limit error: false
+2026-10-24T03:01:11.3053404Z Max AI credits exceeded (harness budget abort): false
+2026-10-24T03:01:11.3054867Z Daily workflow AIC guardrail exceeded: false
+2026-10-24T03:01:11.3056416Z Daily workflow AIC guardrail status: under_budget; error detail: (none)
+2026-10-24T03:01:11.3058086Z Daily workflow AIC guardrail continue-on-error (warning mode): false
+2026-10-24T03:01:11.3059598Z Inference access error: false
+2026-10-24T03:01:11.3060879Z MCP policy error: false
+2026-10-24T03:01:11.3062406Z Agentic engine timeout: false
+2026-10-24T03:01:11.3063795Z Model not supported error: false
+2026-10-24T03:01:11.3065083Z HTTP 400 response error: false
+2026-10-24T03:01:11.3066361Z Unknown model AI credits error: false
+2026-10-24T03:01:11.3067800Z Unknown model AI credits sources (audit/output): false/false
+2026-10-24T03:01:11.3069305Z Missing model pricing error: false (model: (unknown))
+2026-10-24T03:01:11.3075015Z Shell expansion guard rejected: false
+2026-10-24T03:01:11.3075678Z Push repo-memory result: 
+2026-10-24T03:01:11.3076465Z App token minting failed (safe_outputs/conclusion/activation): false/false/false
+2026-10-24T03:01:11.3077297Z Lockdown check failed: false
+2026-10-24T03:01:11.3077859Z OAuth token check failed: false
+2026-10-24T03:01:11.3078428Z Stale lock file check failed: false
+2026-10-24T03:01:11.3079070Z Cache memory enabled: false
+2026-10-24T03:01:11.3079685Z Cache memory restored (from restore outputs): false
+2026-10-24T03:01:11.3103484Z Missing tool report-as-failure: true
+2026-10-24T03:01:11.3104306Z Missing data report-as-failure: true
+2026-10-24T03:01:11.3112672Z Agent output content length: 530
+2026-10-24T03:01:11.3118381Z Agent job did not fail and no assignment/discussion/code-push/push-repo-memory/app-token/lockdown/oauth-token-check/stale-lock-file/daily-workflow-aic/daily-workflow-aic-accounting/ai-credits/max-ai-credits-exceeded/report-incomplete/cache-miss/missing-tool/missing-data/tool-denials-exceeded/secret-verification errors and has safe outputs (conclusion: success), skipping failure handling

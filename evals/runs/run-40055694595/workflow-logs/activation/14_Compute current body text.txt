@@ -1,0 +1,32 @@
+﻿2026-10-24T02:49:33.0602952Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:49:33.0604343Z with:
+2026-10-24T02:49:33.0607918Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'compute_text.cjs'));
+await main();
+
+2026-10-24T02:49:33.0620678Z   github-token: ***
+2026-10-24T02:49:33.0621588Z   debug: false
+2026-10-24T02:49:33.0622381Z   user-agent: actions/github-script
+2026-10-24T02:49:33.0623334Z   result-encoding: json
+2026-10-24T02:49:33.0624128Z   retries: 0
+2026-10-24T02:49:33.0624948Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:49:33.0625960Z env:
+2026-10-24T02:49:33.0626689Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:49:33.0627630Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:49:33.0630268Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055694595,github.run_id=40055694595,gh-aw.engine.id=codex
+2026-10-24T02:49:33.0633718Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:49:33.0634720Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:49:33.0636308Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:49:33.0637331Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-24T02:49:33.0638250Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:49:33.0639472Z   GITHUB_AW_OTEL_TRACE_ID: 5e6341a45089394646244cb0eb10e6f1
+2026-10-24T02:49:33.0640750Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 23c7bd8f866c4875
+2026-10-24T02:49:33.0641845Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810167431
+2026-10-24T02:49:33.0642822Z ##[endgroup]
+2026-10-24T02:49:33.4012846Z Repository permission level: admin
+2026-10-24T02:49:33.4226245Z text: (perf) Syntax word wrap without line numbers repeatedly renders each source line\n\n`Syntax._get_syntax()` currently calls `console.render_lines(...)` once per highlighted source line when `word_wrap=True`, even when `line_numbers=False`.\n\nFor syntax blocks without line numbers, continuation prefixes are not needed, so the selected highlighted lines can be joined and rendered/wrapped in one batch. This avoids repeatedly entering the generic console render pipeline.
+2026-10-24T02:49:33.4234258Z title: (perf) Syntax word wrap without line numbers repeatedly renders each source line
+2026-10-24T02:49:33.4240600Z body: `Syntax._get_syntax()` currently calls `console.render_lines(...)` once per highlighted source line when `word_wrap=True`, even when `line_numbers=False`.\n\nFor syntax blocks without line numbers, continuation prefixes are not needed, so the selected highlighted lines can be joined and rendered/wrapped in one batch. This avoids repeatedly entering the generic console render pipeline.

@@ -1,0 +1,44 @@
+﻿2026-10-24T02:47:28.0761632Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:47:28.0762831Z with:
+2026-10-24T02:47:28.0765362Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_workflow_timestamp_api.cjs'));
+await main();
+
+2026-10-24T02:47:28.0773307Z   github-token: ***
+2026-10-24T02:47:28.0774286Z   debug: false
+2026-10-24T02:47:28.0777609Z   user-agent: actions/github-script
+2026-10-24T02:47:28.0778583Z   result-encoding: json
+2026-10-24T02:47:28.0779459Z   retries: 0
+2026-10-24T02:47:28.0780339Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:47:28.0781313Z env:
+2026-10-24T02:47:28.0782144Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:47:28.0783088Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:47:28.0784893Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055601909,github.run_id=40055601909,gh-aw.engine.id=codex
+2026-10-24T02:47:28.0786824Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:47:28.0787783Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:47:28.0788793Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:47:28.0789721Z   GH_AW_MAX_DAILY_AI_CREDITS: 600
+2026-10-24T02:47:28.0790640Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:47:28.0791613Z   GITHUB_AW_OTEL_TRACE_ID: 66749c4105f40f837600b389f7fa8e49
+2026-10-24T02:47:28.0792683Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 8607b66b283cb84c
+2026-10-24T02:47:28.0793705Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810039891
+2026-10-24T02:47:28.0794962Z   GH_AW_WORKFLOW_FILE: rich-triage.lock.yml
+2026-10-24T02:47:28.0796649Z   GH_AW_CONTEXT_WORKFLOW_REF: ansonpoh/OSS_Assignment3/.github/workflows/rich-triage.lock.yml@refs/heads/main
+2026-10-24T02:47:28.0797903Z ##[endgroup]
+2026-10-24T02:47:28.2084211Z Checking for stale lock file using frontmatter hash:
+2026-10-24T02:47:28.2091659Z   Source: .github/workflows/rich-triage.md
+2026-10-24T02:47:28.2095336Z   Lock file: .github/workflows/rich-triage.lock.yml
+2026-10-24T02:47:28.2099738Z Env workflow ref already identifies this workflow, skipping referenced_workflows API lookup
+2026-10-24T02:47:28.2103379Z GITHUB_WORKFLOW_REF: ansonpoh/OSS_Assignment3/.github/workflows/rich-triage.lock.yml@refs/heads/main
+2026-10-24T02:47:28.2107900Z GH_AW_CONTEXT_WORKFLOW_REF: ansonpoh/OSS_Assignment3/.github/workflows/rich-triage.lock.yml@refs/heads/main (available as env fallback)
+2026-10-24T02:47:28.2110776Z GITHUB_REPOSITORY: ansonpoh/OSS_Assignment3
+2026-10-24T02:47:28.2112984Z Resolved source repo: ansonpoh/OSS_Assignment3 @ refs/heads/main
+2026-10-24T02:47:28.2115687Z Same-repo invocation: checking out ansonpoh/OSS_Assignment3 @ refs/heads/main
+2026-10-24T02:47:29.0399163Z Frontmatter hash comparison:
+2026-10-24T02:47:29.0403246Z   Lock file hash:    92e0a73d301b7f6938cd89271d3e88ff7f4ac118879f11892aae9f33fa0b41ca
+2026-10-24T02:47:29.0408257Z   Recomputed hash:   92e0a73d301b7f6938cd89271d3e88ff7f4ac118879f11892aae9f33fa0b41ca
+2026-10-24T02:47:29.0411811Z   Status: ✅ Hashes match
+2026-10-24T02:47:29.0415485Z ✅ Lock file is up to date (hashes match)

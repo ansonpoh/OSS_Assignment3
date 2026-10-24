@@ -1,0 +1,48 @@
+﻿2026-10-24T02:52:32.2506380Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-10-24T02:52:32.2507115Z with:
+2026-10-24T02:52:32.2509414Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'parse_token_usage.cjs'));
+await main();
+
+2026-10-24T02:52:32.2514857Z   github-token: ***
+2026-10-24T02:52:32.2515154Z   debug: false
+2026-10-24T02:52:32.2515402Z   user-agent: actions/github-script
+2026-10-24T02:52:32.2515692Z   result-encoding: json
+2026-10-24T02:52:32.2516060Z   retries: 0
+2026-10-24T02:52:32.2516364Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-10-24T02:52:32.2516669Z env:
+2026-10-24T02:52:32.2516883Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-10-24T02:52:32.2517164Z   OTEL_SERVICE_NAME: gh-aw.rich-triage
+2026-10-24T02:52:32.2518087Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=Rich%20issue%20triage,gh-aw.repository=ansonpoh/OSS_Assignment3,gh-aw.run.id=40055676238,github.run_id=40055676238,gh-aw.engine.id=codex
+2026-10-24T02:52:32.2519244Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-10-24T02:52:32.2519783Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-10-24T02:52:32.2520349Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-10-24T02:52:32.2520747Z   GH_AW_RUNTIME_FEATURES: 
+2026-10-24T02:52:32.2521226Z   GITHUB_AW_OTEL_TRACE_ID: c8bf0ee46dff592247741467cbd81409
+2026-10-24T02:52:32.2521731Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 6dc725d33421885b
+2026-10-24T02:52:32.2522076Z   GITHUB_AW_OTEL_JOB_START_MS: 1792810305640
+2026-10-24T02:52:32.2522418Z   GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
+2026-10-24T02:52:32.2522903Z   AWF_TOKEN_USAGE_LOG: /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-10-24T02:52:32.2523427Z   GH_AW_TOKEN_USAGE_SUMMARY_TITLE: Threat Detection Token Usage
+2026-10-24T02:52:32.2523786Z   GH_AW_PHASE: detection
+2026-10-24T02:52:32.2524152Z   GH_AW_AGENT_USAGE_PATH: /tmp/gh-aw/threat-detection/detection_usage.json
+2026-10-24T02:52:32.2524679Z   GH_AW_AGENT_USAGE_JSONL_PATH: /tmp/gh-aw/threat-detection/detection_usage.jsonl
+2026-10-24T02:52:32.2525099Z   GH_AW_WRITE_EMPTY_USAGE: true
+2026-10-24T02:52:32.2525365Z ##[endgroup]
+2026-10-24T02:52:32.3890325Z Parsing token usage from 1 file(s): /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl (1190 bytes)
+2026-10-24T02:52:32.4038215Z Threat Detection Token Usage
+2026-10-24T02:52:32.4038583Z 
+2026-10-24T02:52:32.4039650Z # | Alias | Input | Output | Cache Read | Cache Write | ΔAI Credits | AI Credits | Duration 
+2026-10-24T02:52:32.4040036Z 
+2026-10-24T02:52:32.4040254Z  1 | gpt60 | 19,279 | 281 | 0 | 0 | 0.20684 | 0.20684 | 3.9s 
+2026-10-24T02:52:32.4040727Z  2 | gpt60 | 20,001 | 133 | 19,276 | 0 | 0.033176 | 0.240016 | 2.6s 
+2026-10-24T02:52:32.4041476Z  Total |  | 39,280 | 414 | 19,276 | 0 |  | 0.240016 | 6.5s 
+2026-10-24T02:52:32.4041887Z 
+2026-10-24T02:52:32.4042786Z Legend: `Alias` shows the model shorthand used in the table. `ΔAI Credits` is the per-request cost, and `AI Credits` is the running total mirrored from AWF fields for reporting.
+2026-10-24T02:52:32.4043637Z Token usage summary appended to step summary
+2026-10-24T02:52:32.4058814Z Primary model: gpt-6-luna
+2026-10-24T02:52:32.4060108Z AI Credits: 0.240016
+2026-10-24T02:52:32.4061288Z Ambient context: 19279
