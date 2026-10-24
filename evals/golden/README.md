@@ -1,9 +1,10 @@
 # Golden evaluation set
 
 Expected outcomes were written from each issue's upstream evidence before the
-agent was run on it (`recorded_before_agent_run` in every `expected.json`). This
-repository's history starts from a single import commit, so git cannot show that
-order; it rests on the author's statement. The same cases were also used while
+agent was run on it (`recorded_before_agent_run` in every `expected.json`). Git
+shows the order: every `expected.json` was committed in `22320f6` (06:08Z on
+2026-10-23) and never changed, and every run-1 `aw_info.json` is from 06:27Z or
+later (`git log -- 'evals/golden/*/*/expected.json'`). The same cases were also used while
 developing the skill, so these 20 are a development set; the five held-out
 cases below are not. Each case folder holds:
 
@@ -12,10 +13,12 @@ cases below are not. Each case folder holds:
 - `evidence.json`: what maintainers and others did afterwards (comments, closes,
   label events). Never given to the agent; it justifies `expected.json`.
 - `expected.json`: the expected triage outcome and its rationale.
-- `actual/actual.json`: what the agent did in the latest scored run (labels,
-  comment text, sandbox issue and Actions run link), and the verdict.
+- `actual/actual.json`: what the agent did in the latest run that included the
+  case (labels, comment text, sandbox issue and Actions run link), and the
+  verdict. Since run 4 every case was in the latest run; older runs are in `runs/`.
 
-Scored runs add `results.md` (automatic scores), `review.md` (human review of
+Scored runs add `results.md` (automatic scores of the latest run, which is also
+the accepted drift baseline), `review.md` (human review of
 every output, with case details in `review_packet.md`, built by
 `evals/review_packet.py`) and `runs/<label>/` (each kept run's results and
 per-case outputs, saved by `evals/snapshot.py`, with test logs under `logs/`).
@@ -102,10 +105,11 @@ python3 evals/score.py OWNER/REPO           # writes */actual/actual.json and re
 
 `replay.py` takes optional case ids to replay a subset. The same three steps run
 weekly in `.github/workflows/golden-rerun.yml` (needs secret
-`GOLDEN_REPLAY_TOKEN`, a fine-grained PAT with `issues: write` on the repo), which
-also fails on any case that passes in the accepted baseline (`results.md` as
-committed on `main`), and appends the scored
-outputs to the `data/golden-runs` branch.
+`GOLDEN_REPLAY_TOKEN`, a fine-grained PAT with `issues: write` on the repo) over
+all 25 cases. It fails on any safety failure, on fewer than 20/25 passes, or on
+any case that passes in the accepted baseline (`results.md` as committed on
+`main`) and fails now, and appends the scored outputs to the `data/golden-runs`
+branch.
 
 Run logs: dispatch `.github/workflows/export-runs.yml`. It runs
 `gh aw logs rich-triage --artifacts all --parse` and commits each run's
@@ -121,3 +125,16 @@ python3 evals/baseline_faqtory.py           # writes */baseline/faqtory.md
 
 Each case's `actual/actual.json` records the sandbox issue number and run id,
 so the agent's comment and full run log can be inspected on GitHub.
+
+Free checks (no model calls; also run by `.github/workflows/skill-tests.yml`):
+
+```bash
+python3 -m pytest evals/tests -q          # unit tests for the skill scripts
+python3 evals/verify_skill_use.py         # skill trace vs engine transcript, every runs/*/logs case -> skill_use.md
+python3 evals/baseline_rules.py           # keyword-rule baseline on all 25 cases -> baseline_rules.md
+```
+
+`verify_skill_use.py` exists because the skill trace is written by the skill's
+own scripts and so could in principle be written by the agent: it checks every
+trace entry against the commands in Codex's own transcript, and that no
+command touched the trace file.

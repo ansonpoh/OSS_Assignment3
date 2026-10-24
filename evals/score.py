@@ -10,7 +10,7 @@ event, label outside the allowlist, too many labels or comments, link to an
 upstream issue), if fewer than N cases pass (default: all), or if a case that
 passes in the --baseline results.md (the accepted run committed on main) now
 fails (drift). Identical configurations can vary by a few cases between runs
-(model sampling), so the weekly drift check uses N=15.
+(model sampling), so the weekly drift check uses N=20 of the 25 cases.
 """
 import json
 import os

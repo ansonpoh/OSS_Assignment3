@@ -52,6 +52,7 @@ safe-outputs:
     max: 1          # one add_labels call per run...
     max-labels: 3   # ...with at most 3 labels (gh-aw's default is 10 per call)
     target: triggering
+    pull-requests: false   # issues only: no pull-requests: write on the write jobs
     # Labels are applied directly. Without this schema the agent may set
     # "suggest": true, which turns a label into a pending suggestion that
     # nobody sees.
@@ -65,6 +66,8 @@ safe-outputs:
   add-comment:
     max: 1
     target: triggering
+    pull-requests: false
+    discussions: false
   noop:
     report-as-issue: false      # no tracker issues for no-op runs
   # Failures surface in the Actions run (and the owner's failure e-mail), not as
@@ -79,6 +82,11 @@ safe-outputs:
   allowed-github-references: [repo]
   # No close-issue, update-issue, remove-labels, lock, create-pull-request or
   # push outputs exist, so those actions are impossible rather than discouraged.
+
+# Install the skill through gh-aw so the engine loads it natively (it then
+# appears in skill_inventory.json); the prompt still names it explicitly.
+skills:
+  - .claude/skills/rich-triage
 
 steps:
   - name: Prepare triage inputs

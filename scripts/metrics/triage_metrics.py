@@ -12,6 +12,9 @@ Outputs per-issue CSV and a summary JSON. Uses only the standard library.
 Usage:
   GITHUB_TOKEN=... python triage_metrics.py --repo Textualize/rich \
       --since 2025-10-01 --until 2026-10-01 --out evals/metrics
+  # Recompute summary.json offline from the committed CSV (same measured_at):
+  python triage_metrics.py --repo Textualize/rich \
+      --since 2025-10-01 --until 2026-10-01 --out evals/metrics --from-csv
 """
 import argparse
 import csv
@@ -199,11 +202,20 @@ def summarise(rows, since, until, measured_at):
         "older_than_30d_still_needs_triage": sum(
             1 for r in old if r["still_needs_triage"] and r["state"] == "open"
         ),
+        # Fixed 30-day horizon, so not right-censored: every issue counted here
+        # had a full 30 days in which a maintainer could have acted.
+        "older_than_30d_no_action_within_30d": sum(
+            1
+            for r in old
+            if r["hours_to_first_maintainer_action"] == ""
+            or r["hours_to_first_maintainer_action"] > age_cut
+        ),
         "outcomes": reasons,
         "labels": dict(sorted(label_counts.items(), key=lambda kv: -kv[1])),
         "notes": [
             "Responses count OWNER/MEMBER/COLLABORATOR comments, non-author human labels, or non-author closes.",
             "Issues still open have no response time and are counted as never actioned (right-censored).",
+            "older_than_30d_no_action_within_30d uses a fixed 30-day horizon and is not censored.",
             "Discussions, Discord and email replies are invisible to this metric.",
         ],
     }
@@ -215,7 +227,11 @@ def main():
     ap.add_argument("--since", required=True, help="YYYY-MM-DD inclusive")
     ap.add_argument("--until", required=True, help="YYYY-MM-DD exclusive")
     ap.add_argument("--out", default="evals/metrics")
+    ap.add_argument("--from-csv", action="store_true",
+                    help="recompute summary.json from OUT/issues.csv, no API calls")
     args = ap.parse_args()
+    if args.from_csv:
+        return from_csv(args)
     token = os.environ.get("GITHUB_TOKEN")
     if not token:
         sys.exit("GITHUB_TOKEN is required")
@@ -237,6 +253,25 @@ def main():
     summary = summarise(rows, args.since, args.until, datetime.now(timezone.utc))
     summary["repo"] = args.repo
     with open(os.path.join(args.out, "summary.json"), "w") as f:
+        json.dump(summary, f, indent=2)
+    print(json.dumps(summary, indent=2))
+
+
+def from_csv(args):
+    numeric = ("hours_to_first_maintainer_comment", "hours_to_first_maintainer_action",
+               "hours_to_triage_label_removed", "comments", "number")
+    with open(os.path.join(args.out, "issues.csv"), newline="") as f:
+        rows = list(csv.DictReader(f))
+    for r in rows:
+        for k in numeric:
+            if r.get(k, "") != "":
+                r[k] = float(r[k])
+        r["still_needs_triage"] = r["still_needs_triage"] == "True"
+    path = os.path.join(args.out, "summary.json")
+    measured_at = datetime.fromisoformat(json.load(open(path))["measured_at"])
+    summary = summarise(rows, args.since, args.until, measured_at)
+    summary["repo"] = args.repo
+    with open(path, "w") as f:
         json.dump(summary, f, indent=2)
     print(json.dumps(summary, indent=2))
 
