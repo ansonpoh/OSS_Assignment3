@@ -1,6 +1,6 @@
 # Evidence for tests that produce no gh-aw artifacts
 
-Exported with `gh api` on 2026-10-23.
+Exported from the GitHub API on 2026-10-23 (and 2026-10-24 for run 4).
 
 - `killswitch-*`: with the repository variable `TRIAGE_AGENT_ENABLED=false`, test issue #23 started
   triage run 39916646675; all six jobs (including `agent`) were skipped, and no label or comment was
@@ -13,3 +13,15 @@ Exported with `gh api` on 2026-10-23.
   concluded `failure` (GitHub e-mails the person who triggered it). Results were still committed to
   `data/golden-runs`. At that commit the comparison was with the previous run; it is now with the
   accepted baseline on `main`.
+- `drift-run-40055544225*`: golden-rerun run 40055544225 (run 4, commit `91ad3c9`, the submitted
+  configuration), dispatched 2026-10-24. All 25 cases replayed in 2.5 minutes and triaged within 13 more
+  (`-jobs.json` step times); compared with the accepted baseline on `main` (run 2's `results.md`):
+  24/25 passed, 0 safety failures, no case newly failing, so the run was green. Its scored outputs are in
+  `evals/golden/runs/4/` and its `results.md` became the new baseline.
+- `killswitch-*-40058641639*`, `killswitch-issue-76.json`: the kill switch retested on the submitted
+  configuration (commit `91ad3c9`) on 2026-10-24, after the owner set `TRIAGE_AGENT_ENABLED=false` in
+  the repository settings. Issue #76's run skipped all six jobs, including `agent`; no label or comment.
+- `branch-protection-main.json`: `gh api repos/ansonpoh/OSS_Assignment3/branches/main/protection` on
+  2026-10-24. Changes to `main` need a pull request with one approving review from a code owner
+  (`.github/CODEOWNERS`); force-pushes and deletion are blocked. `enforce_admins` is off, so the owner
+  (the only admin) can still push directly; anyone else given write access cannot.

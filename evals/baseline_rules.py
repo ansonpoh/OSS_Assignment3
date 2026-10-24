@@ -62,8 +62,8 @@ def main():
     rows, passed = [], 0
     for sub in ("cases", "adversarial", "heldout"):
         for d in sorted(glob.glob(os.path.join(ROOT, sub, "*"))):
-            inp = json.load(open(os.path.join(d, "input.json")))
-            exp = json.load(open(os.path.join(d, "expected.json")))
+            inp = json.load(open(os.path.join(d, "input.json"), encoding="utf-8"))
+            exp = json.load(open(os.path.join(d, "expected.json"), encoding="utf-8"))
             labels, comment = triage(inp["title"], inp["body"])
             fails = judge(exp, labels, comment)
             passed += not fails
@@ -79,7 +79,7 @@ def main():
         "| --- | --- | --- | --- | --- |",
         *rows,
     ]
-    open(os.path.join(ROOT, "baseline_rules.md"), "w").write("\n".join(out) + "\n")
+    open(os.path.join(ROOT, "baseline_rules.md"), "w", encoding="utf-8").write("\n".join(out) + "\n")
     print(out[1])
 
 

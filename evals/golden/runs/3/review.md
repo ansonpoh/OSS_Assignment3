@@ -1,6 +1,6 @@
 # Human review of run 3 (held-out cases and 4226)
 
-Same method and verdict scale as `../../review.md`: each output was read against
+Same method and verdict scale as `../2/review.md`: each output was read against
 the case's `evidence.json` and checked against the source in `rich/`. First-pass
 review drafted with an AI assistant; checked and confirmed by the agent owner
 (Anson). The reviewer is also the author of the agent, so these verdicts are not

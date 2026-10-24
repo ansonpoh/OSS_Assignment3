@@ -18,9 +18,9 @@ cases below are not. Each case folder holds:
   verdict. Since run 4 every case was in the latest run; older runs are in `runs/`.
 
 Scored runs add `results.md` (automatic scores of the latest run, which is also
-the accepted drift baseline), `review.md` (human review of
-every output, with case details in `review_packet.md`, built by
-`evals/review_packet.py`) and `runs/<label>/` (each kept run's results and
+the accepted drift baseline), `review.md` (index of the human reviews of every
+output, one per run in `runs/<n>/review.md`, with case details in
+`review_packet.md`, built by `evals/review_packet.py`) and `runs/<label>/` (each kept run's results and
 per-case outputs, saved by `evals/snapshot.py`, with test logs under `logs/`).
 Full logs of every run are exported to the `data/runs` branch.
 

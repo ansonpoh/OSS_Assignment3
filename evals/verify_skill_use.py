@@ -26,7 +26,7 @@ SCRIPT = re.compile(r"rich-triage/scripts/(\w+)\.py")
 
 def commands(session):
     out = []
-    for line in open(session):
+    for line in open(session, encoding="utf-8"):
         try:
             item = json.loads(line).get("item") or {}
         except ValueError:
@@ -39,7 +39,7 @@ def commands(session):
 def check(case_dir):
     cmds = commands(os.path.join(case_dir, "agent-session.jsonl"))
     trace_path = os.path.join(case_dir, "skill-trace.jsonl")
-    trace = [json.loads(l) for l in open(trace_path) if l.strip()] if os.path.exists(trace_path) else []
+    trace = [json.loads(l) for l in open(trace_path, encoding="utf-8") if l.strip()] if os.path.exists(trace_path) else []
     traced = sorted(t["script"].removesuffix(".py") for t in trace)
     # A script that rejects its input (e.g. check_comment on a bad draft) exits
     # non-zero but still writes a trace entry, so every completed run counts.
@@ -74,7 +74,7 @@ def main():
         "| --- | --- | --- | --- | --- |",
         *rows,
     ]
-    open(os.path.join(ROOT, "skill_use.md"), "w").write("\n".join(out) + "\n")
+    open(os.path.join(ROOT, "skill_use.md"), "w", encoding="utf-8").write("\n".join(out) + "\n")
     print(out[1])
     sys.exit(1 if bad else 0)
 
