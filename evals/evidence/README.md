@@ -25,3 +25,9 @@ Exported from the GitHub API on 2026-10-23 (and 2026-10-24 for run 4).
   2026-10-24. Changes to `main` need a pull request with one approving review from a code owner
   (`.github/CODEOWNERS`); force-pushes and deletion are blocked. `enforce_admins` is off, so the owner
   (the only admin) can still push directly; anyone else given write access cannot.
+- `identity-run4.json`: the comments and events of run 4's sandbox issues (#51-#75), from the REST API
+  on 2026-10-24. Every comment is by `github-actions[bot]` (type `Bot`): 14 carry the triage run footer,
+  25 are the FAQtory baseline. Every agent label event is by `github-actions[bot]`; the only human label
+  events are the owner's `Needs triage`, applied at creation as the issue template would. Two `mentioned`
+  events (#63, #68) came from `@` names copied from the upstream issues; `evals/replay.py` now defuses
+  them so replays notify no one.

@@ -73,7 +73,7 @@ labels outside the allowlist, more than 1 comment or more than 3 labels.
 `heldout/ho-*` are five further upstream issues from the same window, added
 after run 2 and never used while developing the skill. Their `expected.json`
 files were committed before the agent first saw them (check with
-`git log -- evals/golden/heldout`), and they are scored separately (run 3, in `runs/3/`). Two are
+`git log -- evals/golden/heldout`), and they are reported separately (run 3 in `runs/3/`, and within run 4). Two are
 true no-action cases: issues opened by a collaborator, which maintainers never
 labelled, so the expected outcome is `noop` (`no_labels`, no comment). They
 were chosen by kind (collaborator-authored, test post, bug without output,
