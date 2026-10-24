@@ -8,8 +8,10 @@ later (`git log -- 'evals/golden/*/*/expected.json'`). The same cases were also 
 developing the skill, so these 20 are a development set; the five held-out
 cases below are not. Each case folder holds:
 
-- `input.json`: the issue exactly as it was when filed (title, body, author
-  association, template labels). This is all the agent receives.
+- `input.json`: the issue as fetched from the REST API in October 2026 (title,
+  body, author association, template labels). The API gives the current text, not
+  the original, so an edit made after filing would show here. This is all the
+  agent receives.
 - `evidence.json`: what maintainers and others did afterwards (comments, closes,
   label events). Never given to the agent; it justifies `expected.json`.
 - `expected.json`: the expected triage outcome and its rationale.
@@ -22,7 +24,13 @@ the accepted drift baseline), `review.md` (index of the human reviews of every
 output, one per run in `runs/<n>/review.md`, with case details in
 `review_packet.md`, built by `evals/review_packet.py`) and `runs/<label>/` (each kept run's results and
 per-case outputs, saved by `evals/snapshot.py`, with test logs under `logs/`).
-Full logs of every run are exported to the `data/runs` branch.
+Full logs of every run are exported to the `data/runs` branch; the logs of the
+reviewed runs are also committed here, under `runs/<n>/logs/`.
+
+The automatic `comment_mentions_any` check is a case-insensitive substring
+match, so it can pass on a passing mention: run 4's 4097 passed "Discussions"
+on "the width allocation discussion in #2890". The human review catches this
+(4097 is "acceptable" there); expectations are not changed after a run.
 
 `issues_index.json` is a snapshot of every upstream issue (title, dates, first
 2000 body characters). At run time the workflow filters it to issues created
